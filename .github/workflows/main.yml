@@ -36,6 +36,8 @@ jobs:
 
         - name: Iniciando Build
           run: npm run build:prod
+          env:
+            REACT_APP_HOST_API: ${{ secrets.REACT_APP_HOST_API }}
 
         - name: Sync Files
           uses: SamKirkland/FTP-Deploy-Action@4.3.3
