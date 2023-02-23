@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import getApi from '../_shared/req-get-http';
 
-const MySelect = (props) => {
+const MySelect = async (props) => {
 
     let [options, setOptions] = useState(null);
     const [valueDefault, setValueDefault] = useState(props.value);
 
     if (!options)
-      getApi({ url: `${process.env.REACT_APP_HOST_API}/${props.dominio}` }).then((data) => {
+      await getApi({ url: `${process.env.REACT_APP_HOST_API}/${props.dominio}` }).then((data) => {
 
         const items = data.map(item => (
           <option value={item.id} key={item.id}>{item.name}</option>
