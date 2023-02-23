@@ -20,11 +20,17 @@ jobs:
         - name: Instalando lib package.json
           run: npm ci
 
-        - name: Instalando lib package.json
+        - name: Criando .env.production
           run: |
             touch .env.production
             REACT_APP_HOST_API=${{ secrets.REACT_APP_HOST_API }} >> .env.production
             cat .env.production
+
+        - name: Criando .env
+          run: |
+            touch .env
+            REACT_APP_HOST_API=${{ secrets.REACT_APP_HOST_API }} >> .env
+            cat .env
 
         - name: Iniciando Build
           run: npm run build:prod
