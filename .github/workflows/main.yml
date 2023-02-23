@@ -21,7 +21,7 @@ jobs:
           run: npm ci
 
         - name: Iniciando Build
-          run: npm run build
+          run: npm run build:prod
 
         - name: Sync Files
           uses: SamKirkland/FTP-Deploy-Action@4.3.3
@@ -31,4 +31,3 @@ jobs:
               password: ${{ secrets.FTP_PWD }}
               server-dir: public_html/
               local-dir: ./build/
-              
