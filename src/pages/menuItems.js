@@ -39,7 +39,18 @@ export const menuItems = [
     },
 
     {
-      title: 'Configuração',
+      title: 'Geral',
+      url: '',
+      submenu: [
+          {
+          title: 'Empresa',
+          url: '/empresa',
+          }
+      ]
+    },
+
+    {
+      title: 'Suporte',
       url: '',
       submenu: [
           {
@@ -47,9 +58,9 @@ export const menuItems = [
           url: '',
           },
           {
-          title: 'Empresa',
-          url: '/empresa',
-          },
+          title: process.env.REACT_APP_HOST_API,
+          url: '',
+          }
       ]
     }
   ];
