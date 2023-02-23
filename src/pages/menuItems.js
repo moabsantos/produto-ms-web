@@ -43,6 +43,10 @@ export const menuItems = [
       url: '',
       submenu: [
           {
+          title: process.env.NODE_ENV,
+          url: '',
+          },
+          {
           title: 'Empresa',
           url: '/empresa',
           },
