@@ -33,7 +33,7 @@ const MySelect = (props) => {
       {props.caption}
       </Form.Label>
       <Col sm={10}>
-      {mySelect}
+      {options && (mySelect)}
       </Col>
     </Form.Group>) 
     : (mySelect)

@@ -2,24 +2,27 @@ export default async function getApi(props){
 
     const token = localStorage.getItem("tokenGoogle");
       
-    const response = await fetch( props.url, {
+    return fetch( props.url, {
       method: "GET",
       mode: "cors",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       }
-    });
-  
-    if (response.status === 401){
-
-      return null
+    })
+    
+    .then((response) => {
       
-    }else{
+      if (response.status === 401){
 
-      const data = await response.json();
-      return data
+        return null
+        
+      }else{
+  
+        return response.json();
+  
+      }
 
-    }
+    })
 
   }
