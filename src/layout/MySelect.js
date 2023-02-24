@@ -7,12 +7,15 @@ const MySelect = (props) => {
     const [valueDefault, setValueDefault] = useState(props.value);
 
     useEffect(() => {
-      getApi({ url: `${process.env.REACT_APP_HOST_API}/${props.dominio}` }).then((resp) => {
-        setOptions(resp.data)
-      })
-    }, [props.dominio])
+      if (props.dominio)
+        getApi({ url: `${process.env.REACT_APP_HOST_API}/${props.dominio}` }).then((resp) => {
+          setOptions(resp.data)
+        })
+      else
+        if (props.options)
+          setOptions(props.options)
+    }, [props.dominio, props.options])
 
-    
     return (<select 
               className="form-select"
               name={props.fieldName} 

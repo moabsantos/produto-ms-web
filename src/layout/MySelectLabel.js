@@ -11,6 +11,7 @@ const MySelectLabel = (props) => {
             <Col sm={10}>
               <MySelect 
                 dominio={props.dominio}
+                options={props.options}
                 fieldName={props.fieldName}
                 name={'fmSel' + props.name}
                 valueDefault={props.valueDefault} 

@@ -15,7 +15,8 @@ const LocalForm = (props) => {
         valores = {
             name: props.dataForm.name,
             unidadeMedidaId: props.dataForm.unidadeMedidaId,
-            description: props.dataForm.description
+            description: props.dataForm.description,
+            flagServico: props.dataForm.flagServico
         }
 
     }
@@ -28,6 +29,15 @@ const LocalForm = (props) => {
 
             <MySelectLabel
                 dominio="unidade-medida"
+                caption="Unidade Medida"
+                fieldName="unidadeMedidaId"
+                name="unidadeMedida"
+                valueDefault={valores.unidadeMedidaId} 
+            />
+
+            <MySelectLabel
+                dominio=""
+                options={[{id:0, name: "Produto"}, {id: 1, name: "Serviço"}]}
                 caption="Unidade Medida"
                 fieldName="unidadeMedidaId"
                 name="unidadeMedida"
