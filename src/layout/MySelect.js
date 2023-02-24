@@ -25,7 +25,7 @@ const MySelect = (props) => {
           onChange={(e) => setValueDefault(e.target.value)}
           value={valueDefault} >
 
-          {options && options}
+          {options && (options)}
         </select>
     
     return props.caption ? (<Form.Group as={Row} className="mb-3" controlId={props.name}>
@@ -36,7 +36,7 @@ const MySelect = (props) => {
       {options && (mySelect)}
       </Col>
     </Form.Group>) 
-    : (mySelect)
+    : options && (mySelect)
 
   };
 
