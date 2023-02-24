@@ -14,7 +14,7 @@ const MySelect = (props) => {
           <option value={item.id} key={item.id}>{item.name}</option>
         ))
 
-        setOptions(<>{items}</>)
+        setOptions((<>{items}</>))
       })
     }, [props.dominio])
 
