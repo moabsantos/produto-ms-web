@@ -13,16 +13,18 @@ export default class MyTable extends React.Component {
     }
 
     changeFilterTable(filtro){
+
         this.buscarLista(filtro)
     }
 
     buscarLista(filtro) {
         const url = `${process.env.REACT_APP_HOST_API}/${this.props.dominio}?${filtro}`
 
-        getApi({ url: url }).then(data => this.setState({data: data}))
+        getApi({ url: url }).then(resp => this.setState({data: resp.data}))
     }
 
     componentDidMount(){
+
         let filter = ''
         if (this.props.defaultFilter)
             filter = this.props.defaultFilter

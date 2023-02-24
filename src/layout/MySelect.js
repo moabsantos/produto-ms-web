@@ -7,8 +7,8 @@ const MySelect = (props) => {
     const [valueDefault, setValueDefault] = useState(props.value);
 
     useEffect(() => {
-      getApi({ url: `${process.env.REACT_APP_HOST_API}/${props.dominio}` }).then((data) => {
-        setOptions(data)
+      getApi({ url: `${process.env.REACT_APP_HOST_API}/${props.dominio}` }).then((resp) => {
+        setOptions(resp.data)
       })
     }, [props.dominio])
 
