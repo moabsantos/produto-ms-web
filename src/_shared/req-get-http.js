@@ -19,7 +19,7 @@ export default async function getApi(props){
         
       }else{
   
-        return response.json();
+        return response.data.json();
   
       }
 
