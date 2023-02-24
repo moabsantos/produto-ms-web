@@ -26,8 +26,9 @@ const CustosDia = () => {
           <th>DATA</th>
           <th>Item</th>
           <th>Setor</th>
-          <th>Qtd</th>
           <th>Unid</th>
+          <th>Qtd</th>
+          <th>Valor</th>
           <th></th>
         </>)}
 
@@ -37,8 +38,9 @@ const CustosDia = () => {
              <td>{formataData({data: props.item.data})}</td>
              <td>{props.item.itemDespesaName}</td>
              <td>{props.item.setorName}</td>
-             <td>{props.item.quantidadeRealizada}</td>
              <td>{props.item.unidadeMedidaSigla}</td>
+             <td>{props.item.quantidadeRealizada}</td>
+             <td>{props.item.valorRealizado}</td>
             </>)
           }
         }

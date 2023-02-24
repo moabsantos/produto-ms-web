@@ -18,7 +18,8 @@ export default function FormAdd(props){
                 setorId: event.target.elements.setorId.value,
                 itemDespesaId: event.target.elements.itemDespesaId.value,
                 unidadeMedidaId: event.target.elements.unidadeMedidaId.value,
-                quantidadeRealizada: event.target.elements.quantidadeRealizada.value
+                quantidadeRealizada: event.target.elements.quantidadeRealizada.value,
+                valorRealizado: event.target.elements.valorRealizado.value
             }
         })
     }   
