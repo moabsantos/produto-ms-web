@@ -1,6 +1,6 @@
 import { Form, Button, Row, Col } from "react-bootstrap"
 import MyEditForm from "../../layout/MyEditForm"
-import MySelect from "../../layout/MySelect";
+import MySelectLabel from "../../layout/MySelectLabel";
 
 const LocalForm = (props) => {
 
@@ -26,7 +26,7 @@ const LocalForm = (props) => {
 
             <MyEditForm caption="Nome" name="fmnome" fieldName="name" valor={valores.name} />
 
-            <MySelect
+            <MySelectLabel
                 dominio="unidade-medida"
                 caption="Unidade Medida"
                 fieldName="unidadeMedidaId"

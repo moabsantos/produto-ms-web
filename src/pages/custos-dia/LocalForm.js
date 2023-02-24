@@ -1,6 +1,6 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
 import MyEditForm from "../../layout/MyEditForm";
-import MySelect from "../../layout/MySelect";
+import MySelectLabel from "../../layout/MySelectLabel";
 import formataData from '../../_shared/formata-data';
 
 const LocalForm = (props) => {
@@ -29,7 +29,7 @@ const LocalForm = (props) => {
         <div className="container">
             <Form onSubmit={ props.salvar.bind( this ) }>
 
-            <MySelect
+            <MySelectLabel
                 dominio="empresa"
                 caption="Empresa"
                 fieldName="empresaId"
@@ -39,7 +39,7 @@ const LocalForm = (props) => {
 
             <MyEditForm caption="Data" name="fmdata" fieldName="data" valor={valores.data} />
 
-            <MySelect
+            <MySelectLabel
                 dominio="setor"
                 caption="Setor"
                 fieldName="setorId"
@@ -47,7 +47,7 @@ const LocalForm = (props) => {
                 valueDefault={valores.setorId} 
             />
 
-            <MySelect
+            <MySelectLabel
                 dominio="produto"
                 caption="Material / Serviço"
                 fieldName="itemDespesaId"
@@ -55,7 +55,7 @@ const LocalForm = (props) => {
                 valueDefault={valores.itemDespesaId} 
             />
 
-            <MySelect
+            <MySelectLabel
                 dominio="unidade-medida"
                 caption="Unidade Medida"
                 fieldName="unidadeMedidaId"
