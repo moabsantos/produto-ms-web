@@ -4,7 +4,7 @@ import getApi from '../_shared/req-get-http';
 const MySelect = (props) => {
 
     let [options, setOptions] = useState();
-    const [valueDefault, setValueDefault] = useState(props.value);
+    const [valueDefault, setValueDefault] = useState(props.valueDefault);
 
     useEffect(() => {
       if (props.dominio)

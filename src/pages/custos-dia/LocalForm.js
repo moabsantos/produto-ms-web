@@ -16,11 +16,12 @@ const LocalForm = (props) => {
 
         valores = {
             empresaId: props.dataForm.empresaId,
-            data: props.dataForm.data,
+            data: formataData({data: props.dataForm.data}),
             setorId: props.dataForm.setorId,
             itemDespesaId: props.dataForm.itemDespesaId,
             unidadeMedidaId: props.dataForm.unidadeMedidaId,
-            quantidadeRealizada: props.dataForm.quantidadeRealizada
+            quantidadeRealizada: props.dataForm.quantidadeRealizada,
+            valorRealizado: props.dataForm.valorRealizado
         }
 
     }

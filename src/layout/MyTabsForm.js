@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import MyTable from './MyTable';
+import getApi from '../_shared/req-get-http';
 
 
 function MyTabsForm(props) {
@@ -16,23 +17,10 @@ function MyTabsForm(props) {
 
     setDataFmEdicao(<></>)
 
-    console.log('entrou no tab')
-
-    const token = localStorage.getItem("tokenGoogle");
-    
-    const response = await fetch( process.env.REACT_APP_HOST_API + '/'+ props.dominio + '/' + id, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      }
-    });
-
-    const data = await response.json();
+    const resp = await getApi({ url: process.env.REACT_APP_HOST_API + '/'+ props.dominio + '/' + id })
 
     return setDataFmEdicao(props.edit({
-        id:id, dominio: props.dominio, dataForm:data[0], callBusca: () => { setKey('busca') }
+        id:id, dominio: props.dominio, dataForm:resp.data[0], callBusca: () => { setKey('busca') }
       }))
   }
 
