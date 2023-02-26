@@ -21,4 +21,14 @@ export default function formataData(props){
         const parts = data[0].split('-');
         return parts[2]+'/'+parts[1]+'/'+parts[0]
     }
+
+    if (props.format === 'new-date-json'){
+        const data = ((new Date()).toISOString()).split('T')
+        const parts = data[0].split('-');
+        return {
+            dia: parts[2],
+            mes: parts[1],
+            ano: parts[0]
+        }
+    }
 }

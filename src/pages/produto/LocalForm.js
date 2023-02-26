@@ -38,10 +38,10 @@ const LocalForm = (props) => {
             <MySelectLabel
                 dominio=""
                 options={[{id:0, name: "Produto"}, {id: 1, name: "Serviço"}]}
-                caption="Unidade Medida"
-                fieldName="unidadeMedidaId"
-                name="unidadeMedida"
-                valueDefault={valores.unidadeMedidaId} 
+                caption="Tipo"
+                fieldName="flagServico"
+                name="flagServico"
+                valueDefault={valores.flagServico} 
             />
 
             <MyEditForm caption="Descrição" name="fmDescricao" fieldName="description" valor={valores.description} />

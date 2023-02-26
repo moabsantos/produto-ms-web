@@ -9,7 +9,7 @@ export const menuItems = [
         url: '',
         submenu: [
             {
-            title: 'Produto',
+            title: 'Produto / Serviço',
             url: '/produto',
             },
             {
@@ -35,6 +35,10 @@ export const menuItems = [
           title: 'Custos Dia',
           url: '/custos-dia',
           },
+          {
+          title: 'Custos Mensais',
+          url: '/custos-mensais',
+          }
       ]
     },
 
@@ -45,6 +49,17 @@ export const menuItems = [
           {
           title: 'Empresa',
           url: '/empresa',
+          }
+      ]
+    },
+
+    {
+      title: 'Segurança',
+      url: '',
+      submenu: [
+          {
+          title: 'Grupos de Acesso',
+          url: '/grupo-acesso',
           }
       ]
     },

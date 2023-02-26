@@ -4,8 +4,10 @@ import Header from "../layout/Header"
 import AuthUsuarioLogin from "./auth-usuario/login-usuario"
 import Contact from "./contact"
 import CustosDia from "./custos-dia/form-base"
+import CustosMensais from "./custos-mes/form-base"
 import Empresa from "./empresa/form-base"
 import Estagio from "./estagio/form-base"
+import GrupoAcesso from "./grupo-acesso/form-base"
 import Home from "./home"
 import Produto from "./produto/produto"
 import Setor from "./setor/form-base"
@@ -27,6 +29,9 @@ const RoutesModule = () => {
                     <Route path='/unidade-medida' element={<UnidadeMedida/>} />
 
                     <Route path='/custos-dia' element={<CustosDia/>} />
+                    <Route path='/custos-mensais' element={<CustosMensais/>} />
+
+                    <Route path='/grupo-acesso' element={<GrupoAcesso/>} />
 
                     <Route path='/empresa' element={<Empresa/>} />
                     <Route path='/auth-usuario-login' element={<AuthUsuarioLogin />} />
