@@ -7,9 +7,10 @@ const Header = () => {
     <header>
       <div className="nav-area">
         <Link to="/" className="logo">
-          Logo
+          <img src="https://lh3.googleusercontent.com/a/AGNmyxZImRZ4bu5YQddHKmnOQCJB1Nm-JQmBAlJ5N1TG0Q=s96-c" alt=""/>
         </Link>
         <NavbarL />
+        
       </div>
     </header>
   );

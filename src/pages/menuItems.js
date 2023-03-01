@@ -1,7 +1,7 @@
 export const menuItems = [
     {
       title: 'Home',
-      url: '/auth-usuario-login',
+      url: '/',
     },
 
     {
@@ -58,8 +58,16 @@ export const menuItems = [
       url: '',
       submenu: [
           {
-          title: 'Grupos de Acesso',
-          url: '/grupo-acesso',
+            title: 'Grupos de Acesso',
+            url: '/grupo-acesso',
+          },
+          {
+            title: 'Cadastro de Usuários',
+            url: '/realm-user',
+          },
+          {
+            title: 'Login',
+            url: '/auth-usuario-login'
           }
       ]
     },
