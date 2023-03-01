@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import PageBase from "../layout/PageBase"
+import PageHeader from "../layout/PageHeader"
 
 import AuthUsuarioLogin from "./auth-usuario/auth-usuario-login"
 import Contact from "./contact"
@@ -21,22 +22,24 @@ const RoutesModule = () => {
         <BrowserRouter>
                 <Routes>
                     <Route exact path='/' element={<PageBase />}>
-                        <Route path='/home' element={<Home />} />
-                        <Route path='/produto' element={<Produto />} />
-                        <Route path='/estagio' element={<Estagio/>} />
-                        <Route path='/setor' element={<Setor/>} />
-                        <Route path='/contact' element={<Contact/>} />
-                        <Route path='/unidade-medida' element={<UnidadeMedida/>} />
+                        <Route exact path='/' element={<PageHeader />}>
+                            <Route path='/home' element={<Home />} />
+                            <Route path='/produto' element={<Produto />} />
+                            <Route path='/estagio' element={<Estagio/>} />
+                            <Route path='/setor' element={<Setor/>} />
+                            <Route path='/contact' element={<Contact/>} />
+                            <Route path='/unidade-medida' element={<UnidadeMedida/>} />
 
-                        <Route path='/custos-dia' element={<CustosDia/>} />
-                        <Route path='/custos-mensais' element={<CustosMensais/>} />
+                            <Route path='/custos-dia' element={<CustosDia/>} />
+                            <Route path='/custos-mensais' element={<CustosMensais/>} />
 
-                        <Route path='/grupo-acesso' element={<GrupoAcesso/>} />
-                        <Route path='/realm-user' element={<RealmUser/>} />
-                        <Route path='/auth-usuario-login' element={<AuthUsuarioLogin />} />
-                        
-                        <Route path='/empresa' element={<Empresa/>} />
-                        <Route path='/sign-up' element={<SignUp/>} />
+                            <Route path='/grupo-acesso' element={<GrupoAcesso/>} />
+                            <Route path='/realm-user' element={<RealmUser/>} />
+                            <Route path='/auth-usuario-login' element={<AuthUsuarioLogin />} />
+                            
+                            <Route path='/empresa' element={<Empresa/>} />
+                            <Route path='/sign-up' element={<SignUp/>} />
+                        </Route>
                     </Route>
                 </Routes>
         </BrowserRouter>

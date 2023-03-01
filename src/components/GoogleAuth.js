@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import getApi from '../_shared/req-get-http';
-
 
 const loadScript = (src) =>
   new Promise((resolve, reject) => {
@@ -33,7 +31,7 @@ const GoogleAuth = () => {
 
           google.accounts.id.renderButton(
             googleButton.current, 
-            { theme: 'outline', size: 'large' } 
+            { type: "icon", theme: 'outline', size: 'large' } 
           )
 
         })
@@ -46,23 +44,48 @@ const GoogleAuth = () => {
 
     }, [])
   
-    function handleCredentialResponse(response) {
-        localStorage.setItem("tokenGoogle", response.credential);
+    async function handleCredentialResponse(response) {
 
-        const urlImage = 'https://www.googleapis.com/oauth2/v3/tokeninfo?id_token='+ response.credential
-        getApi({ url: urlImage }).then(resp => {
-            if (resp){
-                setUrlImgUsuario(resp.picture)
+        localStorage.setItem("tokenGoogle", response.credential);
+/*
+        let bufferObj = Buffer.from(response.credential, "base64");
+        let decodedString = bufferObj.toString("utf8");
+        console.log(decodedString)
+
+        const responsePayload = decodeJwtResponse(response.credential);
+        console.log("ID: " + responsePayload.sub);
+        console.log('Full Name: ' + responsePayload.name);
+        console.log('Given Name: ' + responsePayload.given_name);
+        console.log('Family Name: ' + responsePayload.family_name);
+        console.log("Image URL: " + responsePayload.picture);
+        console.log("Email: " + responsePayload.email);
+
+*/
+        setUrlImgUsuario("*")
+
+        const urlImage = `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${response.credential}`
+
+        const resp = await fetch( urlImage, {
+            method: "GET",
+            headers: {
+            "Content-Type": "application/json",
             }
         })
-
         
-    }
+
+
+            if (resp){
+                setUrlImgUsuario("ok")
+            }
+
+
+      }
   
     return (
       <>
         <div ref={googleButton}></div>
-        {urlImgUsuario && (<img src={urlImgUsuario} alt="user google" />)}
+        {urlImgUsuario && (<h4>Login Realizado com Sucesso</h4>)}
+        {urlImgUsuario && (<a href={'/'}>Home</a>)}
       </>
     )
   }

@@ -1,7 +1,7 @@
 export default function postApi(props){
 
     const token = localStorage.getItem("tokenGoogle");
-    alert(props.url)
+
     fetch(props.url, {
 
       headers:{
