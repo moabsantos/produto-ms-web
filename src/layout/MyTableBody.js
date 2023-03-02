@@ -7,9 +7,16 @@ const MyTableBody = ({ tableData, columns, actions }) => {
        return (
         <tr key={item.id}>
 
-         {columns.map(({ accessor }) => {
+         {columns.map(({ accessor, alignCell }) => {
           const tData = item[accessor] ? item[accessor] : "——";
-          return <td key={accessor}>{tData}</td>;
+          
+          let styleCell = {}
+
+          if (alignCell){
+            styleCell = {textAlign: "right"}
+          }
+
+          return <td key={accessor} style={styleCell} >{tData}</td>;
          })}
 
          {actions.map((btn) => {

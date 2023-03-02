@@ -28,8 +28,8 @@ const CustosDia = () => {
           { label: "Produto / Serviço", accessor: "itemDespesaName", sortable: true },
           { label: "Setor", accessor: "setorName", sortable: true },
           { label: "Unidade", accessor: "unidadeMedidaSigla", sortable: true },
-          { label: "Quantidade", accessor: "quantidadeRealizada", sortable: true },
-          { label: "Valor", accessor: "valorRealizado", sortable: true }
+          { label: "Quantidade", accessor: "quantidadeRealizada", sortable: true, alignCell:"right" },
+          { label: "Valor", accessor: "valorRealizado", sortable: true, alignCell:"right" }
         ]}
         
         filter= {(params) => FormFilter({dataFilter: params.dataFilter}) }
