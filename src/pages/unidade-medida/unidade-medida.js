@@ -14,22 +14,12 @@ const UnidadeMedida = () => {
       <MyTabsForm
         dominio="unidade-medida" 
 
-        headers={(<>
-          <th>Nome</th>
-          <th>Sigla</th>
-          <th>Descricao</th>
-          <th></th>
-        </>)}
-
-        getItems={
-          (props)=>{
-            return(<>
-             <td>{props.item.name}</td>
-             <td>{props.item.sigla}</td>
-             <td>{props.item.description}</td>
-            </>)
-          }
-        }
+        columns={[    
+          { label: "Código", accessor: "code", sortable: false },
+          { label: "Nome", accessor: "name", sortable: true },
+          { label: "Descrição", accessor: "description", sortable: true },
+          { label: "Sigla", accessor: "sigla", sortable: true }
+        ]}
 
         add= {(params) => (<FormAdd callBusca={() => params.callBusca()} />) }
         edit={(params) => FormEdit({ id: params.id, dataForm: params.dataForm, callBusca: () => params.callBusca() })}

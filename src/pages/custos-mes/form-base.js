@@ -26,29 +26,15 @@ const CustosMensais = () => {
       <MyTabsForm
         dominio={dominio}
         defaultFilter={filterTable}
-        headers={(<>
-          <th>Período</th>
-          <th>Item</th>
-          <th>Setor</th>
-          <th>Unid</th>
-          <th>Qtd</th>
-          <th>Valor</th>
-          <th></th>
-        </>)}
 
-        getItems={
-          (props)=>{
-            return(<>
-             <td>{props.item.mes} / {props.item.ano}</td>
-             <td>{props.item.itemDespesaName}</td>
-             <td>{props.item.setorName}</td>
-             <td>{props.item.unidadeMedidaSigla}</td>
-             <td>{props.item.quantidadeRealizada}</td>
-             <td>{props.item.valorRealizado}</td>
-            </>)
-          }
-        }
-
+        columns={[    
+          { label: "Periodo", accessor: "data", sortable: false },
+          { label: "Produto / Serviço", accessor: "itemDespesaName", sortable: true },
+          { label: "Setor", accessor: "setorName", sortable: true },
+          { label: "Unidade", accessor: "unidadeMedidaSigla", sortable: true },
+          { label: "Quantidade", accessor: "quantidadeRealizada", sortable: true },
+          { label: "Valor", accessor: "valorRealizado", sortable: true }
+        ]}
         
         filter= {(params) => FormFilter({dataFilter: params.dataFilter}) }
         add= {(params) => (<FormAdd dominio={dominio} callBusca={() => params.callBusca()} />) }

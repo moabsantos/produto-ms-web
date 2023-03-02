@@ -17,22 +17,12 @@ const Estagio = () => {
       <MyTabsForm
         dominio={dominio}
 
-        headers={(<>
-          <th>Nome</th>
-          <th>Sigla</th>
-          <th>Descricao</th>
-          <th></th>
-        </>)}
-
-        getItems={
-          (props)=>{
-            return(<>
-             <td>{props.item.name}</td>
-             <td>{props.item.sigla}</td>
-             <td>{props.item.description}</td>
-            </>)
-          }
-        }
+        columns={[    
+          { label: "Código", accessor: "code", sortable: false },
+          { label: "Nome", accessor: "name", sortable: true },
+          { label: "Descrição", accessor: "description", sortable: true },
+          { label: "Sigla", accessor: "sigla", sortable: true }
+        ]}
 
         add= {(params) => (<FormAdd dominio={dominio} callBusca={() => params.callBusca()} />) }
         edit={(params) => FormEdit({ id: params.id, dominio:dominio,  dataForm: params.dataForm, callBusca: () => params.callBusca() })}

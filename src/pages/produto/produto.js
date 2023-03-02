@@ -15,22 +15,12 @@ const Produto = () => {
       <MyTabsForm
         dominio="produto"
 
-        headers={(<>
-          <th>Nome</th>
-          <th>Unidade</th>
-          <th>Descricao</th>
-          <th></th>
-        </>)}
-
-        getItems={
-          (props)=>{
-            return(<>
-            <td>{props.item.name}</td>
-            <td>{props.item.unidadeMedidaSigla}</td>
-            <td>{props.item.description}</td>
-            </>)
-          }
-        }
+        columns={[    
+          { label: "Código", accessor: "code", sortable: false },
+          { label: "Nome", accessor: "name", sortable: true },
+          { label: "Unidade Medida", accessor: "unidadeMedidaSigla", sortable: true },
+          { label: "Description", accessor: "description", sortable: true }
+        ]}
 
         add={ (params) => (<FormAdd callBusca={() => params.callBusca()} />) }
         edit={(params) => FormEdit({ id: params.id, dataForm: params.dataForm, callBusca: () => params.callBusca() })}

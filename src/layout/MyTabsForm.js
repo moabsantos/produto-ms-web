@@ -41,9 +41,11 @@ function MyTabsForm(props) {
 
   const tabBusca =  <Tab eventKey="busca" title="Resultado">
       
-      <MyTable 
+      <MyTable
           ref={tableRef}
           headers={props.headers}
+          columns={props.columns}
+
           getItems={(data) => props.getItems(data)}
           dominio={props.dominio}
 
