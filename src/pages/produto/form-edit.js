@@ -12,6 +12,7 @@ export default function FormEdit(props){
             url: `${process.env.REACT_APP_HOST_API}/produto`,
             body: {
                 id: props.id,
+                code: event.target.elements.code.value,
                 name: event.target.elements.name.value,
                 unidadeMedidaId: event.target.elements.unidadeMedidaId.value,
                 description: event.target.elements.description.value

@@ -4,6 +4,7 @@ import MyEditForm from "../../layout/MyEditForm";
 const LocalForm = (props) => {
 
     let valores = {
+        code: '',
         name: '',
         sigla: '',
         description: ''
@@ -12,6 +13,7 @@ const LocalForm = (props) => {
     if (props.dataForm){
 
         valores = {
+            code: props.dataForm.code,
             name: props.dataForm.name,
             sigla: props.dataForm.sigla,
             description: props.dataForm.description
@@ -23,6 +25,7 @@ const LocalForm = (props) => {
         <div className="container">
             <Form onSubmit={ props.salvar.bind( this ) }>
 
+            <MyEditForm caption="Codigo" name="fmcode" fieldName="code" valor={valores.code} />
             <MyEditForm caption="Nome" name="fmnome" fieldName="name" valor={valores.name} />
             <MyEditForm caption="Sigla" name="fmSigla" fieldName="sigla" valor={valores.sigla} />
             <MyEditForm caption="Descrição" name="fmDescricao" fieldName="description" valor={valores.description} />

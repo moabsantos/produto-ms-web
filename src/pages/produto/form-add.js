@@ -11,6 +11,7 @@ export default function FormAdd(props){
         postApi({
             url: `${process.env.REACT_APP_HOST_API}/produto`,
             body: {
+                code: event.target.elements.code.value,
                 name: event.target.elements.name.value,
                 unidadeMedidaId: event.target.elements.unidadeMedidaId.value,
                 description: event.target.elements.description.value

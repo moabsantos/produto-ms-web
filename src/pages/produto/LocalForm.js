@@ -5,6 +5,7 @@ import MySelectLabel from "../../layout/MySelectLabel";
 const LocalForm = (props) => {
 
     let valores = {
+        code: '',
         name: '',
         unidadeMedidaId: '',
         description: ''
@@ -13,6 +14,7 @@ const LocalForm = (props) => {
     if (props.dataForm){
 
         valores = {
+            code: props.dataForm.code,
             name: props.dataForm.name,
             unidadeMedidaId: props.dataForm.unidadeMedidaId,
             description: props.dataForm.description,
@@ -25,6 +27,7 @@ const LocalForm = (props) => {
         <div className="container">
             <Form onSubmit={ props.salvar.bind( this ) }>
 
+            <MyEditForm caption="Codigo" name="fmcode" fieldName="code" valor={valores.code} />
             <MyEditForm caption="Nome" name="fmnome" fieldName="name" valor={valores.name} />
 
             <MySelectLabel
