@@ -1,6 +1,6 @@
 export default function formataData(props){
 
-    if (!props.format){
+    if (props.format === 'to-br-date'){
         const data = props.data.split('T');
         const parts = data[0].split('-');
         return parts[2]+'/'+parts[1]+'/'+parts[0]
@@ -11,7 +11,7 @@ export default function formataData(props){
         return parts[2]+'-'+parts[1]+'-'+parts[0]
     }
 
-    if (props.format === 'date'){
+    if (props.format === 'new-date'){
         const data = ((new Date()).toISOString()).split('T')
         return data[0]
     }

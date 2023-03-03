@@ -5,9 +5,45 @@ export const menuItems = [
     },
 
     {
-        title: 'Cadastro',
-        url: '',
-        submenu: [
+      title: 'Comercial',
+      url: '/',
+      submenu: [
+        {
+          title: 'Pré-Cadastro',
+          url: '/',
+          submenu: [
+            {
+              title: 'Cliente',
+              url: '/cliente'
+            },
+          ]
+        },
+        {
+          title: 'Pedido de Venda',
+          url: '/',
+          submenu: [
+            {
+              title: 'Cadastro',
+              url: '/'
+            },
+          ]
+        },
+      ]
+    },
+
+
+    {
+      title: 'Suprimentos',
+      url: '/',
+      submenu: [
+        {
+          title: 'Pré-Cadastro',
+          url: '/',
+          submenu: [
+            {
+            title: 'Fornecedor',
+            url: '/fornecedor',
+            },
             {
             title: 'Produto / Serviço',
             url: '/produto',
@@ -15,29 +51,117 @@ export const menuItems = [
             {
             title: 'Unidade de Medida',
             url: '/unidade-medida',
-            },
-            {
-            title: 'Estagio',
-            url: '/estagio',
-            },
-            {
-              title: 'Setor',
-              url: '/setor',
             }
-        ],
+          ]
+        },
+        {
+          title: 'Pedido de Compra',
+          url: '/',
+          submenu: [
+            {
+              title: 'Cadastro',
+              url: '/'
+            },
+          ]
+        },
+        {
+          title: 'Requisição de Almoxarifado',
+          url: '/',
+          submenu: [
+            {
+              title: 'Cadastro',
+              url: '/'
+            },
+          ]
+        },
+        {
+          title: 'Análise de Estoque',
+          url: '/',
+          submenu: [
+            {
+              title: 'Cadastro',
+              url: '/'
+            },
+          ]
+        }
+      ]
     },
 
     {
-      title: 'Apuração',
+      title: 'Produção',
       url: '',
       submenu: [
           {
-          title: 'Custos Dia',
-          url: '/custos-dia',
-          },
+            title: 'Pré-Cadastro',
+            url: '/',
+            submenu: [
+              {
+              title: 'Estagio',
+              url: '/estagio',
+              },
+              {
+                title: 'Setor',
+                url: '/setor',
+              }
+            ]
+          }
+      ],
+  },
+
+    {
+      title: 'Financeiro',
+      url: '/',
+      submenu: [
+        {
+          title: 'Pré-Cadastro',
+          url: '/',
+          submenu: [
+            {
+              title: 'Tipo de Título',
+              url: '/'
+            },
+          ]
+        },
+        {
+          title: 'Contas a Receber',
+          url: '/',
+          submenu: [
+            {
+              title: 'Cadastro',
+              url: '/'
+            },
+          ]
+        },
+        {
+          title: 'Contas a Pagar',
+          url: '/',
+          submenu: [
+            {
+              title: 'Cadastro',
+              url: '/'
+            },
+          ]
+        }
+      ]
+    },
+
+    {
+      title: 'Contabilidade',
+      url: '',
+      submenu: [
           {
-          title: 'Custos Mensais',
-          url: '/custos-mensais',
+          title: 'Apuração Custos',
+          url: '',
+          submenu: [
+            {
+            title: 'Custos Dia',
+            url: '/custos-dia',
+            },
+            {
+            title: 'Custos Mensais',
+            url: '/custos-mensais',
+            }
+          ]
           }
       ]
     },
@@ -68,14 +192,8 @@ export const menuItems = [
           {
             title: 'Login',
             url: '/auth-usuario-login'
-          }
-      ]
-    },
+          },
 
-    {
-      title: 'Suporte',
-      url: '',
-      submenu: [
           {
           title: process.env.NODE_ENV,
           url: '',

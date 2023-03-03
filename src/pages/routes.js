@@ -3,6 +3,7 @@ import PageBase from "../layout/PageBase"
 import PageHeader from "../layout/PageHeader"
 
 import AuthUsuarioLogin from "./auth-usuario/auth-usuario-login"
+import Cliente from "./cliente/form-base"
 import Contact from "./contact"
 import CustosDia from "./custos-dia/form-base"
 import CustosMensais from "./custos-mes/form-base"
@@ -24,6 +25,9 @@ const RoutesModule = () => {
                     <Route exact path='/' element={<PageBase />}>
                         <Route exact path='/' element={<PageHeader />}>
                             <Route path='/home' element={<Home />} />
+
+                            <Route path='/cliente' element={<Cliente />} />
+
                             <Route path='/produto' element={<Produto />} />
                             <Route path='/estagio' element={<Estagio/>} />
                             <Route path='/setor' element={<Setor/>} />

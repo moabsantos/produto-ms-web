@@ -7,8 +7,13 @@ const MyTableBody = ({ tableData, columns, actions }) => {
        return (
         <tr key={item.id}>
 
-         {columns.map(({ accessor, alignCell }) => {
-          const tData = item[accessor] ? item[accessor] : "——";
+         {columns.map(({ accessor, alignCell, formataDado }) => {
+          let tData = item[accessor] ? item[accessor] : "——";
+
+          if (item[accessor] && formataDado){
+ 
+            tData = formataDado(tData)
+          }
           
           let styleCell = {}
 
