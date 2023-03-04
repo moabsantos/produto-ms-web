@@ -12,10 +12,22 @@ export default function FormEdit(props){
             url: `${process.env.REACT_APP_HOST_API}/${props.dominio}`,
             body: {
                 id: props.id,
+                clientId: props.idMaster,
+
                 code: event.target.elements.code.value,
                 name: event.target.elements.name.value,
-                sigla: event.target.elements.sigla.value,
-                description: event.target.elements.description.value
+                description: event.target.elements.description.value,
+
+                cnpj: event.target.elements.cnpj.value,
+                inscricaoEstadual: event.target.elements.inscricaoEstadual.value,
+
+                email: event.target.elements.email.value,
+                telefone: event.target.elements.telefone.value,
+
+                endereco: event.target.elements.endereco.value,
+                numero: event.target.elements.numero.value,
+                bairro: event.target.elements.bairro.value,
+                cidadeId: event.target.elements.cidadeId.value
             }
         }).then(() => {
             props.callBusca()

@@ -20,7 +20,7 @@ function MyTabsForm(props) {
     const resp = await getApi({ url: process.env.REACT_APP_HOST_API + '/'+ props.dominio + '/' + id })
 
     return setDataFmEdicao(props.edit({
-        id:id, dominio: props.dominio, dataForm:resp.data[0], callBusca: () => { setKey('busca') }
+        id:id, dominio: props.dominio, idMaster: props.idMaster, dataForm:resp.data ? resp.data[0]: {}, callBusca: () => { setKey('busca') }
       }))
   }
 
@@ -39,7 +39,12 @@ function MyTabsForm(props) {
         {props.filter({ dataFilter: (data) => getFilter(data)  })}
     </Tab> : <></>
 
-  const tabBusca =  <Tab eventKey="busca" title="Resultado">
+  const buttonsTop = props.buttonsTop ? [
+    {label: "Incluir", onClick: () => setKey('inclusao')},
+    ...props.buttonsTop
+  ] : [ {label: "Incluir", onClick: () => setKey('inclusao')} ]
+
+  const tabBusca =  <Tab eventKey="busca" title="Lista dos Cadastrados">
       
       <MyTable
           ref={tableRef}
@@ -48,12 +53,13 @@ function MyTabsForm(props) {
 
           getItems={(data) => props.getItems(data)}
           dominio={props.dominio}
+          idMaster={props.idMaster}
 
           defaultFilter={props.defaultFilter}
           changeFilterTable={changeFilter.bind(this)}
 
-          btnInclusao={() => setKey('inclusao')}
-
+          buttonsTop={buttonsTop}
+          
           btnEdicao={(props) => {
                   setKey('edicao')
                   setIdSelecao(props.id)
@@ -65,10 +71,10 @@ function MyTabsForm(props) {
                   setIdSelecao(props.id)
               }}
 
-          urlLista="https://api.genderize.io/?name=luc"
+          buttonsAdd={props.buttonsAdd}
           />
     </Tab>
-
+ 
   const tabInclusao = <Tab eventKey="inclusao" title="Inclusão">
           {props.add({ dominio: props.dominio,  callBusca: () => setKey('busca')  })}
       </Tab>

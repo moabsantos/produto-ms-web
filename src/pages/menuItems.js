@@ -24,7 +24,7 @@ export const menuItems = [
           submenu: [
             {
               title: 'Cadastro',
-              url: '/'
+              url: '/pedido-venda'
             },
           ]
         },
@@ -44,6 +44,10 @@ export const menuItems = [
             title: 'Fornecedor',
             url: '/fornecedor',
             },
+            {
+              title: 'Forma de Pagamento',
+              url: '/forma-pagamento',
+              },
             {
             title: 'Produto / Serviço',
             url: '/produto',
@@ -171,8 +175,26 @@ export const menuItems = [
       url: '',
       submenu: [
           {
-          title: 'Empresa',
-          url: '/empresa',
+          title: 'Cadastros',
+          url: '',
+          submenu: [
+            {
+            title: 'Empresa',
+            url: '/empresa',
+            },
+            {
+              title: 'Cidade',
+              url: '/cidade',
+            },
+            {
+              title: 'UF',
+              url: '/uf',
+            },
+            {
+              title: 'País',
+              url: '/pais',
+            }
+          ]
           }
       ]
     },

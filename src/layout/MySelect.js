@@ -7,6 +7,7 @@ const MySelect = (props) => {
     const [valueDefault, setValueDefault] = useState(props.valueDefault);
 
     useEffect(() => {
+
       if (props.dominio)
         getApi({ url: `${process.env.REACT_APP_HOST_API}/${props.dominio}` }).then((resp) => {
           if (resp){
@@ -16,14 +17,20 @@ const MySelect = (props) => {
       else
         if (props.options)
           setOptions(props.options)
-    }, [props.dominio, props.options])
+    }, [props])
 
     return (<select 
               className="form-select"
               name={props.fieldName} 
               id={props.name} 
-              onChange={(e) => setValueDefault(e.target.value)}
+              onChange={(e) => {
+                setValueDefault(e.target.value)
+                if (props.onChange){
+                  props.onChange(e.target.value)
+                }
+              }}
               value={valueDefault} >
+              <option value="0" key="0"></option>
               {options && options.map(item => (<option value={item.id} key={item.id}>{item.name}</option>))}
           </select>)
   };

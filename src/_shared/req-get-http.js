@@ -1,7 +1,8 @@
+
 export default async function getApi(props){
 
     const token = localStorage.getItem("tokenGoogle");
-      
+
     return fetch( props.url, {
       method: "GET",
       mode: "cors",
@@ -15,7 +16,7 @@ export default async function getApi(props){
       
       if (response.status === 401){
 
-        return null
+        window.location = '/auth-usuario-login'
         
       }else{
   

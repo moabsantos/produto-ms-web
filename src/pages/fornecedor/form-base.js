@@ -1,20 +1,18 @@
 import React from 'react';
-import { useNavigate } from "react-router-dom";
 
 import MyTabsForm from '../../layout/MyTabsForm';
 import FormAdd from './form-add';
 import FormEdit from './form-edit';
 import FormView from './form-view';
   
-const Cliente = () => {
+const Fornecedor = () => {
 
-  const dominio = 'cliente'
-  const navigate = useNavigate();
+  const dominio = 'fornecedor'
 
   return (
     <>
       <h4 className='p-3'>
-        Cliente
+      Fornecedor
       </h4>
       <MyTabsForm
         dominio={dominio}
@@ -28,15 +26,9 @@ const Cliente = () => {
 
         add= {(params) => (<FormAdd dominio={dominio} callBusca={() => params.callBusca()} />) }
         edit={(params) => FormEdit({ id: params.id, dominio:dominio,  dataForm: params.dataForm, callBusca: () => params.callBusca() })}
-        view={(params) => FormView({ id: params.id, dominio:dominio, dataForm: params.dataForm, callBusca: params.callBusca })} 
-        
-        buttonsAdd={[
-          {label: "Estab", onClick: (params) => { navigate("/cliente-estabelecimento/"+ params.id); }}
-        ]}
-
-        />
+        view={(params) => FormView({ id: params.id, dominio:dominio, dataForm: params.dataForm, callBusca: params.callBusca })} />
     </>
   );
 };
   
-export default Cliente;
+export default Fornecedor;

@@ -26,8 +26,10 @@ const GoogleAuth = () => {
 
           google.accounts.id.initialize({
             client_id: id,
-            callback: handleCredentialResponse,
+            callback: handleCredentialResponse
           })
+
+          //window.google.accounts.id.prompt();
 
           google.accounts.id.renderButton(
             googleButton.current, 

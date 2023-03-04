@@ -15,7 +15,8 @@ export default function FormAdd(props){
                 code: event.target.elements.code.value,
                 name: event.target.elements.name.value,
                 sigla: event.target.elements.sigla.value,
-                description: event.target.elements.description.value
+                description: event.target.elements.description.value,
+                paisId: event.target.elements.paisId.value
             }
         }).then(() => {
             props.callBusca()

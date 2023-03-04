@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 
-const MyTableBody = ({ tableData, columns, actions }) => {
+const MyTableBody = ({ tableData, columns, actions, buttonsAdd }) => {
     return (
      <tbody>
       {tableData.map((item) => {
@@ -24,11 +24,25 @@ const MyTableBody = ({ tableData, columns, actions }) => {
           return <td key={accessor} style={styleCell} >{tData}</td>;
          })}
 
-         {actions.map((btn) => {
-            return <td key={'actions'}>
-                    <div className="d-inline p-2"><Button className='bg-light text-dark' onClick={() => { btn.onClick(item) }}>{btn.label}</Button></div>
-                </td>
+        <td key={'actions'}><div className="d-inline p-2">
+
+         {actions && actions.map((btn, idx) => {
+            return <Button key={'actionbutons'+idx} 
+                  className='bg-light text-dark' 
+                  onClick={() => { btn.onClick(item) }}>
+                    {btn.label}
+                </Button>
          })}
+
+         {buttonsAdd && buttonsAdd.map((btn, idx) => {
+            return <Button key={'addbutons'+idx}
+                  className='bg-light text-dark' 
+                  onClick={() => { btn.onClick(item) }}>
+                    {btn.label}
+                </Button>
+         })}
+         
+        </div></td>
 
         </tr>
        );

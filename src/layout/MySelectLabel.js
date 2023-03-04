@@ -14,7 +14,8 @@ const MySelectLabel = (props) => {
                 options={props.options}
                 fieldName={props.fieldName}
                 name={'fmSel' + props.name}
-                valueDefault={props.valueDefault} 
+                valueDefault={props.valueDefault}
+                onChange={props.onChange}
               />
             </Col>
           </Form.Group>)

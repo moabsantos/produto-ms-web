@@ -65,35 +65,6 @@ export default class MyTable extends React.Component {
         
     }
 
-    exibirLista1(){
-        return (
-            <div className="table_container">
-                <table className='table table-striped table-hover'>
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            {this.props.headers}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.data && this.state.data.map(item => {
-                            return <tr key={item.id} onClick={() => this.handlerIdRow(item.id)}>
-                                <th scope="row">{item.id}</th>
-
-                                {this.props.getItems({item: item})}
-
-                                <td>
-                                    <div className="d-inline p-2"><Button className='bg-light text-dark' onClick={() => { this.props.btnEdicao({id: item.id}) }}>Editar</Button></div>
-                                    { 1==2 ? (<div className="d-inline p-2"><Button className='bg-light text-dark' onClick={() => this.props.btnVisualizacao({id: item.id})}>Visualizar</Button></div>) : (<></>)}
-                                </td>
-                            </tr>
-                        })}
-                    </tbody>
-                </table>
-            </div>
-        )
-    }
-
     exibirLista(){
         return (
             <>
@@ -113,7 +84,8 @@ export default class MyTable extends React.Component {
                         [
                             {label: 'Editar', onClick:(item) => { this.props.btnEdicao({id: item.id})}}
                         ]
-                    } 
+                    }
+                    buttonsAdd={this.props.buttonsAdd}
                 />
             </table>
            </>
@@ -122,8 +94,17 @@ export default class MyTable extends React.Component {
     
     render() {
         return (<>
-            <Button onClick={() => this.props.btnInclusao()}>Incluir</Button>
+
+            {this.props.buttonsTop.map((btn, idx) => {
+                return  <Button key={'buttonsTop'+idx}
+                            className='bg-light text-dark' 
+                            onClick={() => { btn.onClick() }}>
+                                {btn.label}
+                        </Button>
+            })}
+
             {this.exibirLista()}
+            
         </>)
     }
 }
