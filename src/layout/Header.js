@@ -35,9 +35,6 @@ const Header = () => {
           {picture && (<img src={picture} alt=""/>)}
           </Link>
           <NavbarL />
-          <Link to="/" className="logo">
-          {picture && (<img src={picture} alt=""/>)}
-          </Link>
         </>
       )}
 
