@@ -24,6 +24,7 @@ import SignUp from "./signup"
 import UF from "./uf/form-base"
 import UnidadeMedida from "./unidade-medida/unidade-medida"
 import PedidoVendaItem from "./pedido-venda-item/form-base"
+import ProdutoComponente from "./produto-componente/form-base"
 
 const RoutesModule = () => {
 
@@ -43,6 +44,8 @@ const RoutesModule = () => {
                             <Route path='/forma-pagamento' element={<FormaPagamento />} />
 
                             <Route path='/produto' element={<Produto />} />
+                            <Route path='/produto-componente/:idMaster' element={<ProdutoComponente />} />
+                            
                             <Route path='/estagio' element={<Estagio/>} />
                             <Route path='/setor' element={<Setor/>} />
                             <Route path='/contact' element={<Contact/>} />

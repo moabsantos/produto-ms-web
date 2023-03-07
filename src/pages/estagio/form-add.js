@@ -17,6 +17,8 @@ export default function FormAdd(props){
                 sigla: event.target.elements.sigla.value,
                 description: event.target.elements.description.value
             }
+        }).then(() => {
+            props.callBusca()
         })
     }   
 
