@@ -11,11 +11,12 @@ import getApi from '../../_shared/req-get-http';
 const ClienteEstabelecimento = () => {
 
   const navigate = useNavigate();
-  const dominio = 'cliente-estabelecimento'
   const [dadosCliente, setDadosCliente] = useState("")
 
 
   const { idCliente } = useParams();
+
+  const dominio = 'cliente-estabelecimento?filter=clienteId||$eq||'+idCliente  
 
   getApi({ url: process.env.REACT_APP_HOST_API + '/cliente/' + idCliente })
     .then((resp) => {
