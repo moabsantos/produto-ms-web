@@ -2,6 +2,7 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import MyEditForm from "../../layout/MyEditForm";
 import MySelectLabel from "../../layout/MySelectLabel";
 import formataData from '../../_shared/formata-data';
+import formataNumero from '../../_shared/formata-numero';
 
 const LocalForm = (props) => {
 
@@ -20,8 +21,8 @@ const LocalForm = (props) => {
             setorId: props.dataForm.setorId,
             itemDespesaId: props.dataForm.itemDespesaId,
             unidadeMedidaId: props.dataForm.unidadeMedidaId,
-            quantidadeRealizada: props.dataForm.quantidadeRealizada,
-            valorRealizado: props.dataForm.valorRealizado
+            quantidadeRealizada: formataNumero({valor: props.dataForm.quantidadeRealizada, format: 'c0,3'}),
+            valorRealizado: formataNumero({valor: props.dataForm.valorRealizado, format: 'c0,3'})
         }
 
     }

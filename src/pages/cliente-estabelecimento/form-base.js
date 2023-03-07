@@ -38,8 +38,10 @@ const ClienteEstabelecimento = () => {
         columns={[    
           { label: "Código", accessor: "code", sortable: false },
           { label: "Nome", accessor: "name", sortable: true },
-          { label: "Descrição", accessor: "description", sortable: true },
-          { label: "Sigla", accessor: "sigla", sortable: true }
+          { label: "Telefone", accessor: "telefone", sortable: true },
+          { label: "Endereco", accessor: "endereco", sortable: true },
+          { label: "Bairro", accessor: "bairro", sortable: true },
+          { label: "Cidade", accessor: "cidadeName", sortable: true }
         ]}
 
         buttonsTop={[
