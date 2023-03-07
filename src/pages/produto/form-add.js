@@ -16,6 +16,8 @@ export default function FormAdd(props){
                 unidadeMedidaId: event.target.elements.unidadeMedidaId.value,
                 description: event.target.elements.description.value
             }
+        }).then(() => {
+            props.callBusca()
         })
 
     }    

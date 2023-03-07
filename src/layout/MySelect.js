@@ -3,7 +3,7 @@ import getApi from '../_shared/req-get-http';
 
 const MySelect = (props) => {
 
-    let [options, setOptions] = useState();
+    let [options, setOptions] = useState([]);
     const [valueDefault, setValueDefault] = useState(props.valueDefault);
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const MySelect = (props) => {
                 }
               }}
               value={valueDefault} >
-              <option value="0" key="0"></option>
+              {options && options.length>0 && options[0].id !== 0 && (<option value="0" key="0" />)}
               {options && options.map(item => (<option value={item.id} key={item.id}>{item.name}</option>))}
           </select>)
   };

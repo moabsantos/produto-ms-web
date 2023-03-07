@@ -31,7 +31,7 @@ const Header = () => {
 
       {emailUser && (
         <>
-          <Link to="/" className="logo">
+          <Link to="/home" className="logo">
           {picture && (<img src={picture} alt=""/>)}
           </Link>
           <NavbarL />

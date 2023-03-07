@@ -12,10 +12,14 @@ export default function FormEdit(props){
             url: `${process.env.REACT_APP_HOST_API}/${props.dominio}`,
             body: {
                 id: props.id,
-                code: event.target.elements.code.value,
-                clienteId: event.target.elements.clienteId.value,
-                clienteEstabelecimentoId: event.target.elements.clienteEstabelecimentoId.value,
-                description: event.target.elements.description.value
+                pedidoVendaId: props.idMaster,
+
+                itemVendaId: event.target.elements.itemVendaId.value,
+                quantidadeSolicitada: event.target.elements.quantidadeSolicitada.value,
+                unidadeMedidaId: event.target.elements.unidadeMedidaId.value,
+
+                valorInicialItem: event.target.elements.valorInicialItem.value,
+                percentDescontoItem: event.target.elements.percentDescontoItem.value,
             }
         }).then(() => {
             props.callBusca()

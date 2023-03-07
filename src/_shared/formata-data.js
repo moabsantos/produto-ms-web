@@ -11,6 +11,13 @@ export default function formataData(props){
         return parts[2]+'-'+parts[1]+'-'+parts[0]
     }
 
+    if (props.format === 'new-code'){
+        const data = ((new Date()).toISOString())
+            .replaceAll('-', '.')
+            .replaceAll(':', '.') 
+        return data
+    }
+
     if (props.format === 'new-date'){
         const data = ((new Date()).toISOString()).split('T')
         return data[0]

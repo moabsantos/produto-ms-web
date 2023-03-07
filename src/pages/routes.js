@@ -23,6 +23,7 @@ import Setor from "./setor/form-base"
 import SignUp from "./signup"
 import UF from "./uf/form-base"
 import UnidadeMedida from "./unidade-medida/unidade-medida"
+import PedidoVendaItem from "./pedido-venda-item/form-base"
 
 const RoutesModule = () => {
 
@@ -36,6 +37,7 @@ const RoutesModule = () => {
                             <Route path='/cliente' element={<Cliente />} />
                             <Route path='/cliente-estabelecimento/:idCliente' element={<ClienteEstabelecimento />} />
                             <Route path='/pedido-venda' element={<PedidoVenda />} />
+                            <Route path='/pedido-venda-item/:idMaster' element={<PedidoVendaItem />} />
 
                             <Route path='/fornecedor' element={<Fornecedor />} />
                             <Route path='/forma-pagamento' element={<FormaPagamento />} />

@@ -87,7 +87,7 @@ const GoogleAuth = () => {
       <>
         <div ref={googleButton}></div>
         {urlImgUsuario && (<h4>Login Realizado com Sucesso</h4>)}
-        {urlImgUsuario && (<a href={'/'}>Home</a>)}
+        {urlImgUsuario && (<a href={'/home'}>Home</a>)}
       </>
     )
   }

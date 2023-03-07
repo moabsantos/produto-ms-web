@@ -2,24 +2,22 @@ import React, { useState } from "react"
 import { Button, Col, Form, Row } from "react-bootstrap";
 import MyEditForm from "../../layout/MyEditForm";
 import MySelectLabel from "../../layout/MySelectLabel";
+import formataData from '../../_shared/formata-data';
 
 const LocalForm = (props) => {
 
-    const [idCliente, setIdClient] = useState()
+    const [idCliente, setIdClient] = useState(0)
 
     let valores = {
-        code: '',
-        name: '',
-        sigla: '',
-        description: ''
+        code: formataData({format: 'new-code'}),
     }
 
     if (props.dataForm){
 
         valores = {
             code: props.dataForm.code,
-            name: props.dataForm.name,
-            sigla: props.dataForm.sigla,
+            clienteId: props.dataForm.clienteId,
+            clienteEstabelecimentoId: props.dataForm.clienteEstabelecimentoId,
             description: props.dataForm.description
         }
 
@@ -43,7 +41,7 @@ const LocalForm = (props) => {
             <MySelectLabel
                 dominio={"cliente-estabelecimento/"+idCliente}
                 caption="Local de Entrega"
-                fieldName="localEntregaId"
+                fieldName="clienteEstabelecimentoId"
                 name="localEntrega"
                 valueDefault={valores.clienteEstabelecimentoId} 
             />   

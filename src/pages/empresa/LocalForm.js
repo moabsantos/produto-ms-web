@@ -1,10 +1,11 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
 import MyEditForm from "../../layout/MyEditForm";
+import formataData from '../../_shared/formata-data';
 
 const LocalForm = (props) => {
 
     let valores = {
-        code: '',
+        code: formataData({format: 'new-code'}),
         name: '',
         sigla: '',
         description: ''
