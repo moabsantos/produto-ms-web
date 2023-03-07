@@ -12,7 +12,7 @@ export default function FormAdd(props){
         postApi({
             url: `${process.env.REACT_APP_HOST_API}/${props.dominio}`,
             body: {
-                clientId: props.idMaster,
+                clienteId: props.idMaster,
                 code: event.target.elements.code.value,
                 name: event.target.elements.name.value,
                 description: event.target.elements.description.value,
@@ -34,6 +34,10 @@ export default function FormAdd(props){
     }   
 
     return (
-        <LocalForm idMaster={props.idMaster} salvar={(event) => {submit(event)}} callBusca={() => props.callBusca()} />
+        <LocalForm 
+            idMaster={props.idMaster} 
+            salvar={(event) => {submit(event)}} 
+            callBusca={() => props.callBusca()} 
+        />
     )
 }

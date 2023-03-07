@@ -50,8 +50,8 @@ const ClienteEstabelecimento = () => {
         ]}
 
         add= {(params) => (<FormAdd dominio={dominio} idMaster={idCliente} callBusca={() => params.callBusca()} />) }
-        edit={(params) => FormEdit({ id: params.id, dominio:dominio,  dataForm: params.dataForm, callBusca: () => params.callBusca() })}
-        view={(params) => FormView({ id: params.id, dominio:dominio, dataForm: params.dataForm, callBusca: params.callBusca })} 
+        edit={(params) => FormEdit({ id: params.id, idMaster: idCliente, dominio:dominio,  dataForm: params.dataForm, callBusca: () => params.callBusca() })}
+        view={(params) => FormView({ id: params.id, idMaster: idCliente, dominio:dominio, dataForm: params.dataForm, callBusca: params.callBusca })} 
 
         />
     </>

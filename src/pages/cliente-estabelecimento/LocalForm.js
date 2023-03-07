@@ -16,7 +16,7 @@ const LocalForm = (props) => {
 
         valores = {
 
-            clientId: props.dataForm.clientId,
+            clienteId: props.dataForm.clienteId,
             code: props.dataForm.code,
             name: props.dataForm.name,
             description: props.dataForm.description,

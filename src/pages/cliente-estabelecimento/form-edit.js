@@ -12,7 +12,7 @@ export default function FormEdit(props){
             url: `${process.env.REACT_APP_HOST_API}/${props.dominio}`,
             body: {
                 id: props.id,
-                clientId: props.idMaster,
+                clienteId: props.idMaster,
 
                 code: event.target.elements.code.value,
                 name: event.target.elements.name.value,
@@ -36,6 +36,7 @@ export default function FormEdit(props){
 
     return (
         <LocalForm 
+            idMaster={props.idMaster}
             salvar={(event) => {submit(event)}} 
             callBusca={() => props.callBusca()} 
             dataForm={ props.dataForm } />
