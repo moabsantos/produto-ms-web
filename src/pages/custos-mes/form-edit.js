@@ -15,6 +15,8 @@ export default function FormEdit(props){
                 ano: event.target.elements.ano.value,
                 mes: event.target.elements.mes.value,
             }
+        }).then(() => {
+            props.callBusca()
         })
     }    
 

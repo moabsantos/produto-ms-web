@@ -16,6 +16,8 @@ export default function FormAdd(props){
                 ano: event.target.elements.ano.value,
                 mes: event.target.elements.mes.value,
             }
+        }).then(() => {
+            props.callBusca()
         })
     }   
 

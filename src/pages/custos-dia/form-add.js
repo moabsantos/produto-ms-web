@@ -3,6 +3,7 @@ import React from 'react';
 import postApi from '../../_shared/req-post-http';
 import LocalForm from './LocalForm';
 import formataData from '../../_shared/formata-data';
+import formataNumero from '../../_shared/formata-numero';
 
 export default function FormAdd(props){
     
@@ -18,9 +19,11 @@ export default function FormAdd(props){
                 setorId: event.target.elements.setorId.value,
                 itemDespesaId: event.target.elements.itemDespesaId.value,
                 unidadeMedidaId: event.target.elements.unidadeMedidaId.value,
-                quantidadeRealizada: event.target.elements.quantidadeRealizada.value,
-                valorRealizado: event.target.elements.valorRealizado.value
+                quantidadeRealizada: formataNumero({format: 'c0.', valor: event.target.elements.quantidadeRealizada.value}),
+                valorRealizado: formataNumero({format: 'c0.', valor: event.target.elements.valorRealizado.value})
             }
+        }).then(() => {
+            props.callBusca()
         })
     }   
 

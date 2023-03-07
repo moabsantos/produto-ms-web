@@ -2,6 +2,7 @@ import React from 'react';
 
 import MyTabsForm from '../../layout/MyTabsForm';
 import formataData from '../../_shared/formata-data';
+import formataNumero from '../../_shared/formata-numero';
 
 import FormAdd from './form-add';
 import FormEdit from './form-edit';
@@ -28,12 +29,12 @@ const CustosMensais = () => {
         defaultFilter={filterTable}
 
         columns={[    
-          { label: "Periodo", accessor: "data", sortable: false },
+          { label: "Periodo", accessor: "periodo", sortable: false },
           { label: "Produto / Serviço", accessor: "itemDespesaName", sortable: true },
           { label: "Setor", accessor: "setorName", sortable: true },
           { label: "Unidade", accessor: "unidadeMedidaSigla", sortable: true },
-          { label: "Quantidade", accessor: "quantidadeRealizada", sortable: true },
-          { label: "Valor", accessor: "valorRealizado", sortable: true }
+          { label: "Quantidade", accessor: "quantidadeRealizada", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,3'})}},
+          { label: "Valor", accessor: "valorRealizado", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,2'})} }
         ]}
         
         filter= {(params) => FormFilter({dataFilter: params.dataFilter}) }
