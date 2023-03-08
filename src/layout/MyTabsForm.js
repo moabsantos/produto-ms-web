@@ -54,6 +54,7 @@ function MyTabsForm(props) {
           getItems={(data) => props.getItems(data)}
           dominio={props.dominio}
           idMaster={props.idMaster}
+          filterList={props.filterList}
 
           defaultFilter={props.defaultFilter}
           changeFilterTable={changeFilter.bind(this)}

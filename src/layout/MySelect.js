@@ -9,7 +9,7 @@ const MySelect = (props) => {
     useEffect(() => {
 
       if (props.dominio)
-        getApi({ url: `${process.env.REACT_APP_HOST_API}/${props.dominio}` }).then((resp) => {
+        getApi({ url: `${process.env.REACT_APP_HOST_API}/${props.dominio}?sort=name,ASC` }).then((resp) => {
           if (resp){
             setOptions(resp.data)
           }

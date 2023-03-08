@@ -44,7 +44,11 @@ export default class MyTable extends React.Component {
     }
 
     buscarLista(filtro) {
-        const url = `${process.env.REACT_APP_HOST_API}/${this.props.dominio}?${filtro}`
+        
+        const filterRoot = this.props.filterList ? '?' + this.props.filterList : ''
+        const urlRoot = process.env.REACT_APP_HOST_API +'/'+ this.props.dominio + encodeURI(filterRoot)
+        const charConcat = urlRoot.indexOf('?') >= 0 ? '&' : '?'
+        const url = `${urlRoot}${charConcat}${filtro}`
 
         getApi({ url: url }).then(resp => {
             if (resp){

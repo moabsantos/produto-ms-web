@@ -13,6 +13,8 @@ export default function FormEdit(props){
             body: {
                 id: props.id,
                 produtoId: props.idMaster,
+                sequencia: event.target.elements.sequencia.value,
+                
                 quantidadeProducao: event.target.elements.quantidadeProducao.value,
                 unidadeMedidaProducaoId: event.target.elements.unidadeMedidaProducaoId.value,
 

@@ -11,12 +11,12 @@ import getApi from '../../_shared/req-get-http';
 const ProdutoComponente = () => {
 
   const navigate = useNavigate();
+  const { idMaster } = useParams();
+
   const dominio = 'produto-componente'
+  const filterList = 'filter=produtoId||$eq||'+ idMaster
   const dominioMaster = 'produto'
   const [dadosMaster, setDadosMaster] = useState("")
-
-
-  const { idMaster } = useParams();
 
   getApi({ url: process.env.REACT_APP_HOST_API + '/'+ dominioMaster +'/' + idMaster })
     .then((resp) => {
@@ -35,14 +35,17 @@ const ProdutoComponente = () => {
       <MyTabsForm
         dominio={dominio}
         idMaster={idMaster}
+        filterList={filterList}
 
         columns={[    
-          { label: "Produto", accessor: "itemVendaName", sortable: true },
-          { label: "Quantidade", accessor: "quantidadeSolicitada", sortable: true },
-          { label: "Valor Bruto", accessor: "valorInicialItem", sortable: true },
-          { label: "Desconto (%)", accessor: "percentDescontoItem", sortable: true },
-          { label: "Valor Líquido", accessor: "valorItem", sortable: true },
-          { label: "Total", accessor: "valorTotalItem", sortable: true },
+          { label: "Alt", accessor: "numeroAlternativa", sortable: true },
+          { label: "Seq", accessor: "sequencia", sortable: true },
+          { label: "Componente", accessor: "componenteName", sortable: true },
+          { label: "Cons", accessor: "consumoProducao", sortable: true },
+          { label: "Unid", accessor: "unidadeMedidaConsumoSigla", sortable: true },
+          { label: "Prod", accessor: "quantidadeProducao", sortable: true },
+          { label: "Unid", accessor: "unidadeMedidaProducaoSigla", sortable: true },
+          { label: "Estágio", accessor: "estagioName", sortable: true },
         ]}
 
         buttonsTop={[

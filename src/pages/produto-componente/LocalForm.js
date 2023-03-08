@@ -6,30 +6,24 @@ const LocalForm = (props) => {
 
     let valores = {
         code: '',
-        quantidadeSolicitada: 0,
-
-        valorInicialItem: 0,
-        percentDescontoItem: 0,
-
-        
-        valorItem: 0,
-        valorTotalItem: 0
     }
 
     if (props.dataForm){
 
         valores = {
 
-            pedidoVendaId: props.dataForm.pedidoVendaId,
-            itemVendaId: props.dataForm.itemVendaId,
-            quantidadeSolicitada: props.dataForm.quantidadeSolicitada,
-            unidadeMedidaId: props.dataForm.unidadeMedidaId,
+            produtoId: props.dataForm.produtoId,
+            estagioId: props.dataForm.estagioId,
+            numeroAlternativa: props.dataForm.numeroAlternativa,
+            sequencia: props.dataForm.sequencia,
+            quantidadeProducao: props.dataForm.quantidadeProducao,
 
-            valorInicialItem: props.dataForm.valorInicialItem,
-            percentDescontoItem: props.dataForm.percentDescontoItem,
+            unidadeMedidaProducaoId: props.dataForm.unidadeMedidaProducaoId,
+            consumoProducao: props.dataForm.consumoProducao,
 
-            valorItem: props.dataForm.valorItem,
-            valorTotalItem: props.dataForm.valorTotalItem
+            componenteId: props.dataForm.componenteId,
+            unidadeMedidaConsumoId: props.dataForm.unidadeMedidaConsumoId,
+            
         }
 
     }

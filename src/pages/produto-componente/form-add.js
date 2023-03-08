@@ -13,6 +13,8 @@ export default function FormAdd(props){
             url: `${process.env.REACT_APP_HOST_API}/${props.dominio}`,
             body: {
                 produtoId: props.idMaster,
+                sequencia: event.target.elements.sequencia.value,
+
                 quantidadeProducao: event.target.elements.quantidadeProducao.value,
                 unidadeMedidaProducaoId: event.target.elements.unidadeMedidaProducaoId.value,
 
