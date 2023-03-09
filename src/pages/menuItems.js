@@ -55,6 +55,10 @@ export const menuItems = [
             {
             title: 'Unidade de Medida',
             url: '/unidade-medida',
+            },
+            {
+            title: 'Depósito',
+            url: '/deposito',
             }
           ]
         },
@@ -106,6 +110,16 @@ export const menuItems = [
               {
                 title: 'Setor',
                 url: '/setor',
+              }
+            ]
+          },
+          {
+            title: 'Ordem Produção',
+            url: '',
+            submenu: [
+              {
+              title: 'Cadastro',
+              url: '/ordem-producao',
               }
             ]
           }

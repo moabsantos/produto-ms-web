@@ -15,6 +15,7 @@ export default function FormEdit(props){
                 code: event.target.elements.code.value,
                 name: event.target.elements.name.value,
                 unidadeMedidaId: event.target.elements.unidadeMedidaId.value,
+                unidadeMedidaCompraId: event.target.elements.unidadeMedidaCompraId.value,
                 description: event.target.elements.description.value
             }
         }).then(() => {

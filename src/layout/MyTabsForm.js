@@ -20,7 +20,11 @@ function MyTabsForm(props) {
     const resp = await getApi({ url: process.env.REACT_APP_HOST_API + '/'+ props.dominio + '/' + id })
 
     return setDataFmEdicao(props.edit({
-        id:id, dominio: props.dominio, idMaster: props.idMaster, dataForm:resp.data ? resp.data[0]: {}, callBusca: () => { setKey('busca') }
+          id:id, 
+          dominio: props.dominio, 
+          idMaster: props.idMaster, 
+          dataForm:resp.data ? resp.data[0]: {}, 
+          callBusca: () => { setKey('busca') }
       }))
   }
 
@@ -77,7 +81,9 @@ function MyTabsForm(props) {
     </Tab>
  
   const tabInclusao = <Tab eventKey="inclusao" title="Inclusão">
-          {props.add({ dominio: props.dominio,  callBusca: () => setKey('busca')  })}
+          {props.add({
+            callBusca: () => setKey('busca')  
+          })}
       </Tab>
 
   const tabEdicao = <Tab eventKey="edicao" title="Edição">

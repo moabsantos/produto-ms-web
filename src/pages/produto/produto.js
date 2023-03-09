@@ -23,6 +23,7 @@ const Produto = () => {
           { label: "Código", accessor: "code", sortable: false },
           { label: "Nome", accessor: "name", sortable: true },
           { label: "Unidade Medida", accessor: "unidadeMedidaSigla", sortable: true },
+          { label: "Unidade Compra", accessor: "unidadeMedidaCompraSigla", sortable: true },
           { label: "Description", accessor: "description", sortable: true }
         ]}
 

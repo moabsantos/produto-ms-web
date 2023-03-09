@@ -4,7 +4,12 @@ import MySelectLabel from "../../layout/MySelectLabel";
 
 const LocalForm = (props) => {
 
-    let valores = {}
+    let valores = {
+        code: '',
+        name: '',
+        unidadeMedidaId: '',
+        description: ''
+    }
 
     if (props.dataForm){
 
@@ -12,7 +17,6 @@ const LocalForm = (props) => {
             code: props.dataForm.code,
             name: props.dataForm.name,
             unidadeMedidaId: props.dataForm.unidadeMedidaId,
-            unidadeMedidaCompraId: props.dataForm.unidadeMedidaCompraId,
             description: props.dataForm.description,
             flagServico: props.dataForm.flagServico
         }
@@ -25,31 +29,6 @@ const LocalForm = (props) => {
 
             <MyEditForm caption="Codigo" name="fmcode" fieldName="code" valor={valores.code} />
             <MyEditForm caption="Nome" name="fmnome" fieldName="name" valor={valores.name} />
-
-            <MySelectLabel
-                dominio="unidade-medida"
-                caption="Unidade Medida"
-                fieldName="unidadeMedidaId"
-                name="unidadeMedida"
-                valueDefault={valores.unidadeMedidaId} 
-            />
-
-            <MySelectLabel
-                dominio="unidade-medida"
-                caption="Unidade de Compra"
-                fieldName="unidadeMedidaCompraId"
-                name="unidadeMedidaCompra"
-                valueDefault={valores.unidadeMedidaCompraId} 
-            />
-
-            <MySelectLabel
-                dominio=""
-                options={[{id:0, name: "Produto"}, {id: 1, name: "Serviço"}]}
-                caption="Tipo"
-                fieldName="flagServico"
-                name="flagServico"
-                valueDefault={valores.flagServico} 
-            />
 
             <MyEditForm caption="Descrição" name="fmDescricao" fieldName="description" valor={valores.description} />
 
