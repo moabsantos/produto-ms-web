@@ -1,6 +1,9 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 
+import formataData from '../../_shared/formata-data';
+import formataNumero from '../../_shared/formata-numero';
+
 import MyTabsForm from '../../layout/MyTabsForm';
 import FormAdd from './form-add';
 import FormEdit from './form-edit';
@@ -20,9 +23,12 @@ const PedidoVenda = () => {
         dominio={dominio}
 
         columns={[    
-          { label: "Código", accessor: "code", sortable: false },
+          { label: "Data", accessor: "created_at", sortable: false, formataDado: (valorFormatar) => {return formataData({data: valorFormatar, format: 'to-br-date'})} },
           { label: "Cliente", accessor: "clienteName", sortable: true },
-          { label: "Cidade", accessor: "cidadeName", sortable: true }
+          { label: "Cidade", accessor: "cidadeName", sortable: true },
+          { label: "Quantidade", accessor: "quantidadeItens", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,2'})} },
+          { label: "Desconto", accessor: "valorDesconto", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,2'})} },
+          { label: "Valor Total", accessor: "valorTotal", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,2'})} }
         ]}
 
         add= {(params) => (<FormAdd dominio={dominio} callBusca={() => params.callBusca()} />) }

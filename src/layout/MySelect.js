@@ -17,7 +17,16 @@ const MySelect = (props) => {
       else
         if (props.options)
           setOptions(props.options)
-    }, [props])
+
+    }, [props.dominio, props.options])
+
+    useEffect(() => {
+
+      if (props.onChange){
+        props.onChange(valueDefault)
+      }
+
+    }, [props, valueDefault])
 
     return (<select 
               className="form-select"
@@ -25,9 +34,6 @@ const MySelect = (props) => {
               id={props.name} 
               onChange={(e) => {
                 setValueDefault(e.target.value)
-                if (props.onChange){
-                  props.onChange(e.target.value)
-                }
               }}
               value={valueDefault} >
               {options && options.length>0 && options[0].id !== 0 && (<option value="0" key="0" />)}

@@ -1,6 +1,7 @@
 import React from 'react';
 import postApi from '../../_shared/req-post-http';
 import LocalForm from './LocalForm';
+import formataNumero from '../../_shared/formata-numero';
 
 export default function FormEdit(props){
 
@@ -15,11 +16,11 @@ export default function FormEdit(props){
                 pedidoVendaId: props.idMaster,
 
                 itemVendaId: event.target.elements.itemVendaId.value,
-                quantidadeSolicitada: event.target.elements.quantidadeSolicitada.value,
+                quantidadeSolicitada: formataNumero({valor:event.target.elements.quantidadeSolicitada.value, format: 'c0.'}),
                 unidadeMedidaId: event.target.elements.unidadeMedidaId.value,
 
-                valorInicialItem: event.target.elements.valorInicialItem.value,
-                percentDescontoItem: event.target.elements.percentDescontoItem.value,
+                valorInicialItem: formataNumero({valor:event.target.elements.valorInicialItem.value, format: 'c0.'}),
+                percentDescontoItem: formataNumero({valor:event.target.elements.percentDescontoItem.value, format: 'c0.'}),
             }
         }).then(() => {
             props.callBusca()
@@ -28,6 +29,7 @@ export default function FormEdit(props){
 
     return (
         <LocalForm 
+            idMaster={props.idMaster} 
             salvar={(event) => {submit(event)}} 
             callBusca={() => props.callBusca()} 
             dataForm={ props.dataForm } />

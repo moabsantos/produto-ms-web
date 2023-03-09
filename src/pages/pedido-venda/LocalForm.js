@@ -6,7 +6,7 @@ import formataData from '../../_shared/formata-data';
 
 const LocalForm = (props) => {
 
-    const [idCliente, setIdClient] = useState(0)
+    
 
     let valores = {
         code: formataData({format: 'new-code'}),
@@ -20,8 +20,9 @@ const LocalForm = (props) => {
             clienteEstabelecimentoId: props.dataForm.clienteEstabelecimentoId,
             description: props.dataForm.description
         }
-
     }
+
+    const [idCliente, setIdClient] = useState(valores.clienteId)
 
     return (
         <div className="container">

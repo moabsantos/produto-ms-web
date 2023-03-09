@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import MyEditForm from "../../layout/MyEditForm";
 import MySelectLabel from "../../layout/MySelectLabel";
+import formataNumero from '../../_shared/formata-numero';
 
 const LocalForm = (props) => {
 
@@ -51,7 +52,8 @@ const LocalForm = (props) => {
     }
 
     const calculaTotalPercent = (event) => {
-        setPercentDesconto(event.target.value)
+        const per = formataNumero({valor:event.target.value, format: 'c0.'})
+        setPercentDesconto(per + 0)
     }
 
     useEffect(() => {
@@ -116,15 +118,15 @@ const LocalForm = (props) => {
             </Form.Label>
 
             <Form.Label column sm={2}>
-            {"Valor Desconto ".concat(valorDesconto) }
+            {"Valor Desconto ".concat(formataNumero({valor: valorDesconto, format: 'c0,2'})) }
             </Form.Label>
 
             <Form.Label column sm={2}>
-            {"Valor Líquido ".concat(valorLiquido) }
+            {"Valor Líquido ".concat(formataNumero({valor: valorLiquido, format: 'c0,2'})) }
             </Form.Label>
 
             <Form.Label column sm={2}>
-            {"Valor Total ".concat(valorTotal) }
+            {"Valor Total ".concat(formataNumero({valor: valorTotal, format: 'c0,2'})) }
             </Form.Label>
 
             <Form.Group as={Row} className="mb-3">
