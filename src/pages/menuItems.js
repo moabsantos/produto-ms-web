@@ -16,6 +16,14 @@ export const menuItems = [
               title: 'Cliente',
               url: '/cliente'
             },
+            {
+              title: 'Prioridade',
+              url: '/prioridade'
+            },
+            {
+              title: 'Status Pedido',
+              url: '/pedido-status'
+            }
           ]
         },
         {

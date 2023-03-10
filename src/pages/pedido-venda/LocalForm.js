@@ -6,20 +6,14 @@ import formataData from '../../_shared/formata-data';
 
 const LocalForm = (props) => {
 
-    
-
     let valores = {
         code: formataData({format: 'new-code'}),
     }
 
     if (props.dataForm){
-
-        valores = {
-            code: props.dataForm.code,
-            clienteId: props.dataForm.clienteId,
-            clienteEstabelecimentoId: props.dataForm.clienteEstabelecimentoId,
-            description: props.dataForm.description
-        }
+        props.fieldsForm.forEach(element => {
+            if (props.dataForm[element]) valores[element] = props.dataForm[element]    
+        });
     }
 
     const [idCliente, setIdClient] = useState(valores.clienteId)
@@ -29,6 +23,14 @@ const LocalForm = (props) => {
             <Form onSubmit={ props.salvar.bind( this ) }>
 
             <MyEditForm caption="Codigo" name="fmcode" fieldName="code" valor={valores.code} />
+
+            <MySelectLabel
+                dominio="prioridade"
+                caption="Prioridade"
+                fieldName="prioridadeId"
+                name="prioridade"
+                valueDefault={valores.prioridadeId} 
+            />  
 
             <MySelectLabel
                 dominio="cliente"
@@ -46,6 +48,14 @@ const LocalForm = (props) => {
                 name="localEntrega"
                 valueDefault={valores.clienteEstabelecimentoId} 
             />   
+
+            <MySelectLabel
+                dominio="pedido-status"
+                caption="Status do Pedido"
+                fieldName="pedidoStatusId"
+                name="pedidoStatus"
+                valueDefault={valores.pedidoStatusId} 
+            />  
 
             <MyEditForm caption="Descrição" name="fmDescricao" fieldName="description" valor={valores.description} />
 

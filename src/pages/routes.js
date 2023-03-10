@@ -28,6 +28,8 @@ import ProdutoComponente from "./produto-componente/form-base"
 import OrdemProducao from "./ordem-producao/form-base"
 import OrdemProducaoItem from "./ordem-producao-item/form-base"
 import Deposito from "./deposito/form-base"
+import Prioridade from "./prioridade/form-base"
+import PedidoStatus from "./pedido-status/form-base"
 
 const RoutesModule = () => {
 
@@ -40,6 +42,9 @@ const RoutesModule = () => {
 
                             <Route path='/cliente' element={<Cliente />} />
                             <Route path='/cliente-estabelecimento/:idCliente' element={<ClienteEstabelecimento />} />
+                            
+                            <Route path='/prioridade' element={<Prioridade />} />
+                            <Route path='/pedido-status' element={<PedidoStatus />} />
                             <Route path='/pedido-venda' element={<PedidoVenda />} />
                             <Route path='/pedido-venda-item/:idMaster' element={<PedidoVendaItem />} />
 
