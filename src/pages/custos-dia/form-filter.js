@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import MyEditForm from '../../layout/MyEditForm';
+import MySelectLabel from '../../layout/MySelectLabel';
 import formataData from '../../_shared/formata-data';
 
 const valores = {
@@ -17,7 +18,11 @@ const FormFilter = (props) => {
     
         const elements = event.target.elements
     
-        props.dataFilter( 'filter[]=data||eq||'+ formataData({data: elements.data.value, format:'api-date'}) )
+        let strFilter = 'filter[]=data||eq||'+ formataData({data: elements.data.value, format:'api-date'})
+
+        if (elements.setorId.value > 0) strFilter = strFilter + '&filter[]=setorId||eq||'+elements.setorId.value
+
+        props.dataFilter( strFilter )
     
     }
 
@@ -28,6 +33,14 @@ const FormFilter = (props) => {
 
             <MyEditForm caption="Data" name="fmdata" fieldName="data" valor={valores.data} />
             
+            <MySelectLabel
+                dominio="setor"
+                caption="Setor"
+                fieldName="setorId"
+                name="setor"
+                valueDefault={valores.setorId} 
+            />
+
             <Form.Group as={Row} className="mb-3">
                 <Col sm={{ span: 10, offset: 2 }}>
                     <div className="d-inline p-2"><Button type="submit">Buscar</Button></div>
