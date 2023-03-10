@@ -1,6 +1,5 @@
 import { Form, Button, Row, Col } from "react-bootstrap"
 import MyEditForm from "../../layout/MyEditForm"
-import MySelectLabel from "../../layout/MySelectLabel";
 
 const LocalForm = (props) => {
 
