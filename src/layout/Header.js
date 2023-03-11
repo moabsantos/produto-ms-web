@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import NavbarL from "../components/NavbarL";
+import Navbar from "../components/Navbar";
 
 import { Link } from 'react-router-dom';
 import getApi from '../_shared/req-get-http';
@@ -34,7 +34,7 @@ const Header = () => {
           <Link to="/home" className="logo">
           {picture && (<img src={picture} alt=""/>)}
           </Link>
-          <NavbarL />
+          <Navbar />
         </>
       )}
 

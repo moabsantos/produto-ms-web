@@ -55,10 +55,14 @@ export const menuItems = [
             {
               title: 'Forma de Pagamento',
               url: '/forma-pagamento',
-              },
+            },
             {
             title: 'Produto / Serviço',
             url: '/produto',
+            },
+            {
+            title: 'Grupo de Produtos',
+            url: '/produto-grupo',
             },
             {
             title: 'Unidade de Medida',

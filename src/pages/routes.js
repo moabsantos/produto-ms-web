@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import PageBase from "../layout/PageBase"
 import PageHeader from "../layout/PageHeader"
 
@@ -30,11 +30,12 @@ import OrdemProducaoItem from "./ordem-producao-item/form-base"
 import Deposito from "./deposito/form-base"
 import Prioridade from "./prioridade/form-base"
 import PedidoStatus from "./pedido-status/form-base"
+import ProdutoGrupo from "./produto-grupo/form-base"
 
 const RoutesModule = () => {
 
     return(   
-        <BrowserRouter>
+        
                 <Routes>
                     <Route exact path='/' element={<PageBase />}>
                         <Route exact path='/' element={<PageHeader />}>
@@ -52,6 +53,7 @@ const RoutesModule = () => {
                             <Route path='/forma-pagamento' element={<FormaPagamento />} />
 
                             <Route path='/deposito' element={<Deposito />} />
+                            <Route path='/produto-grupo' element={<ProdutoGrupo />} />
                             <Route path='/produto' element={<Produto />} />
                             <Route path='/produto-componente/:idMaster' element={<ProdutoComponente />} />
                             
@@ -78,7 +80,7 @@ const RoutesModule = () => {
 
                     <Route path='/auth-usuario-login' element={<AuthUsuarioLogin />} />
                 </Routes>
-        </BrowserRouter>
+
     )
 }
 

@@ -22,7 +22,7 @@ const MyTableHead = ({ columns, columnsExtra, handleSorting }) => {
     return (
         <thead>
         <tr>
-        {columns.map(({ label, accessor, sortable }) => {
+        {columns.map(({ label, accessor, alignCell, sortable }) => {
             const cl = sortable
             ? sortField === accessor && order === "asc"
             ? "up"
@@ -30,9 +30,18 @@ const MyTableHead = ({ columns, columnsExtra, handleSorting }) => {
             ? "down"
             : "default"
             : "";
+
+            let styleCell = {}
+
+            if (alignCell){
+              styleCell = {textAlign: "right"}
+            }
+
+
           return (
            <th className={cl}
                 key={accessor} 
+                style={styleCell}
                 onClick={sortable ? () => handleSortingChange(accessor) : null}>
             {label}
            </th>
