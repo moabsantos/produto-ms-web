@@ -7,6 +7,7 @@ import FormEdit from './form-edit';
 import FormView from './form-view';
 
 import getApi from '../../_shared/req-get-http';
+import formataNumero from '../../_shared/formata-numero';
   
 const ProdutoComponente = () => {
 
@@ -16,11 +17,13 @@ const ProdutoComponente = () => {
   const dominio = 'produto-componente'
   const filterList = 'filter=produtoId||$eq||'+ idMaster
   const dominioMaster = 'produto'
-  const [dadosMaster, setDadosMaster] = useState("")
+  const [nomeMaster, setNomeMaster] = useState("")
+  const [idUnidadeMedidaMaster, setIdUnidadeMedidaMaster] = useState("")
 
   getApi({ url: process.env.REACT_APP_HOST_API + '/'+ dominioMaster +'/' + idMaster })
     .then((resp) => {
-      setDadosMaster(resp.data[0].name)
+      setNomeMaster(resp.data[0].name)
+      setIdUnidadeMedidaMaster(resp.data[0].idUnidadeMedida)
     })
 
   return (
@@ -29,7 +32,7 @@ const ProdutoComponente = () => {
         <div className='lead'>
         Componentes da Ficha
         </div>
-      {dadosMaster}
+      {nomeMaster}
       </h4>
 
       <MyTabsForm
@@ -39,22 +42,25 @@ const ProdutoComponente = () => {
 
         columns={[    
           { label: "Alt", accessor: "numeroAlternativa", sortable: true },
+
+          { label: "Estágio", accessor: "estagioName", sortable: true },
           { label: "Seq", accessor: "sequencia", sortable: true },
           { label: "Componente", accessor: "componenteName", sortable: true },
-          { label: "Cons", accessor: "consumoProducao", sortable: true },
+          { label: "Cons", accessor: "consumoProducao", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,3'})} },
           { label: "Unid", accessor: "unidadeMedidaConsumoSigla", sortable: true },
-          { label: "Prod", accessor: "quantidadeProducao", sortable: true },
+          { label: "Produção", accessor: "quantidadeProducao", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,3'})} },
           { label: "Unid", accessor: "unidadeMedidaProducaoSigla", sortable: true },
-          { label: "Estágio", accessor: "estagioName", sortable: true },
+          
         ]}
 
         buttonsTop={[
           {label: "Voltar", onClick: () => { navigate("/" + dominioMaster); }}
         ]}
 
-        add= {(params) => (<FormAdd dominio={dominio} idMaster={idMaster} callBusca={() => params.callBusca()} />) }
-        edit={(params) => FormEdit({ id: params.id, idMaster: idMaster, dominio:dominio,  dataForm: params.dataForm, callBusca: () => params.callBusca() })}
-        view={(params) => FormView({ id: params.id, idMaster: idMaster, dominio:dominio, dataForm: params.dataForm, callBusca: params.callBusca })} 
+        //add= {(params) => (<FormAdd dominio={dominio} idMaster={idMaster} callBusca={() => params.callBusca()} />) }
+        add= {(params) => FormAdd({ id: params.id, dadosMaster: {id: idMaster, idUnidadeMedida: idUnidadeMedidaMaster}, dominio:dominio,  dataForm: params.dataForm, callBusca: () => params.callBusca() })}
+        edit={(params) => FormEdit({ id: params.id, dadosMaster: {id: idMaster, idUnidadeMedida: idUnidadeMedidaMaster}, dominio:dominio,  dataForm: params.dataForm, callBusca: () => params.callBusca() })}
+        view={(params) => FormView({ id: params.id, dadosMaster: {id: idMaster, idUnidadeMedida: idUnidadeMedidaMaster}, dominio:dominio, dataForm: params.dataForm, callBusca: () => params.callBusca() })} 
 
         />
     </>

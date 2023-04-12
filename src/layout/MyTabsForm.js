@@ -23,6 +23,7 @@ function MyTabsForm(props) {
           id:id, 
           dominio: props.dominio, 
           idMaster: props.idMaster, 
+          dadosMaster: props.dadosMaster,
           dataForm:resp.data ? resp.data[0]: {}, 
           callBusca: () => { setKey('busca') }
       }))

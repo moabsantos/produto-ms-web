@@ -1,11 +1,15 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
 import MyEditForm from "../../layout/MyEditForm";
 import MySelectLabel from "../../layout/MySelectLabel";
+import formataNumero from '../../_shared/formata-numero';
 
 const LocalForm = (props) => {
 
     let valores = {
         code: '',
+        numeroAlternativa: '1',
+        sequencia: '1',
+        quantidadeProducao: '1',
     }
 
     if (props.dataForm){
@@ -16,10 +20,10 @@ const LocalForm = (props) => {
             estagioId: props.dataForm.estagioId,
             numeroAlternativa: props.dataForm.numeroAlternativa,
             sequencia: props.dataForm.sequencia,
-            quantidadeProducao: props.dataForm.quantidadeProducao,
+            quantidadeProducao: formataNumero({valor: props.dataForm.quantidadeProducao, format: 'c0,3'}),
 
             unidadeMedidaProducaoId: props.dataForm.unidadeMedidaProducaoId,
-            consumoProducao: props.dataForm.consumoProducao,
+            consumoProducao: formataNumero({valor: props.dataForm.consumoProducao, format: 'c0,3'}),
 
             componenteId: props.dataForm.componenteId,
             unidadeMedidaConsumoId: props.dataForm.unidadeMedidaConsumoId,
@@ -29,15 +33,17 @@ const LocalForm = (props) => {
     }
 
     return (
-        <div className="container">
+        <div className="container  d-inline">
             <Form onSubmit={ props.salvar.bind( this ) }>
 
-            <label>Id Produto: {props.idMaster}</label>
+            <label>Id Produto: {props.dadosMaster && props.dadosMaster.id}</label>
 
             <MyEditForm 
                 caption="Alternativa" 
                 name="fmAlternativa" 
                 fieldName="numeroAlternativa"
+                sizeLabel="2"
+                sizeEdit="4"
                 valor={valores.numeroAlternativa} 
             />
 
@@ -45,21 +51,17 @@ const LocalForm = (props) => {
                 caption="Sequencia" 
                 name="fmSequencia" 
                 fieldName="sequencia"
+                sizeLabel="2"
+                sizeEdit="4"
                 valor={valores.sequencia} 
             />
-
-            <MySelectLabel
-                dominio="estagio"
-                caption="Estagio"
-                fieldName="estagioId"
-                name="estagio"
-                valueDefault={valores.estagioId} 
-            />  
 
             <MyEditForm 
                 caption="Quantidade Produzir" 
                 name="fmQuantidadeProduzir" 
                 fieldName="quantidadeProducao"
+                sizeLabel="2"
+                sizeEdit="4"
                 valor={valores.quantidadeProducao} 
             /> 
 
@@ -68,8 +70,20 @@ const LocalForm = (props) => {
                 caption="Unid Produção"
                 fieldName="unidadeMedidaProducaoId"
                 name="unidade-medida-prod"
+                sizeLabel="2"
+                sizeEdit="4"
                 valueDefault={valores.unidadeMedidaProducaoId} 
             />           
+
+            <MySelectLabel
+                dominio="estagio"
+                caption="Estagio"
+                fieldName="estagioId"
+                name="estagio"
+                sizeLabel="2"
+                sizeEdit="4"
+                valueDefault={valores.estagioId} 
+            />  
 
             <MySelectLabel
                 dominio="produto"
@@ -83,6 +97,8 @@ const LocalForm = (props) => {
                 caption="Consumo Produção" 
                 name="fmConsumoProduzir" 
                 fieldName="consumoProducao"
+                sizeLabel="2"
+                sizeEdit="4"
                 valor={valores.consumoProducao} 
             />
 
@@ -91,6 +107,8 @@ const LocalForm = (props) => {
                 caption="Unid Consumo"
                 fieldName="unidadeMedidaConsumoId"
                 name="unidade-medida-cons"
+                sizeLabel="2"
+                sizeEdit="4"
                 valueDefault={valores.unidadeMedidaConsumoId} 
             />     
 

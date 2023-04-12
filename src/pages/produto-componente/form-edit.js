@@ -1,6 +1,7 @@
 import React from 'react';
 import postApi from '../../_shared/req-post-http';
 import LocalForm from './LocalForm';
+import formataNumero from '../../_shared/formata-numero';
 
 export default function FormEdit(props){
 
@@ -12,15 +13,15 @@ export default function FormEdit(props){
             url: `${process.env.REACT_APP_HOST_API}/${props.dominio}`,
             body: {
                 id: props.id,
-                produtoId: props.idMaster,
+                produtoId: props.dadosMaster.id,
                 sequencia: event.target.elements.sequencia.value,
                 
-                quantidadeProducao: event.target.elements.quantidadeProducao.value,
+                quantidadeProducao: formataNumero({format: 'c0.', valor: event.target.elements.quantidadeProducao.value}),
                 unidadeMedidaProducaoId: event.target.elements.unidadeMedidaProducaoId.value,
 
                 componenteId: event.target.elements.componenteId.value,
                 unidadeMedidaConsumoId: event.target.elements.unidadeMedidaConsumoId.value,
-                consumoProducao: event.target.elements.consumoProducao.value,
+                consumoProducao: formataNumero({format: 'c0.', valor: event.target.elements.consumoProducao.value}),
 
                 estagioId: event.target.elements.estagioId.value,
                 numeroAlternativa: event.target.elements.numeroAlternativa.value
@@ -33,7 +34,7 @@ export default function FormEdit(props){
     return (
         <LocalForm 
             salvar={(event) => {submit(event)}} 
-            idMaster={props.idMaster}
+            idMaster={props.dadosMaster.id}
             callBusca={() => props.callBusca()} 
             dataForm={ props.dataForm }
         />

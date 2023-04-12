@@ -4,11 +4,14 @@ import MySelect from './MySelect';
 
 const MySelectLabel = (props) => {
     
+  const sizeLabel = props.sizeLabel ? props.sizeLabel : 2
+  const sizeEdit = props.sizeEdit ? props.sizeEdit : 10
+
     return(<Form.Group as={Row} className="mb-3" controlId={'fmSel' + props.name}>
-            <Form.Label column sm={2}>
+            <Form.Label column sm={sizeLabel}>
             {props.caption}
             </Form.Label>
-            <Col sm={10}>
+            <Col sm={sizeEdit}>
               <MySelect 
                 dominio={props.dominio}
                 options={props.options}
