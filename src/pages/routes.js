@@ -31,6 +31,7 @@ import Deposito from "./deposito/form-base"
 import Prioridade from "./prioridade/form-base"
 import PedidoStatus from "./pedido-status/form-base"
 import ProdutoGrupo from "./produto-grupo/form-base"
+import ProducaoDia from "./producao-dia/form-base"
 
 const RoutesModule = () => {
 
@@ -59,6 +60,9 @@ const RoutesModule = () => {
                             
                             <Route path='/ordem-producao' element={<OrdemProducao/>} />
                             <Route path='/ordem-producao-item/:idMaster' element={<OrdemProducaoItem/>} />
+                            <Route path='/producao-dia' element={<ProducaoDia/>} />
+
+
                             <Route path='/estagio' element={<Estagio/>} />
                             <Route path='/setor' element={<Setor/>} />
                             <Route path='/contact' element={<Contact/>} />

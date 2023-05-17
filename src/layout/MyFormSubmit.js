@@ -17,6 +17,10 @@ export default function MyFormSubmit(props){
                 
         });
 
+        if (props.bodyFormated){
+            body = props.bodyFormated(body)
+        }
+
         postApi({
             url: `${process.env.REACT_APP_HOST_API}/${props.dominio}`,
             body: body

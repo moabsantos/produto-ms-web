@@ -132,6 +132,10 @@ export const menuItems = [
               {
               title: 'Cadastro',
               url: '/ordem-producao',
+              },
+              {
+              title: 'Produção dia',
+              url: '/producao-dia',
               }
             ]
           }
