@@ -16,7 +16,8 @@ export default function FormEdit(props){
                 name: event.target.elements.name.value,
                 unidadeMedidaId: event.target.elements.unidadeMedidaId.value,
                 unidadeMedidaCompraId: event.target.elements.unidadeMedidaCompraId.value,
-                description: event.target.elements.description.value
+                description: event.target.elements.description.value,
+                produtoGrupoId: event.target.elements.produtoGrupoId.value
             }
         }).then(() => {
             props.callBusca()

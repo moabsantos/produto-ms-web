@@ -53,6 +53,14 @@ const LocalForm = (props) => {
 
             <MyEditForm caption="Descrição" name="fmDescricao" fieldName="description" valor={valores.description} />
 
+            <MySelectLabel
+                dominio="produto-grupo"
+                caption="Grupo Produto"
+                fieldName="produtoGrupoId"
+                name="produtoGrupoId"
+                valueDefault={valores.produtoGrupoId} 
+            />
+
             <Form.Group as={Row} className="mb-3">
                 <Col sm={{ span: 10, offset: 2 }} className='p-2'>
                     <div className="d-inline p-2"><Button type="submit">Salvar</Button></div>
