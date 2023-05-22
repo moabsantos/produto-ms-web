@@ -14,7 +14,8 @@ const LocalForm = (props) => {
             unidadeMedidaId: props.dataForm.unidadeMedidaId,
             unidadeMedidaCompraId: props.dataForm.unidadeMedidaCompraId,
             description: props.dataForm.description,
-            flagServico: props.dataForm.flagServico
+            flagServico: props.dataForm.flagServico,
+            produtoGrupoId: props.dataForm.produtoGrupoId
         }
 
     }
