@@ -42,6 +42,7 @@ const ProducaoDia = () => {
           bodyBase: {}, 
           fieldsForm:fieldsForm, 
           callBusca: () => params.callBusca(),
+          
           bodyFormated: (payload) => {
             payload.data = formataData({data: payload.data, format: 'api-date'})
             return payload

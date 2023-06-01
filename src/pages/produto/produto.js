@@ -38,7 +38,8 @@ const Produto = () => {
         view={(params) => FormView({ id: params.id, dataForm: params.dataForm, callBusca: params.callBusca })} 
       
         buttonsAdd={[
-          {label: "Componentes", onClick: (params) => { navigate("/produto-componente/"+ params.id); }}
+          {label: "Componentes", onClick: (params) => { navigate("/produto-componente/"+ params.id); }},
+          {label: "Preco", onClick: (params) => { navigate("/produto-preco/"+ params.id); }}
         ]}        
 
       />

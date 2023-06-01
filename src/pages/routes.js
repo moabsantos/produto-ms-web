@@ -25,6 +25,7 @@ import UF from "./uf/form-base"
 import UnidadeMedida from "./unidade-medida/unidade-medida"
 import PedidoVendaItem from "./pedido-venda-item/form-base"
 import ProdutoComponente from "./produto-componente/form-base"
+import ProdutoPreco from "./produto-preco/form-base"
 import OrdemProducao from "./ordem-producao/form-base"
 import OrdemProducaoItem from "./ordem-producao-item/form-base"
 import Deposito from "./deposito/form-base"
@@ -56,6 +57,7 @@ const RoutesModule = () => {
                             <Route path='/deposito' element={<Deposito />} />
                             <Route path='/produto-grupo' element={<ProdutoGrupo />} />
                             <Route path='/produto' element={<Produto />} />
+                            <Route path='/produto-preco/:idMaster' element={<ProdutoPreco />} />
                             <Route path='/produto-componente/:idMaster' element={<ProdutoComponente />} />
                             
                             <Route path='/ordem-producao' element={<OrdemProducao/>} />
