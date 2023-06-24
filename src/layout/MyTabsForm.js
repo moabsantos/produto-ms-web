@@ -45,9 +45,9 @@ function MyTabsForm(props) {
     </Tab> : <></>
 
   const buttonsTop = props.buttonsTop ? [
-    {label: "Incluir", onClick: () => setKey('inclusao')},
+    {label: "", nomeIcone: "fa-regular fa-file", onClick: () => setKey('inclusao')},
     ...props.buttonsTop
-  ] : [ {label: "Incluir", onClick: () => setKey('inclusao')} ]
+  ] : [ {label: "", nomeIcone: "fa-regular fa-file", onClick: () => setKey('inclusao')} ]
 
   const tabBusca =  <Tab eventKey="busca" title="Lista dos Cadastrados">
       

@@ -23,6 +23,8 @@ import Setor from "./setor/form-base"
 import SignUp from "./signup"
 import UF from "./uf/form-base"
 import UnidadeMedida from "./unidade-medida/unidade-medida"
+import RequisicaoAlmoxarifado from "./requisicao-almoxarifado/form-base"
+import RequisicaoAlmoxarifadoItem from "./requisicao-almoxarifado-item/form-base"
 import PedidoVendaItem from "./pedido-venda-item/form-base"
 import ProdutoComponente from "./produto-componente/form-base"
 import ProdutoPreco from "./produto-preco/form-base"
@@ -59,6 +61,8 @@ const RoutesModule = () => {
                             <Route path='/produto' element={<Produto />} />
                             <Route path='/produto-preco/:idMaster' element={<ProdutoPreco />} />
                             <Route path='/produto-componente/:idMaster' element={<ProdutoComponente />} />
+                            <Route path='/requisicao-almoxarifado' element={<RequisicaoAlmoxarifado />} />
+                            <Route path='/requisicao-almoxarifado-item/:idMaster' element={<RequisicaoAlmoxarifadoItem/>} />
                             
                             <Route path='/ordem-producao' element={<OrdemProducao/>} />
                             <Route path='/ordem-producao-item/:idMaster' element={<OrdemProducaoItem/>} />

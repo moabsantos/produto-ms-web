@@ -86,7 +86,7 @@ export default class MyTable extends React.Component {
                     tableData={this.state.data}
                     actions={
                         [
-                            {label: 'Editar', onClick:(item) => { this.props.btnEdicao({id: item.id})}}
+                            {label: '', nomeIcone: 'fa-regular fa-pen-to-square', onClick:(item) => { this.props.btnEdicao({id: item.id})}}
                         ]
                     }
                     buttonsAdd={this.props.buttonsAdd}
@@ -100,11 +100,12 @@ export default class MyTable extends React.Component {
         return (<>
 
             {this.props.buttonsTop.map((btn, idx) => {
-                return  <Button key={'buttonsTop'+idx}
+                return  <div key={'buttonsTop'+idx} className="d-inline p-1">
+                        <Button
                             className='bg-light text-dark' 
-                            onClick={() => { btn.onClick() }}>
-                                {btn.label}
+                            onClick={() => { btn.onClick() }}><i class={btn.nomeIcone}></i> {btn.label}
                         </Button>
+                        </div>
             })}
 
             {this.exibirLista()}

@@ -90,7 +90,7 @@ export const menuItems = [
           submenu: [
             {
               title: 'Cadastro',
-              url: '/'
+              url: '/requisicao-almoxarifado'
             },
           ]
         },
