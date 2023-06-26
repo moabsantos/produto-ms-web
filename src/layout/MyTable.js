@@ -103,7 +103,7 @@ export default class MyTable extends React.Component {
                 return  <div key={'buttonsTop'+idx} className="d-inline p-1">
                         <Button
                             className='bg-light text-dark' 
-                            onClick={() => { btn.onClick() }}><i class={btn.nomeIcone}></i> {btn.label}
+                            onClick={() => { btn.onClick() }}><i className={btn.nomeIcone}></i> {btn.label}
                         </Button>
                         </div>
             })}

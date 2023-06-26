@@ -30,7 +30,7 @@ const MyTableBody = ({ tableData, columns, actions, buttonsAdd }) => {
             return <div key={'actionbutons'+idx}  className="d-inline p-1"><Button
                   className='bg-light text-dark' 
                   onClick={() => { btn.onClick(item) }}>
-                    <i class={btn.nomeIcone}></i> {btn.label}
+                    <i className={btn.nomeIcone}></i> {btn.label}
                 </Button></div>
          })}
 
@@ -38,7 +38,7 @@ const MyTableBody = ({ tableData, columns, actions, buttonsAdd }) => {
             return <Button key={'addbutons'+idx}
                   className='bg-light text-dark' 
                   onClick={() => { btn.onClick(item) }}>
-                    <i class={btn.nomeIcone}></i> {btn.label}
+                    <i className={btn.nomeIcone}></i> {btn.label}
                 </Button>
          })}
          

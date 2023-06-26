@@ -64,8 +64,8 @@ const LocalForm = (props) => {
 
             <Form.Group as={Row} className="mb-3">
                 <Col sm={{ span: 10, offset: 2 }} className='p-2'>
-                    <div className="d-inline p-2"><Button type="submit"><i class="fa-regular fa-floppy-disk"></i></Button></div>
-                    <div className="d-inline p-2"><Button type="button" className='bg-light text-secondary' onClick={() => props.callBusca()}><i class="fa-solid fa-door-open"></i></Button></div>
+                    <div className="d-inline p-2"><Button type="submit"><i className="fa-regular fa-floppy-disk"></i></Button></div>
+                    <div className="d-inline p-2"><Button type="button" className='bg-light text-secondary' onClick={() => props.callBusca()}><i className="fa-solid fa-door-open"></i></Button></div>
                 </Col>
             </Form.Group>
             </Form>
