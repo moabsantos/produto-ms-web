@@ -1,4 +1,7 @@
 import React, { useRef, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
+import APP_CONST from "../App.const"
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import MyTable from './MyTable';
@@ -6,6 +9,9 @@ import getApi from '../_shared/req-get-http';
 
 
 function MyTabsForm(props) {
+
+  const navigate = useNavigate();
+
   const [key, setKey] = useState('busca');
   const [idSelecao, setIdSelecao] = useState(0);
 
@@ -46,8 +52,12 @@ function MyTabsForm(props) {
 
   const buttonsTop = props.buttonsTop ? [
     {label: "", nomeIcone: "fa-regular fa-file", onClick: () => setKey('inclusao')},
-    ...props.buttonsTop
-  ] : [ {label: "", nomeIcone: "fa-regular fa-file", onClick: () => setKey('inclusao')} ]
+    ...props.buttonsTop,
+
+  ] : [ 
+    {label: "", nomeIcone: "fa-regular fa-file", onClick: () => setKey('inclusao')},
+    {label: "", nomeIcone: APP_CONST.icone.voltar.i_classname, onClick: () => { navigate("/home"); }} 
+  ]
 
   const tabBusca =  <Tab eventKey="busca" title="Lista dos Cadastrados">
       

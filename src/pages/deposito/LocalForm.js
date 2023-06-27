@@ -1,6 +1,7 @@
-import { Form, Button, Row, Col } from "react-bootstrap"
+import { Form } from "react-bootstrap"
 import MyEditForm from "../../layout/MyEditForm"
 import MySelectLabel from "../../layout/MySelectLabel";
+import MyButonsFormSubmit from "../../layout/MyButonsFormSubmit";
 
 const LocalForm = (props) => {
 
@@ -31,12 +32,8 @@ const LocalForm = (props) => {
                 valueDefault={valores.flagPrincipal} 
             />
 
-            <Form.Group as={Row} className="mb-3">
-                <Col sm={{ span: 10, offset: 2 }} className='p-2'>
-                    <div className="d-inline p-2"><Button type="submit">Salvar</Button></div>
-                    <div className="d-inline p-2"><Button type="button" className='bg-light text-secondary' onClick={() => props.callBusca()}>Voltar</Button></div>
-                </Col>
-            </Form.Group>
+            <MyButonsFormSubmit callBusca={props.callBusca} />
+
             </Form>
         </div>         
     )

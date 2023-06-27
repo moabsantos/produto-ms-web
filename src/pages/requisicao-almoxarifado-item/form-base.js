@@ -3,7 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import MyFormSubmit from '../../layout/MyFormSubmit';
 
 import formataNumero from '../../_shared/formata-numero';
+import formataData from '../../_shared/formata-data';
 
+import postApi from '../../_shared/req-post-http';
 import MyTabsForm from '../../layout/MyTabsForm';
 import FormView  from './form-view';
 import LocalForm from './LocalForm';
@@ -49,6 +51,20 @@ const RequisicaoAlmoxarifadoItem = () => {
         idMaster={idMaster}
 
         buttonsTop={[
+
+          {label: "", nomeIcone: "fa-solid fa-check", onClick: () => { 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/aprovacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
+            navigate("/" + dominioMaster);
+          }},    
+          {label: "", nomeIcone: "fa-solid fa-check-to-slot", onClick: () => { 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/separacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
+            navigate("/" + dominioMaster);
+          }},
+          {label: "", nomeIcone: "fa-solid fa-truck-fast", onClick: () => { 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/atendimento/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
+            navigate("/" + dominioMaster);
+          }},          
+
           {label: "", nomeIcone: "fa-solid fa-door-open", onClick: () => { navigate("/" + dominioMaster); }}
         ]}
 
@@ -58,8 +74,9 @@ const RequisicaoAlmoxarifadoItem = () => {
           { label: "Qtd. Solicitada", accessor: "quantidadeSolicitada", sortable: true, alignCell:"right", formataDado: (n) => {return formataNumero({valor: n, format: 'c0,2'})} },
           { label: "Qtd. Entregue", accessor: "quantidadeEntregue", sortable: true, alignCell:"right", formataDado: (n) => {return formataNumero({valor: n, format: 'c0,2'})} },
           { label: "Unidade", accessor: "unidadeMedidaSigla", sortable: false },
-          { label: "Data Entrega", accessor: "dataEntrega", sortable: true },
+          { label: "Entrega", accessor: "dataEntrega", sortable: true, formataDado: (d) => {return formataData({data: d, format: 'to-br-date'})} },
           { label: "Setor", accessor: "setorName", sortable: false },
+          { label: "Status", accessor: "statusItem", sortable: false },
         ]}
 
         add={(params) => MyFormSubmit({ 

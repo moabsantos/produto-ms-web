@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import MyFormSubmit from '../../layout/MyFormSubmit';
 
+import FormFilter from './form-filter';
 import formataData from '../../_shared/formata-data';
 import MyTabsForm from '../../layout/MyTabsForm';
 import FormView  from './form-view';
@@ -15,7 +16,9 @@ const RequisicaoAlmoxarifado = () => {
   const tituloForm = 'Requisicão Almoxarifado'
   const dominio = 'requisicao-almoxarifado'
   const bodyBase = {}
-  const fieldsForm = ['code', 'name', 'empresaId', 'dataSolicitacao']
+  const fieldsForm = ['code', 'name', 'empresaId', 'dataSolicitacao', 'depositoIdOrigem', 'depositoIdDestino']
+
+  let filterTable = 'filter[]=statusItem||$ne||Entregue'
 
   return (
     <>
@@ -25,11 +28,17 @@ const RequisicaoAlmoxarifado = () => {
       <MyTabsForm
         dominio={dominio}
 
+        defaultFilter={filterTable}
+        filter= {(params) => FormFilter({dataFilter: params.dataFilter}) }
+
         columns={[    
           { label: "Código", accessor: "code", sortable: false },
           { label: "Nome", accessor: "name", sortable: true },
+          { label: "Origem", accessor: "depositoNameOrigem", sortable: true },
+          { label: "Destino", accessor: "depositoNameDestino", sortable: true },
           { label: "Data Solicitação", accessor: "dataSolicitacao", sortable: true, formataDado: (d) => {return formataData({data: d, format: 'to-br-date'})} },
-          { label: "Data Entrega", accessor: "dataEntrega", sortable: true }
+          { label: "Data Entrega", accessor: "dataEntrega", sortable: true, formataDado: (d) => {return formataData({data: d, format: 'to-br-date'})} },
+          { label: "Status", accessor: "statusItem", sortable: true }
         ]}
 
         add={(params) => MyFormSubmit({ 
