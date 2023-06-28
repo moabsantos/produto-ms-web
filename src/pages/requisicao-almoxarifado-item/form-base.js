@@ -33,7 +33,7 @@ const RequisicaoAlmoxarifadoItem = () => {
 
   getApi({ url: process.env.REACT_APP_HOST_API + '/'+ dominioMaster +'/' + idMaster })
     .then((resp) => {
-      setDadosMaster(resp.data[0].name)
+      setDadosMaster(resp.data[0].name +' ('+ resp.data[0].depositoNameOrigem+ ' -> '+ resp.data[0].depositoNameDestino +')')
     })
 
   return (
