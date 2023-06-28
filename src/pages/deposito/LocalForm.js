@@ -24,12 +24,29 @@ const LocalForm = (props) => {
             <MyEditForm caption="Descrição" name="fmDescricao" fieldName="description" valor={valores.description} />
 
             <MySelectLabel
+                dominio="empresa"
+                caption="Empresa"
+                fieldName="empresaId"
+                name="empresa"
+                valueDefault={valores.empresaId} 
+            />
+
+            <MySelectLabel
                 dominio=""
                 options={[{id:0, name: "Não"}, {id: 1, name: "Sim"}]}
                 caption="Principal"
                 fieldName="flagPrincipal"
                 name="flagPrincipal"
                 valueDefault={valores.flagPrincipal} 
+            />
+
+            <MySelectLabel
+                dominio=""
+                options={[{id:0, name: "Não"}, {id: 1, name: "Sim"}]}
+                caption="Baixa de Estoque"
+                fieldName="flagBaixaEstoque"
+                name="flagBaixaEstoque"
+                valueDefault={valores.flagBaixaEstoque} 
             />
 
             <MyButonsFormSubmit callBusca={props.callBusca} />

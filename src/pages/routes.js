@@ -31,6 +31,7 @@ import ProdutoPreco from "./produto-preco/form-base"
 import OrdemProducao from "./ordem-producao/form-base"
 import OrdemProducaoItem from "./ordem-producao-item/form-base"
 import Deposito from "./deposito/form-base"
+import DepositoSaldo from "./deposito-saldo/form-base"
 import Prioridade from "./prioridade/form-base"
 import PedidoStatus from "./pedido-status/form-base"
 import ProdutoGrupo from "./produto-grupo/form-base"
@@ -57,6 +58,7 @@ const RoutesModule = () => {
                             <Route path='/forma-pagamento' element={<FormaPagamento />} />
 
                             <Route path='/deposito' element={<Deposito />} />
+                            <Route path='/deposito-saldo' element={<DepositoSaldo />} />
                             <Route path='/produto-grupo' element={<ProdutoGrupo />} />
                             <Route path='/produto' element={<Produto />} />
                             <Route path='/produto-preco/:idMaster' element={<ProdutoPreco />} />

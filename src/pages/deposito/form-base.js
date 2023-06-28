@@ -12,7 +12,7 @@ const Deposito = () => {
   const tituloForm = 'Depósito'
   const dominio = 'deposito'
   const bodyBase = {}
-  const fieldsForm = ['code', 'name', 'description', 'flagPrincipal']
+  const fieldsForm = ['code', 'name', 'description', 'flagPrincipal', 'flagBaixaEstoque', 'empresaId']
 
   return (
     <>
@@ -26,7 +26,9 @@ const Deposito = () => {
           { label: "Código", accessor: "code", sortable: false },
           { label: "Nome", accessor: "name", sortable: true },
           { label: "Description", accessor: "description", sortable: true },
-          { label: "Principal", accessor: "flagPrincipal", sortable: true }
+          { label: "Principal", accessor: "flagPrincipal", sortable: true },
+          { label: "Empresa", accessor: "empresaName", sortable: true },
+          { label: "Baixa Estoque", accessor: "flagBaixaEstoque", sortable: true }
         ]}
 
         add={(params) => MyFormSubmit({ 
