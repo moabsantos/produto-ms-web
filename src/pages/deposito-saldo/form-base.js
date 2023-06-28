@@ -34,6 +34,13 @@ const DepositoSaldo = () => {
         columns={[    
           { label: "Empresa", accessor: "empresaSigla", sortable: false },
           { label: "Depósito", accessor: "depositoName", sortable: false },
+          
+          { label: "Cod. Item", accessor: "itemCode", sortable: false },
+          { label: "Nome Item", accessor: "itemName", sortable: false },
+          { label: "Unid", accessor: "unidadeMedidaSigla", sortable: false },
+
+          { label: "Lote", accessor: "loteCodigo", sortable: false },
+
           { label: "Disponível", accessor: "quantidadeDisponivel", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,2'})} },
           { label: "Requisitado", accessor: "quantidadeRequisitada", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,2'})} },
           { label: "Separado", accessor: "quantidadeSeparada", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,2'})} },
