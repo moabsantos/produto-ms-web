@@ -10,7 +10,7 @@ const loadScript = (src) =>
     document.body.appendChild(script)
   })
 
-const GoogleAuth = () => {
+const GoogleAuth = (props) => {
 
 
     const googleButton = useRef(null);
@@ -19,14 +19,16 @@ const GoogleAuth = () => {
     useEffect(() => {
       const src = 'https://accounts.google.com/gsi/client'
       const id = "261098791460-nb8bh29kujifks89ri8teahav0k141qt.apps.googleusercontent.com"
-      
   
       loadScript(src).then(() => {
           /*global google*/
 
           google.accounts.id.initialize({
             client_id: id,
-            callback: handleCredentialResponse
+            callback: (resp) =>{
+              handleCredentialResponse(resp)
+              props.onSucesso(resp.credential)
+            }
           })
 
           //window.google.accounts.id.prompt();
@@ -36,17 +38,18 @@ const GoogleAuth = () => {
             { type: "icon", theme: 'outline', size: 'large' } 
           )
 
-        })
-        .catch(console.error)
+      })
+      .catch(console.error)
   
       return () => {
         const scriptTag = document.querySelector(`script[src="${src}"]`)
         if (scriptTag) document.body.removeChild(scriptTag)
       }
 
-    }, [])
+    }, [props])
   
     async function handleCredentialResponse(response) {
+
 
         localStorage.setItem("tokenGoogle", response.credential);
 /*
@@ -74,12 +77,10 @@ const GoogleAuth = () => {
             }
         })
         
-
-
-            if (resp){
-                setUrlImgUsuario("ok")
-            }
-
+        if (resp){
+            setUrlImgUsuario("ok")
+            
+        }
 
       }
   

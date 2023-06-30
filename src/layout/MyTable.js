@@ -70,6 +70,12 @@ export default class MyTable extends React.Component {
     }
 
     exibirLista(){
+
+        let letBtnActions = []
+        if (this.props.btnEdicao) letBtnActions.push({label: '', nomeIcone: 'fa-regular fa-pen-to-square', onClick:(item) => { this.props.btnEdicao({id: item.id})}})
+
+
+
         return (
             <>
             <table className="table">
@@ -84,11 +90,7 @@ export default class MyTable extends React.Component {
                 <MyTableBody 
                     columns={this.columns} 
                     tableData={this.state.data}
-                    actions={
-                        [
-                            {label: '', nomeIcone: 'fa-regular fa-pen-to-square', onClick:(item) => { this.props.btnEdicao({id: item.id})}}
-                        ]
-                    }
+                    actions={letBtnActions}
                     buttonsAdd={this.props.buttonsAdd}
                 />
             </table>

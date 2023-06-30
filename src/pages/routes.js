@@ -14,6 +14,8 @@ import Estagio from "./estagio/form-base"
 import FormaPagamento from "./forma-pagamento/form-base"
 import Fornecedor from "./fornecedor/form-base"
 import GrupoAcesso from "./grupo-acesso/form-base"
+import PermissaoAcesso from "./permissao-acesso/form-base"
+import GrupoAcessoPermissao from "./grupo-acesso-permissao/form-base"
 import Home from "./home"
 import Pais from "./pais/form-base"
 import PedidoVenda from "./pedido-venda/form-base"
@@ -36,6 +38,7 @@ import Prioridade from "./prioridade/form-base"
 import PedidoStatus from "./pedido-status/form-base"
 import ProdutoGrupo from "./produto-grupo/form-base"
 import ProducaoDia from "./producao-dia/form-base"
+import GrupoAcessoUsuario from "./grupo-acesso-usuario/form-base"
 
 const RoutesModule = () => {
 
@@ -70,7 +73,6 @@ const RoutesModule = () => {
                             <Route path='/ordem-producao-item/:idMaster' element={<OrdemProducaoItem/>} />
                             <Route path='/producao-dia' element={<ProducaoDia/>} />
 
-
                             <Route path='/estagio' element={<Estagio/>} />
                             <Route path='/setor' element={<Setor/>} />
                             <Route path='/contact' element={<Contact/>} />
@@ -80,6 +82,9 @@ const RoutesModule = () => {
                             <Route path='/custos-mensais' element={<CustosMensais/>} />
 
                             <Route path='/grupo-acesso' element={<GrupoAcesso/>} />
+                            <Route path='/permissao-acesso' element={<PermissaoAcesso/>} />
+                            <Route path='/grupo-acesso-permissao/:idMaster' element={<GrupoAcessoPermissao/>} />
+                            <Route path='/grupo-acesso-usuario/:idMaster' element={<GrupoAcessoUsuario/>} />
                             <Route path='/realm-user' element={<RealmUser/>} />
                             
                             <Route path='/empresa' element={<Empresa/>} />

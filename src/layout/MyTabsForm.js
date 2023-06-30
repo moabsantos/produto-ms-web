@@ -56,7 +56,7 @@ function MyTabsForm(props) {
 
   ] : [ 
     {label: "", nomeIcone: "fa-regular fa-file", onClick: () => setKey('inclusao')},
-    {label: "", nomeIcone: APP_CONST.icone.voltar.i_classname, onClick: () => { navigate("/home"); }} 
+    {label: "", nomeIcone: APP_CONST.icone.voltar.i_classname, onClick: () => { props.dominioMaster ? navigate("/"+ props.dominioMaster) : navigate("/home")  }} 
   ]
 
   const tabBusca =  <Tab eventKey="busca" title="Lista dos Cadastrados">
@@ -76,11 +76,11 @@ function MyTabsForm(props) {
 
           buttonsTop={buttonsTop}
           
-          btnEdicao={(props) => {
+          btnEdicao={props.edit && ((props) => {
                   setKey('edicao')
                   setIdSelecao(props.id)
                   getDataForm(props.id)
-              }}
+              })}
 
           btnVisualizacao={(props) => {
                   setKey('visualizacao')
