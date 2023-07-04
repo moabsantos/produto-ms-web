@@ -39,6 +39,7 @@ import PedidoStatus from "./pedido-status/form-base"
 import ProdutoGrupo from "./produto-grupo/form-base"
 import ProducaoDia from "./producao-dia/form-base"
 import GrupoAcessoUsuario from "./grupo-acesso-usuario/form-base"
+import UsuarioPerfil from "./usuario-perfil/form-base"
 
 const RoutesModule = () => {
 
@@ -85,6 +86,7 @@ const RoutesModule = () => {
                             <Route path='/permissao-acesso' element={<PermissaoAcesso/>} />
                             <Route path='/grupo-acesso-permissao/:idMaster' element={<GrupoAcessoPermissao/>} />
                             <Route path='/grupo-acesso-usuario/:idMaster' element={<GrupoAcessoUsuario/>} />
+                            <Route path='/usuario-perfil' element={<UsuarioPerfil/>} />
                             <Route path='/realm-user' element={<RealmUser/>} />
                             
                             <Route path='/empresa' element={<Empresa/>} />

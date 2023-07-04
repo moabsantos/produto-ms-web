@@ -50,14 +50,12 @@ function MyTabsForm(props) {
         {props.filter({ dataFilter: (data) => getFilter(data)  })}
     </Tab> : <></>
 
-  const buttonsTop = props.buttonsTop ? [
-    {label: "", nomeIcone: "fa-regular fa-file", onClick: () => setKey('inclusao')},
-    ...props.buttonsTop,
+  let butonsTopDefault = []
+  if (props.add) butonsTopDefault.push({label: "", nomeIcone: "fa-regular fa-file", onClick: () => setKey('inclusao')})
 
-  ] : [ 
-    {label: "", nomeIcone: "fa-regular fa-file", onClick: () => setKey('inclusao')},
-    {label: "", nomeIcone: APP_CONST.icone.voltar.i_classname, onClick: () => { props.dominioMaster ? navigate("/"+ props.dominioMaster) : navigate("/home")  }} 
-  ]
+  if (props.buttonsTop) butonsTopDefault = butonsTopDefault.concat(props.buttonsTop)
+
+  if (!props.buttonsTop) butonsTopDefault.push({label: "", nomeIcone: APP_CONST.icone.voltar.i_classname, onClick: () => { props.dominioMaster ? navigate("/"+ props.dominioMaster) : navigate("/home")  }})
 
   const tabBusca =  <Tab eventKey="busca" title="Lista dos Cadastrados">
       
@@ -74,7 +72,7 @@ function MyTabsForm(props) {
           defaultFilter={props.defaultFilter}
           changeFilterTable={changeFilter.bind(this)}
 
-          buttonsTop={buttonsTop}
+          buttonsTop={butonsTopDefault}
           
           btnEdicao={props.edit && ((props) => {
                   setKey('edicao')
@@ -92,7 +90,7 @@ function MyTabsForm(props) {
     </Tab>
  
   const tabInclusao = <Tab eventKey="inclusao" title="Inclusão">
-          {props.add({
+          {props.add && props.add({
             callBusca: () => setKey('busca')  
           })}
       </Tab>

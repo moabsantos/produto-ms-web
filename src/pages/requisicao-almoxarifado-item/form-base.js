@@ -52,17 +52,26 @@ const RequisicaoAlmoxarifadoItem = () => {
 
         buttonsTop={[
 
-          {label: "", nomeIcone: "fa-solid fa-check", onClick: () => { 
-            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/aprovacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
-            navigate("/" + dominioMaster);
+          {label: "", nomeIcone: "fa-regular fa-thumbs-up", onClick: () => { 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/aprovacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}})
+            .then(() => navigate("/" + dominioMaster))
+            
+          }},
+          {label: "", nomeIcone: "fa-regular fa-thumbs-down", onClick: () => { 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/cancelar-aprovacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
+            .then(() => navigate("/" + dominioMaster))
           }},    
           {label: "", nomeIcone: "fa-solid fa-check-to-slot", onClick: () => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/separacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
-            navigate("/" + dominioMaster);
+            .then(() => navigate("/" + dominioMaster))
+          }},
+          {label: "", nomeIcone: "fa-solid fa-inbox", onClick: () => { 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/cancelar-separacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
+            .then(() => navigate("/" + dominioMaster))
           }},
           {label: "", nomeIcone: "fa-solid fa-truck-fast", onClick: () => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/atendimento/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
-            navigate("/" + dominioMaster);
+            .then(() => navigate("/" + dominioMaster))
           }},          
 
           {label: "", nomeIcone: "fa-solid fa-door-open", onClick: () => { navigate("/" + dominioMaster); }}
@@ -136,7 +145,6 @@ const RequisicaoAlmoxarifadoItem = () => {
         view={(params) => FormView({ id: params.id, dataForm: params.dataForm, bodyBase:bodyBase, fieldsForm:fieldsForm, callBusca: params.callBusca })} 
       
         buttonsAdd={[
-          
         ]}        
 
       />

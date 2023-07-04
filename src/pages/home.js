@@ -23,11 +23,64 @@ const Home = () => {
 
 
 
-
-      <div className="col-md-4">
+      <div className="col-md-4 pb-3">
         <div className="card">
           <div className="card-header">
-          <h4>Produto</h4>
+          <h4><i className="fa-solid fa-user" width="24" height="24"></i> Usuário</h4>
+          </div>
+          <div className="accordion" id="accordionPanelsStayOpenExample">
+            <div className="accordion-item">
+              <h2 className="accordion-header">
+                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usuario-perfilacesso" aria-expanded="false" aria-controls="usuario-perfilacesso">
+                  Configurações de Acesso
+                </button>
+              </h2>
+              <div id="usuario-perfilacesso" className="accordion-collapse collapse">
+                <div className="accordion-body collapsed">
+
+                <p><strong>Configurações de Acesso</strong> do usuário é onde será definido como e onde (ambiente) este irá acessar por padrão.</p>
+
+                <div className="list-group list-group-flush list-group-numbered">
+                  <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/usuario-perfil") } }>Perfil</button>
+                </div>
+
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header">
+                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                  Planejamento da Produção
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse">
+                <div className="accordion-body">
+                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header">
+                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                  Acompanhamento da Produção
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse">
+                <div className="accordion-body">
+                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div className="col-md-4 pb-3">
+        <div className="card">
+          <div className="card-header">
+          <h4><i className="fa-solid fa-tags" width="24" height="24"></i> Produto</h4>
           </div>
           <div className="accordion" id="accordionPanelsStayOpenExample">
             <div className="accordion-item">
@@ -83,10 +136,10 @@ const Home = () => {
 
 
 
-      <div className="col-md-4">
+      <div className="col-md-4 pb-3">
         <div className="card">
           <div className="card-header">
-          <h4>Comercial</h4>
+          <h4><i className="fa-solid fa-briefcase" width="24" height="24"></i> Comercial</h4>
           </div>
           <div className="accordion" id="accordionPanelsStayOpenExample">
             <div className="accordion-item">
@@ -133,10 +186,10 @@ const Home = () => {
 
 
 
-      <div className="col-md-4">
+      <div className="col-md-4 pb-3">
         <div className="card">
           <div className="card-header">
-          <h4>Suprimentos</h4>
+          <h4><i className="fa-solid fa-cart-shopping" width="24" height="24"></i> Suprimentos</h4>
           </div>
           <div className="accordion" id="accordionPanelsStayOpenExample">
             <div className="accordion-item">
@@ -196,10 +249,10 @@ const Home = () => {
 
 
 
-      <div className="col-md-4">
+      <div className="col-md-4 pb-3">
         <div className="card">
           <div className="card-header">
-          <h4>Financeiro</h4>
+          <h4><i className="fa-solid fa-file-invoice-dollar" width="24" height="24"></i> Financeiro</h4>
           </div>
           <div className="accordion" id="accordionPanelsStayOpenExample">
             <div className="accordion-item">
@@ -245,10 +298,10 @@ const Home = () => {
 
 
 
-      <div className="col-md-4">
+      <div className="col-md-4 pb-3">
         <div className="card">
           <div className="card-header">
-          <h4>Fiscal</h4>
+          <h4><i className="fa-solid fa-user-tie" width="24" height="24"></i> Fiscal</h4>
           </div>
           <div className="accordion" id="accordionPanelsStayOpenExample">
             <div className="accordion-item">
@@ -294,10 +347,10 @@ const Home = () => {
 
 
 
-      <div className="col-md-4">
+      <div className="col-md-4 pb-3">
         <div className="card">
           <div className="card-header">
-          <h4>Contabil</h4>
+          <h4><i className="fa-solid fa-chart-pie" width="24" height="24"></i> Contabil</h4>
           </div>
           <div className="accordion" id="accordionPanelsStayOpenExample">
             <div className="accordion-item">
@@ -345,10 +398,10 @@ const Home = () => {
 
 
 
-        <div className="col-md-4">
+        <div className="col-md-4 pb-3">
           <div className="card">
             <div className="card-header">
-            <h4>Empresa</h4>
+            <h4><i className="fa-solid fa-city" width="24" height="24"></i> Empresa</h4>
             </div>
             <div className="accordion" id="accordionPanelsStayOpenExample">
               <div className="accordion-item">
