@@ -21,6 +21,7 @@ const LocalForm = (props) => {
 
             <MyEditForm caption="Codigo" name="fmcode" fieldName="code" valor={valores.code} />
             <MyEditForm caption="Nome" name="fmnome" fieldName="name" valor={valores.name} />
+            <MyEditForm caption="Sigla" name="fmsigla" fieldName="sigla" valor={valores.sigla} />
             <MyEditForm caption="Descrição" name="fmDescricao" fieldName="description" valor={valores.description} />
 
             <MySelectLabel

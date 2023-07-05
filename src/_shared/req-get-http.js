@@ -1,7 +1,11 @@
 
+import setIsLoading from '../components/spinner/spinner';
+
 export default async function getApi(props){
 
     const token = localStorage.getItem("tokenGoogle");
+
+    setIsLoading(true);
 
     return fetch( props.url, {
       method: "GET",
@@ -14,6 +18,8 @@ export default async function getApi(props){
     
     .then((response) => {
       
+      setIsLoading(false);
+
       if (response.status === 401){
 
         window.location = '/auth-usuario-login'
@@ -25,5 +31,9 @@ export default async function getApi(props){
       }
 
     })
+    
+    .catch(() => {
+      setIsLoading(false);
+   });
 
   }

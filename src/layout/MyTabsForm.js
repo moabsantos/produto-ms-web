@@ -51,11 +51,11 @@ function MyTabsForm(props) {
     </Tab> : <></>
 
   let butonsTopDefault = []
-  if (props.add) butonsTopDefault.push({label: "", nomeIcone: "fa-regular fa-file", onClick: () => setKey('inclusao')})
+  if (props.add) butonsTopDefault.push({label: "", labelPopover: "Incluir um novo", nomeIcone: "fa-regular fa-file", onClick: () => setKey('inclusao')})
 
   if (props.buttonsTop) butonsTopDefault = butonsTopDefault.concat(props.buttonsTop)
 
-  if (!props.buttonsTop) butonsTopDefault.push({label: "", nomeIcone: APP_CONST.icone.voltar.i_classname, onClick: () => { props.dominioMaster ? navigate("/"+ props.dominioMaster) : navigate("/home")  }})
+  if (!props.buttonsTop) butonsTopDefault.push({label: "", labelPopover: "Sair desta tela", nomeIcone: APP_CONST.icone.voltar.i_classname, onClick: () => { props.dominioMaster ? navigate("/"+ props.dominioMaster) : navigate("/home")  }})
 
   const tabBusca =  <Tab eventKey="busca" title="Lista dos Cadastrados">
       

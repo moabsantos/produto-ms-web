@@ -1,24 +1,25 @@
 import React from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import MyFormSubmit from '../../layout/MyFormSubmit';
 
 import FormFilter from './form-filter';
 import formataData from '../../_shared/formata-data';
-import formataNumero from '../../_shared/formata-numero';
 import MyTabsForm from '../../layout/MyTabsForm';
 import FormView  from './form-view';
 import LocalForm from './LocalForm';
   
-const DepositoSaldo = () => {
+const PedidoCompra = () => {
 
+  const navigate = useNavigate();
   const { idMaster } = useParams();
 
-  const tituloForm = 'Saldo do Depósito'
-  const dominio = 'deposito-saldo'
+  const tituloForm = 'Pedido de Compra'
+  const dominio = 'pedido-compra'
   const bodyBase = {}
-  const fieldsForm = ['code', 'name', 'empresaId', 'dataSolicitacao', 'depositoIdOrigem', 'depositoIdDestino']
+  const fieldsForm = ['code', 'name', 'empresaId', 'fornecedorId', 'formaPagamentoId', 
+    'dataSolicitacao', 'depositoIdOrigem', 'depositoIdDestino']
 
-  let filterTable = ''
+  let filterTable = 'filter[]=statusItem||$ne||Recebido&filter[]=statusItem||$ne||Enderecado'
 
   return (
     <>
@@ -32,21 +33,15 @@ const DepositoSaldo = () => {
         filter= {(params) => FormFilter({dataFilter: params.dataFilter}) }
 
         columns={[    
-          { label: "Emp", accessor: "empresaSigla", sortable: false },
-          { label: "Dep", accessor: "depositoName", sortable: false },
-          
-          { label: "C. Item", accessor: "itemCode", sortable: false },
-          { label: "Item", accessor: "itemName", sortable: false },
-          { label: "Unid", accessor: "unidadeMedidaSigla", sortable: false },
-
-          { label: "Lote", accessor: "loteCodigo", sortable: false },
-
-          { label: "Recebido", accessor: "quantidadeRecebida", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,2'})} },
-          { label: "Disponível", accessor: "quantidadeDisponivel", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,2'})} },
-          { label: "Requisitado", accessor: "quantidadeRequisitada", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,2'})} },
-          { label: "Separado", accessor: "quantidadeSeparada", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,2'})} },
-          { label: "Ped", accessor: "quantidadePedida", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,2'})} },
-          { label: "Fat", accessor: "quantidadeFaturada", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,2'})} }
+          { label: "Código", accessor: "code", sortable: false },
+          { label: "Emp", accessor: "empresaCode", sortable: true },
+          { label: "Fornecedor", accessor: "fornecedorName", sortable: true },
+          { label: "Form Pgto", accessor: "formaPagamentoSigla", sortable: true },
+          { label: "Origem", accessor: "depositoCodeOrigem", sortable: true },
+          { label: "Destino", accessor: "depositoCodeDestino", sortable: true },
+          { label: "Data Solicitação", accessor: "dataSolicitacao", sortable: true, formataDado: (d) => {return formataData({data: d, format: 'to-br-date'})} },
+          { label: "Data Entrega", accessor: "dataEntrega", sortable: true, formataDado: (d) => {return formataData({data: d, format: 'to-br-date'})} },
+          { label: "Status", accessor: "statusItem", sortable: true }
         ]}
 
         add={(params) => MyFormSubmit({ 
@@ -100,7 +95,7 @@ const DepositoSaldo = () => {
         view={(params) => FormView({ id: params.id, dataForm: params.dataForm, bodyBase:bodyBase, fieldsForm:fieldsForm, callBusca: params.callBusca })} 
       
         buttonsAdd={[
-
+          {label: "", nomeIcone: "fa-solid fa-rectangle-list", onClick: (params) => { navigate("/pedido-compra-item/"+ params.id); }}
         ]}        
 
       />
@@ -108,4 +103,4 @@ const DepositoSaldo = () => {
   );
 };
   
-export default DepositoSaldo;
+export default PedidoCompra;

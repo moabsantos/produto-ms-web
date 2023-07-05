@@ -72,7 +72,7 @@ export default class MyTable extends React.Component {
     exibirLista(){
 
         let letBtnActions = []
-        if (this.props.btnEdicao) letBtnActions.push({label: '', nomeIcone: 'fa-regular fa-pen-to-square', onClick:(item) => { this.props.btnEdicao({id: item.id})}})
+        if (this.props.btnEdicao) letBtnActions.push({label: '', labelPopover: "Editar este item", nomeIcone: 'fa-regular fa-pen-to-square', onClick:(item) => { this.props.btnEdicao({id: item.id})}})
 
 
 
@@ -103,10 +103,15 @@ export default class MyTable extends React.Component {
 
             {this.props.buttonsTop.map((btn, idx) => {
                 return  <div key={'buttonsTop'+idx} className="d-inline p-1">
-                        <Button
-                            className='bg-light text-dark' 
-                            onClick={() => { btn.onClick() }}><i className={btn.nomeIcone}></i> {btn.label}
-                        </Button>
+
+
+                        <span className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content={btn.labelPopover}>
+                            <Button
+                                className='bg-light text-dark' 
+                                onClick={() => { btn.onClick() }}><i className={btn.nomeIcone}></i> {btn.label}
+                            </Button>
+                        </span>
+
                         </div>
             })}
 

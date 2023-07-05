@@ -12,23 +12,23 @@ import LocalForm from './LocalForm';
   
 import getApi from '../../_shared/req-get-http';
 
-const RequisicaoAlmoxarifadoItem = () => {
+const PedidoCompraItem = () => {
 
   const navigate = useNavigate();
 
   const { idMaster } = useParams();
 
-  const tituloForm = 'Requisicão Almoxarifado - Item'
-  const dominio = 'requisicao-almoxarifado-item'
+  const tituloForm = 'Pedido de Compra - Item'
+  const dominio = 'pedido-compra-item'
   const bodyBase = {}
 
   const fieldsForm = [
     'itemId', 'unidadeMedidaId', 
     'setorId', 'sequencia', 'quantidadeSolicitada', 'description']
 
-  const filterList = 'filter=requisicaoAlmoxarifadoId||$eq||'+ idMaster
+  const filterList = 'filter=pedidoCompraId||$eq||'+ idMaster
 
-  const dominioMaster = 'requisicao-almoxarifado'
+  const dominioMaster = 'pedido-compra'
   const [dadosMaster, setDadosMaster] = useState("")
 
   getApi({ url: process.env.REACT_APP_HOST_API + '/'+ dominioMaster +'/' + idMaster })
@@ -52,27 +52,31 @@ const RequisicaoAlmoxarifadoItem = () => {
 
         buttonsTop={[
 
-          {label: "", labelPopover: "Aprovar Requisição", nomeIcone: "fa-regular fa-thumbs-up", onClick: () => { 
+          {label: "", labelPopover: "Aprovar Pedido", nomeIcone: "fa-regular fa-thumbs-up", onClick: () => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/aprovacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}})
             .then(() => navigate("/" + dominioMaster))
             
           }},
-          {label: "", labelPopover: "Cancelar Aprovação da Requisição", nomeIcone: "fa-regular fa-thumbs-down", onClick: () => { 
+          {label: "", labelPopover: "Cancelar Aprovação do Pedido", nomeIcone: "fa-regular fa-thumbs-down", onClick: () => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/cancelar-aprovacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
           }},    
-          {label: "", labelPopover: "Separar Requisição", nomeIcone: "fa-solid fa-check-to-slot", onClick: () => { 
+          {label: "", labelPopover: "Faturar Pedido", nomeIcone: "fa-solid fa-file-invoice", onClick: () => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/separacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
           }},
-          {label: "", labelPopover: "Cancelar Separação da Requisição", nomeIcone: "fa-solid fa-inbox", onClick: () => { 
+          {label: "", labelPopover: "Cancelar Faturamento do Pedido", nomeIcone: "fa-solid fa-inbox", onClick: () => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/cancelar-separacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
           }},
-          {label: "", labelPopover: "Confirmar entrega da Requisição", nomeIcone: "fa-solid fa-truck-fast", onClick: () => { 
+          {label: "", labelPopover: "Confirmar recepção do Pedido", nomeIcone: "fa-solid fa-truck-fast", onClick: () => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/atendimento/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
-          }},          
+          }},
+          {label: "", labelPopover: "Enderecar Pedido", nomeIcone: "fa-brands fa-buromobelexperte", onClick: () => { 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/enderecado/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
+            .then(() => navigate("/" + dominioMaster))
+          }},           
 
           {label: "", labelPopover: "Sair desta tela", nomeIcone: "fa-solid fa-door-open", onClick: () => { navigate("/" + dominioMaster); }}
         ]}
@@ -92,7 +96,7 @@ const RequisicaoAlmoxarifadoItem = () => {
 
           dominio: dominio, 
           bodyBase: {
-            requisicaoAlmoxarifadoId: idMaster
+            pedidoCompraId: idMaster
           }, 
           fieldsForm:fieldsForm, 
 
@@ -119,7 +123,7 @@ const RequisicaoAlmoxarifadoItem = () => {
 
           bodyBase: { 
             id: params.id,
-            requisicaoAlmoxarifadoId: idMaster
+            pedidoCompraId: idMaster
           }, 
 
           fieldsForm:fieldsForm, 
@@ -152,4 +156,4 @@ const RequisicaoAlmoxarifadoItem = () => {
   );
 };
   
-export default RequisicaoAlmoxarifadoItem;
+export default PedidoCompraItem;

@@ -40,6 +40,8 @@ import ProdutoGrupo from "./produto-grupo/form-base"
 import ProducaoDia from "./producao-dia/form-base"
 import GrupoAcessoUsuario from "./grupo-acesso-usuario/form-base"
 import UsuarioPerfil from "./usuario-perfil/form-base"
+import PedidoCompra from "./pedido-compra/form-base"
+import PedidoCompraItem from "./pedido-compra-item/form-base"
 
 const RoutesModule = () => {
 
@@ -67,8 +69,11 @@ const RoutesModule = () => {
                             <Route path='/produto' element={<Produto />} />
                             <Route path='/produto-preco/:idMaster' element={<ProdutoPreco />} />
                             <Route path='/produto-componente/:idMaster' element={<ProdutoComponente />} />
+
                             <Route path='/requisicao-almoxarifado' element={<RequisicaoAlmoxarifado />} />
                             <Route path='/requisicao-almoxarifado-item/:idMaster' element={<RequisicaoAlmoxarifadoItem/>} />
+                            <Route path='/pedido-compra' element={<PedidoCompra />} />
+                            <Route path='/pedido-compra-item/:idMaster' element={<PedidoCompraItem/>} />
                             
                             <Route path='/ordem-producao' element={<OrdemProducao/>} />
                             <Route path='/ordem-producao-item/:idMaster' element={<OrdemProducaoItem/>} />
