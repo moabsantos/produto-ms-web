@@ -143,26 +143,39 @@ const Home = () => {
           </div>
           <div className="accordion" id="accordionPanelsStayOpenExample">
             <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne1" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+              <h2 className="accordion-header">
+                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#comercial-gestao-cliente" aria-expanded="false" aria-controls="usuario-perfilacesso">
                   Gestão dos Clientes
                 </button>
-              </h3>
-              <div id="panelsStayOpen-collapseOne1" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </h2>
+              <div id="comercial-gestao-cliente" className="accordion-collapse collapse">
+                <div className="accordion-body collapsed">
+
+                <p>Na <strong>Gestão dos Clientes</strong> estes terão seu dados inseridos possibilitando acompanhamento para proporcionar a melhor satisfação possível.</p>
+
+                <div className="list-group list-group-flush list-group-numbered">
+                  <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/cliente") } }>Cliente</button>
+                </div>
+
                 </div>
               </div>
             </div>
             <div className="accordion-item">
               <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo1" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                  Gestão das Vendas
+                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#comercial-gestao-venda" aria-expanded="false" aria-controls="usuario-perfilacesso">
+                  Gestão de Vendas
                 </button>
               </h2>
-              <div id="panelsStayOpen-collapseTwo1" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              <div id="comercial-gestao-venda" className="accordion-collapse collapse">
+                <div className="accordion-body collapsed">
+
+                <p>Na <strong>Gestão de Vendas</strong> espera-se formalizar negociações com os clientes por meio dos Pedidos de Venda.</p>
+
+                <div className="list-group list-group-flush list-group-numbered">
+                  <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/pedido-venda") } }>Pedido Venda</button>
+                  <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/pedido-status") } }>Status do Pedido Venda</button>
+                </div>
+
                 </div>
               </div>
             </div>
