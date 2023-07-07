@@ -23,8 +23,8 @@ const UsuarioPerfil = () => {
 
         columns={[    
           { label: "Id", accessor: "id", sortable: false },
-          { label: "Nome", accessor: "name", sortable: true },
-          { label: "Description", accessor: "description", sortable: true }
+          { label: "Empresa", accessor: "name", sortable: true },
+          { label: "Grupo de Acesso", accessor: "description", sortable: true }
         ]}
 
         view={(params) => FormView({ id: params.id, dataForm: params.dataForm, bodyBase:bodyBase, fieldsForm:fieldsForm, callBusca: params.callBusca })} 
