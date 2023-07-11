@@ -53,28 +53,28 @@ const PedidoCompraItem = () => {
         buttonsTop={[
 
           {label: "", labelPopover: "Aprovar Pedido", nomeIcone: "fa-regular fa-thumbs-up", onClick: () => { 
-            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/aprovacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}})
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/aprovacao/full-list`, body: {pedidoCompraId: idMaster}})
             .then(() => navigate("/" + dominioMaster))
             
           }},
           {label: "", labelPopover: "Cancelar Aprovação do Pedido", nomeIcone: "fa-regular fa-thumbs-down", onClick: () => { 
-            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/cancelar-aprovacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/cancelar-aprovacao/full-list`, body: {pedidoCompraId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
           }},    
           {label: "", labelPopover: "Faturar Pedido", nomeIcone: "fa-solid fa-file-invoice", onClick: () => { 
-            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/separacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/separacao/full-list`, body: {pedidoCompraId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
           }},
           {label: "", labelPopover: "Cancelar Faturamento do Pedido", nomeIcone: "fa-solid fa-inbox", onClick: () => { 
-            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/cancelar-separacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/cancelar-separacao/full-list`, body: {pedidoCompraId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
           }},
           {label: "", labelPopover: "Confirmar recepção do Pedido", nomeIcone: "fa-solid fa-truck-fast", onClick: () => { 
-            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/atendimento/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/atendimento/full-list`, body: {pedidoCompraId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
           }},
           {label: "", labelPopover: "Enderecar Pedido", nomeIcone: "fa-brands fa-buromobelexperte", onClick: () => { 
-            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/enderecado/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/enderecado/full-list`, body: {pedidoCompraId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
           }},           
 
