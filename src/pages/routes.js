@@ -42,6 +42,8 @@ import GrupoAcessoUsuario from "./grupo-acesso-usuario/form-base"
 import UsuarioPerfil from "./usuario-perfil/form-base"
 import PedidoCompra from "./pedido-compra/form-base"
 import PedidoCompraItem from "./pedido-compra-item/form-base"
+import RequisicaoCompra from "./requisicao-compra/form-base"
+import RequisicaoCompraItem from "./requisicao-compra-item/form-base"
 
 const RoutesModule = () => {
 
@@ -72,6 +74,8 @@ const RoutesModule = () => {
 
                             <Route path='/requisicao-almoxarifado' element={<RequisicaoAlmoxarifado />} />
                             <Route path='/requisicao-almoxarifado-item/:idMaster' element={<RequisicaoAlmoxarifadoItem/>} />
+                            <Route path='/requisicao-compra' element={<RequisicaoCompra />} />
+                            <Route path='/requisicao-compra-item/:idMaster' element={<RequisicaoCompraItem/>} />
                             <Route path='/pedido-compra' element={<PedidoCompra />} />
                             <Route path='/pedido-compra-item/:idMaster' element={<PedidoCompraItem/>} />
                             

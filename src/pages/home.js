@@ -235,6 +235,7 @@ const Home = () => {
 
                   <div className="list-group list-group-flush list-group-numbered">
                     <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/pedido-compra") } }>Pedido de Compra</button>
+                    <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/requisicao-compra") } }>Requisição de Compra</button>
                     <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/fornecedor") } }>Fornecedor</button>
                     <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/forma-pagamento") } }>Forma de Pagamento</button>
                   </div>
