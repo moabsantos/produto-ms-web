@@ -95,7 +95,6 @@ const RoutesModule = () => {
                             <Route path='/permissao-acesso' element={<PermissaoAcesso/>} />
                             <Route path='/grupo-acesso-permissao/:idMaster' element={<GrupoAcessoPermissao/>} />
                             <Route path='/grupo-acesso-usuario/:idMaster' element={<GrupoAcessoUsuario/>} />
-                            <Route path='/usuario-perfil' element={<UsuarioPerfil/>} />
                             <Route path='/realm-user' element={<RealmUser/>} />
                             
                             <Route path='/empresa' element={<Empresa/>} />
@@ -107,6 +106,7 @@ const RoutesModule = () => {
                     </Route>
 
                     <Route path='/auth-usuario-login' element={<AuthUsuarioLogin />} />
+                    <Route path='/usuario-perfil' element={<UsuarioPerfil/>} />
                 </Routes>
 
     )

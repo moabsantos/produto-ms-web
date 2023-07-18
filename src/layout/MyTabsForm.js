@@ -12,6 +12,7 @@ function MyTabsForm(props) {
 
   const navigate = useNavigate();
 
+  const [strFilter, setStrFilter] = useState(props.defaultFilter);
   const [key, setKey] = useState('busca');
   const [idSelecao, setIdSelecao] = useState(0);
 
@@ -43,6 +44,7 @@ function MyTabsForm(props) {
   }
 
   function changeFilter(data){
+    setStrFilter(data)
     tableRef.current.changeFilterTable(data)
   }
 
@@ -69,7 +71,7 @@ function MyTabsForm(props) {
           idMaster={props.idMaster}
           filterList={props.filterList}
 
-          defaultFilter={props.defaultFilter}
+          defaultFilter={strFilter}
           changeFilterTable={changeFilter.bind(this)}
 
           buttonsTop={butonsTopDefault}

@@ -35,7 +35,7 @@ export default function AuthUsuarioLogin() {
       </div>
       <div className="card-body">
         <h5 className="card-title"> </h5>
-        <img src="ico.png" class="img-fluid float-left" style={{maxHeight:400}} alt="" />
+        <img src="ico.png" className="img-fluid float-left" style={{maxHeight:400}} alt="" />
         
         
       </div>
