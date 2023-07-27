@@ -147,7 +147,7 @@ const Home = () => {
       <div className="row align-items-start">
 
       {modulosSistema && modulosSistema.map((modulo, idxModulo) => {
-        return modulo.visivel === 1 && <div key={'moduloHome'+idxModulo} className="col-md-4 pb-3">
+        return modulo.visivel && <div key={'moduloHome'+idxModulo} className="col-md-4 pb-3">
                 <div className="card">
                   <div className="card-header">
                     <h4><i className="fa-solid fa-user" width="24" height="24"></i> {modulo.titulo}</h4>
