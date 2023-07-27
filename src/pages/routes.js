@@ -44,6 +44,8 @@ import PedidoCompra from "./pedido-compra/form-base"
 import PedidoCompraItem from "./pedido-compra-item/form-base"
 import RequisicaoCompra from "./requisicao-compra/form-base"
 import RequisicaoCompraItem from "./requisicao-compra-item/form-base"
+import UsuarioConfig from "./usuario-config/form-base"
+import GrupoAcessoModulo from "./grupo-acesso-modulo/form-base"
 
 const RoutesModule = () => {
 
@@ -91,8 +93,10 @@ const RoutesModule = () => {
                             <Route path='/custos-dia' element={<CustosDia/>} />
                             <Route path='/custos-mensais' element={<CustosMensais/>} />
 
+                            <Route path='/usuario-config' element={<UsuarioConfig />} />
                             <Route path='/grupo-acesso' element={<GrupoAcesso/>} />
                             <Route path='/permissao-acesso' element={<PermissaoAcesso/>} />
+                            <Route path='/grupo-acesso-modulo/:idMaster' element={<GrupoAcessoModulo/>} />
                             <Route path='/grupo-acesso-permissao/:idMaster' element={<GrupoAcessoPermissao/>} />
                             <Route path='/grupo-acesso-usuario/:idMaster' element={<GrupoAcessoUsuario/>} />
                             <Route path='/realm-user' element={<RealmUser/>} />

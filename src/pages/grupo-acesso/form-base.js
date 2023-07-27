@@ -32,7 +32,7 @@ const GrupoAcesso = () => {
         buttonsAdd={[
 
           {label: "", nomeIcone: "fa-solid fa-lock", onClick: (params) => { navigate("/grupo-acesso-permissao/"+ params.id); }},
-
+          {label: "", nomeIcone: "fa-solid fa-table-cells", onClick: (params) => { navigate("/grupo-acesso-modulo/"+ params.id); }},
           {label: "", nomeIcone: "fa-regular fa-user", onClick: (params) => { navigate("/grupo-acesso-usuario/"+ params.id); }}
         
         ]}

@@ -97,8 +97,16 @@ const UsuarioPerfil = () => {
 
           {label: "", nomeIcone: "fa-solid fa-arrow-right", onClick: (p) => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/user/perfil`, body: {realmId: p.id}}).then(() => {
-              navigate("/home");
-            })  
+
+              getApi({url: `${process.env.REACT_APP_HOST_API}/user/modulo-sistema`}).then((data) => {
+                
+                localStorage.setItem("perfilSistemaAvanca", JSON.stringify(p.id));
+                localStorage.setItem("modulosSistemaAvanca", JSON.stringify(data));
+
+                navigate("/home");
+              })
+
+            })
           }}
 
         ]}   

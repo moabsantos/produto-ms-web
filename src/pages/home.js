@@ -6,489 +6,181 @@ const Home = () => {
 
   const navigate = useNavigate();
 
+  const modulosAtivos = JSON.parse(localStorage.getItem("modulosSistemaAvanca"));
+  const perfilSistemaAvanca = localStorage.getItem("perfilSistemaAvanca");
+
+  const getPermissao = (modulo, perfil) => {
+
+    if (perfil === 0) return true
+
+    if (!modulo) return false
+
+    return modulo === 1 ? true : false
+  }
+
+  const modulosSistema = [
+    {
+      titulo: "Usuário",
+      visivel: 1,
+      grupos: [
+        {
+          titulo: "Configurações de Acesso",
+          apresentacao: "Configurações de Acesso do usuário é onde será definido como e onde (ambiente) este irá acessar por padrão.",
+          items:[
+            {titulo: "Perfil", url: "/usuario-perfil"},
+            {titulo: "Configuração", url: "/usuario-config"}
+          ]
+        }
+      ]
+    },
+    {
+      titulo: "Produto",
+      visivel: getPermissao(modulosAtivos.produto, perfilSistemaAvanca),
+      grupos: [
+        {
+          titulo: "Desenvolvimento",
+          apresentacao: "Desenvolvimento do produto é o momento onde componentes e processos serão reunídos para formação de um novo produto. Finalizada esta etapa estará formada a Ficha Técnica.",
+          items:[
+            {titulo: "Produto", url: "/produto"},
+            {titulo: "Grupo de Produtos", url: "/produto-grupo"},
+            {titulo: "Estágio de Produção", url: "/estagio"},
+            {titulo: "Setor Produtivo", url: "/setor"},
+            {titulo: "Unidade de Medida", url: "/unidade-medida"}
+          ]
+        },
+        {
+          titulo: "Acompanhamento da Produção",
+          apresentacao: "Acompanhamento da Produção é o módulo onde a produção será registrada e acompanhada.",
+          items:[
+            {titulo: "Produção Diária", url: "/producao-dia"}
+          ]
+        }
+      ]
+    },
+    {
+      titulo: "Comercial",
+      visivel: getPermissao(modulosAtivos.comercial, perfilSistemaAvanca),
+      grupos: [
+        {
+          titulo: "Gestão dos Clientes",
+          apresentacao: "Na Gestão dos Clientes estes terão seu dados inseridos possibilitando acompanhamento para proporcionar a melhor satisfação possível.",
+          items:[
+            {titulo: "Cliente", url: "/cliente"}
+          ]
+        },
+        {
+          titulo: "Gestão de Vendas",
+          apresentacao: "Na Gestão de Vendas espera-se formalizar negociações com os clientes por meio dos Pedidos de Venda.",
+          items:[
+            {titulo: "Pedido Venda", url: "/pedido-venda"},
+            {titulo: "Status do Pedido Venda", url: "/pedido-status"}
+          ]
+        },
+        {
+          titulo: "Logística",
+          apresentacao: "Garantir a entrega solicitada no devido tempo e qualidade combinada",
+          items:[
+          ]
+        }
+      ]
+    },
+    {
+      titulo: "Suprimentos",
+      visivel: getPermissao(modulosAtivos.suprimentos, perfilSistemaAvanca),
+      grupos: [
+        {
+          titulo: "Gestão de Estoques",
+          apresentacao: "Na Gestão dos Clientes estes terão seu dados inseridos possibilitando acompanhamento para proporcionar a melhor satisfação possível.",
+          items:[
+          ]
+        },
+        {
+          titulo: "Compras",
+          apresentacao: "Em Compras ocorrerá toda interação com o Fornecedor finalizando com o Pedido de Compra",
+          items:[
+            {titulo: "Pedido de Compra", url: "/pedido-compra"},
+            {titulo: "Requisição de Compra", url: "/requisicao-compra"},
+            {titulo: "Fornecedor", url: "/fornecedor"},
+            {titulo: "Forma de Pagamento", url: "/forma-pagamento"}
+          ]
+        },
+        {
+          titulo: "Almoxarifado",
+          apresentacao: "O Almoxarifado é a central que administra as solicitações e atendimento de materiais. Estas solicitações são chamadas de Requisições",
+          items:[
+            {titulo: "Requisição de Material", url: "/requisicao-almoxarifado"},
+            {titulo: "Saldo em Depósito", url: "/deposito-saldo"},
+            {titulo: "Depósito", url: "/deposito"}
+          ]
+        }
+      ]
+    },
+    {
+      titulo: "Empresa",
+      visivel: getPermissao(modulosAtivos.empresa, perfilSistemaAvanca),
+      grupos: [
+        {
+          titulo: "Cadastros Base",
+          apresentacao: "Em Cadastros telas básicas referente a empresa serão disponibilizados",
+          items:[
+            {titulo: "Empresa", url: "/empresa"},
+            {titulo: "Cidade", url: "/cidade"},
+            {titulo: "UF - Estados", url: "/uf"},
+            {titulo: "País", url: "/pais"}
+          ]
+        },
+        {
+          titulo: "Gestão de Acesso",
+          apresentacao: "Em Segurança as permissões serão definidas garantido acesso controlado para cada funcionalidade",
+          items:[
+            {titulo: "Grupos de Acesso", url: "/grupo-acesso"},
+            {titulo: "Permissão de Acesso", url: "/permissao-acesso"}
+          ]
+        }
+      ]
+    }
+  ]
+
   return (
     <div className='container'>
       <div className="bd-example">
-      {/* 
-      
-      <p className="Display-4">
-      <img src='ico.png' alt='' />
-      <strong>Produto Que Avança</strong> é a solução que tem por desafio simplificar todos os processos de sua Indústria
-      </p>
-      
-      */}
-
-      
       <div className="row align-items-start">
 
+      {modulosSistema && modulosSistema.map((modulo, idxModulo) => {
+        return modulo.visivel === 1 && <div key={'moduloHome'+idxModulo} className="col-md-4 pb-3">
+                <div className="card">
+                  <div className="card-header">
+                    <h4><i className="fa-solid fa-user" width="24" height="24"></i> {modulo.titulo}</h4>
+                  </div>
+                  <div className="accordion" id={'moduloAcordHome'+idxModulo}>
 
+                  {modulo.grupos && modulo.grupos.map((grupoModulo, idxGrupo) => {
+                      return <div key={'modulo'+ idxModulo +'GrupoHome'+idxGrupo} className="accordion-item">
+                              <h2 className="accordion-header">
+                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={'#modulo'+ idxModulo +'Grupo'+ idxGrupo +'HomeLinks'} aria-expanded="false" aria-controls={'modulo'+ idxModulo +'Grupo'+ idxGrupo +'HomeLinks'}>
+                                  {grupoModulo.titulo}
+                                </button>
+                              </h2>
+                              <div id={'modulo'+ idxModulo +'Grupo'+ idxGrupo +'HomeLinks'} className="accordion-collapse collapse">
+                                <div className="accordion-body collapsed">
+                                <p>{grupoModulo.apresentacao}</p>
+                                <div className="list-group list-group-flush list-group-numbered">
+                                  {grupoModulo.items && grupoModulo.items.map((itemGrupoModulo, idxItem) => {
+                                    return <button key={'item'+ idxItem +'Modulo'+ idxModulo +'Grupo'+ idxGrupo +'Home'} type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate(itemGrupoModulo.url) } }>{itemGrupoModulo.titulo}</button>
+                                  })}
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                  })}
 
-      <div className="col-md-4 pb-3">
-        <div className="card">
-          <div className="card-header">
-          <h4><i className="fa-solid fa-user" width="24" height="24"></i> Usuário</h4>
-          </div>
-          <div className="accordion" id="accordionPanelsStayOpenExample">
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#usuario-perfilacesso" aria-expanded="false" aria-controls="usuario-perfilacesso">
-                  Configurações de Acesso
-                </button>
-              </h2>
-              <div id="usuario-perfilacesso" className="accordion-collapse collapse">
-                <div className="accordion-body collapsed">
-
-                <p><strong>Configurações de Acesso</strong> do usuário é onde será definido como e onde (ambiente) este irá acessar por padrão.</p>
-
-                <div className="list-group list-group-flush list-group-numbered">
-                  <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/usuario-perfil") } }>Perfil</button>
-                </div>
-
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                  Planejamento da Produção
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                  Acompanhamento da Produção
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div className="col-md-4 pb-3">
-        <div className="card">
-          <div className="card-header">
-          <h4><i className="fa-solid fa-tags" width="24" height="24"></i> Produto</h4>
-          </div>
-          <div className="accordion" id="accordionPanelsStayOpenExample">
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
-                  Desenvolvimento
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse">
-                <div className="accordion-body collapsed">
-
-                <p><strong>Desenvolvimento do produto</strong> é o momento onde componentes e processos serão reunídos para formação de um novo produto. Finalizada esta etapa estará formada a Ficha Técnica.</p>
-
-                <div className="list-group list-group-flush list-group-numbered">
-                  <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/produto") } }>Produto</button>
-                  <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/produto-grupo") } }>Grupo de Produtos</button>
-                  <button type="button" className="list-group-item list-group-item-action" onClick={ () => { navigate("/estagio") } }>Estágio</button>
-                  <button type="button" className="list-group-item list-group-item-action" onClick={ () => { navigate("/setor") } }>Setor</button>
-                  <button type="button" className="list-group-item list-group-item-action" onClick={ () => { navigate("/unidade-medida") } }>Unidade de Medida</button>
-                </div>
-
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                  Planejamento da Produção
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#desenv-prod-acomp-produ" aria-expanded="false" aria-controls="desenv-prod-acomp-produ">
-                  Acompanhamento da Produção
-                </button>
-              </h2>
-              <div id="desenv-prod-acomp-produ" className="accordion-collapse collapse">
-                <div className="accordion-body collapsed">
-
-                <p><strong>Acompanhamento da Produção</strong> é o módulo onde a produção será registrada e acompanhada.</p>
-
-                <div className="list-group list-group-flush list-group-numbered">
-                  <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/producao-dia") } }>Produção Dia</button>
-                </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-      <div className="col-md-4 pb-3">
-        <div className="card">
-          <div className="card-header">
-          <h4><i className="fa-solid fa-briefcase" width="24" height="24"></i> Comercial</h4>
-          </div>
-          <div className="accordion" id="accordionPanelsStayOpenExample">
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#comercial-gestao-cliente" aria-expanded="false" aria-controls="usuario-perfilacesso">
-                  Gestão dos Clientes
-                </button>
-              </h2>
-              <div id="comercial-gestao-cliente" className="accordion-collapse collapse">
-                <div className="accordion-body collapsed">
-
-                <p>Na <strong>Gestão dos Clientes</strong> estes terão seu dados inseridos possibilitando acompanhamento para proporcionar a melhor satisfação possível.</p>
-
-                <div className="list-group list-group-flush list-group-numbered">
-                  <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/cliente") } }>Cliente</button>
-                </div>
-
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#comercial-gestao-venda" aria-expanded="false" aria-controls="usuario-perfilacesso">
-                  Gestão de Vendas
-                </button>
-              </h2>
-              <div id="comercial-gestao-venda" className="accordion-collapse collapse">
-                <div className="accordion-body collapsed">
-
-                <p>Na <strong>Gestão de Vendas</strong> espera-se formalizar negociações com os clientes por meio dos Pedidos de Venda.</p>
-
-                <div className="list-group list-group-flush list-group-numbered">
-                  <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/pedido-venda") } }>Pedido Venda</button>
-                  <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/pedido-status") } }>Status do Pedido Venda</button>
-                </div>
-
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree1" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                Logística
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseThree1" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-      <div className="col-md-4 pb-3">
-        <div className="card">
-          <div className="card-header">
-          <h4><i className="fa-solid fa-cart-shopping" width="24" height="24"></i> Suprimentos</h4>
-          </div>
-          <div className="accordion" id="accordionPanelsStayOpenExample">
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne2" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
-                Gestão de Estoques
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseOne2" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo2" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                  Compras
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseTwo2" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <p>Em <strong>Compras</strong> ocorrerá toda interação com o Fornecedor finalizando com o Pedido de Compra</p>
-
-                  <div className="list-group list-group-flush list-group-numbered">
-                    <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/pedido-compra") } }>Pedido de Compra</button>
-                    <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/requisicao-compra") } }>Requisição de Compra</button>
-                    <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/fornecedor") } }>Fornecedor</button>
-                    <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/forma-pagamento") } }>Forma de Pagamento</button>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree2" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                  Almoxarifado
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseThree2" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <p>O <strong>Almoxarifado</strong> é a central que administra as solicitações e atendimento de materiais. Estas solicitações são chamadas de Requisições</p>
-
-                  <div className="list-group list-group-flush list-group-numbered">
-                    <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/requisicao-almoxarifado") } }>Requisição de Material</button>
-                    <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/deposito-saldo") } }>Saldo em Depósito</button>
-                    <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/deposito") } }>Depósito</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-
-      <div className="col-md-4 pb-3">
-        <div className="card">
-          <div className="card-header">
-          <h4><i className="fa-solid fa-file-invoice-dollar" width="24" height="24"></i> Financeiro</h4>
-          </div>
-          <div className="accordion" id="accordionPanelsStayOpenExample">
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-financeiro-pagar" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
-                  Contas a Pagar
-                </button>
-              </h3>
-              <div id="panelsStayOpen-financeiro-pagar" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-financeiro-receber" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                  Contas a Receber
-                </button>
-              </h2>
-              <div id="panelsStayOpen-financeiro-receber" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-financeiro-fluxo" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                Fluxo de Caixa
-                </button>
-              </h2>
-              <div id="panelsStayOpen-financeiro-fluxo" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-      <div className="col-md-4 pb-3">
-        <div className="card">
-          <div className="card-header">
-          <h4><i className="fa-solid fa-user-tie" width="24" height="24"></i> Fiscal</h4>
-          </div>
-          <div className="accordion" id="accordionPanelsStayOpenExample">
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-fiscal-escrituracao" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
-                  Escrituracao
-                </button>
-              </h3>
-              <div id="panelsStayOpen-fiscal-escrituracao" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-fiscal-faturamento" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                  Faturamento
-                </button>
-              </h2>
-              <div id="panelsStayOpen-fiscal-faturamento" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-fiscal-obrigacoes" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                Obrigações Fiscais
-                </button>
-              </h2>
-              <div id="panelsStayOpen-fiscal-obrigacoes" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-      <div className="col-md-4 pb-3">
-        <div className="card">
-          <div className="card-header">
-          <h4><i className="fa-solid fa-chart-pie" width="24" height="24"></i> Contabil</h4>
-          </div>
-          <div className="accordion" id="accordionPanelsStayOpenExample">
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-contabil-apuracao" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
-                  Apuração Contábil
-                </button>
-              </h3>
-              <div id="panelsStayOpen-contabil-apuracao" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-contabil-lancamento" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                  Lançamentos e Saldos Contábeis
-                </button>
-              </h2>
-              <div id="panelsStayOpen-contabil-lancamento" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-contabil-obrigacoes" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                Obrigações Contábeis
-                </button>
-              </h2>
-              <div id="panelsStayOpen-contabil-obrigacoes" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-
-        <div className="col-md-4 pb-3">
-          <div className="card">
-            <div className="card-header">
-            <h4><i className="fa-solid fa-city" width="24" height="24"></i> Empresa</h4>
-            </div>
-            <div className="accordion" id="accordionPanelsStayOpenExample">
-              <div className="accordion-item">
-                <h2 className="accordion-header">
-                  <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-empresa-cadastros" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                    Cadastros
-                  </button>
-                </h2>
-                <div id="panelsStayOpen-empresa-cadastros" className="accordion-collapse collapse">
-                  <div className="accordion-body">
-                    <p>Em <strong>Cadastros</strong> telas básicas referente a empresa serão disponibilizados</p>
-
-                    <div className="list-group list-group-flush list-group-numbered">
-                      <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/empresa") } }>Empresa</button>
-                      <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/cidade") } }>Cidades</button>
-                      <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/uf") } }>UF</button>
-                      <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/pais") } }>País</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="accordion-item">
-                <h2 className="accordion-header">
-                  <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-empresa-seguranca" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                    Segurança
-                  </button>
-                </h2>
-                <div id="panelsStayOpen-empresa-seguranca" className="accordion-collapse collapse">
-                  <div className="accordion-body">
-                    <p>Em <strong>Segurança</strong> as permissões serão definidas garantido acesso controlado para cada funcionalidade</p>
-
-                    <div className="list-group list-group-flush list-group-numbered">
-                      <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/grupo-acesso") } }>Grupo de Acesso</button>
-                      <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/permissao-acesso") } }>Permissão de Acesso</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="accordion-item">
-                <h2 className="accordion-header">
-                  <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-empresa-software" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                    Disponibilidade de Software
-                  </button>
-                </h2>
-                <div id="panelsStayOpen-empresa-software" className="accordion-collapse collapse">
-                  <div className="accordion-body">
-                    <p>O <strong>Almoxarifado</strong> é a central que administra as solicitações e atendimento de materiais. Estas solicitações são chamadas de Requisições</p>
-
-                    <div className="list-group list-group-flush list-group-numbered">
-                      <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/requisicao-almoxarifado") } }>Requisição de Material</button>
-                      <button type="button" className="list-group-item list-group-item-action" aria-current="true" onClick={ () => { navigate("/deposito") } }>Depósito de Materiais</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
+      })}
 
 
       </div>
-
-
-
       </div>
     </div>
   );
