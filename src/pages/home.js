@@ -11,7 +11,7 @@ const Home = () => {
 
   const getPermissao = (modulo, perfil) => {
 
-    if (perfil === 0) return true
+    if (perfil === '0') return true
 
     if (!modulo) return false
 
