@@ -1,4 +1,5 @@
 import postApi from '../_shared/req-post-http';
+import { toast } from 'react-toastify';
 
 export default function MyFormSubmit(props){
     
@@ -24,7 +25,8 @@ export default function MyFormSubmit(props){
         postApi({
             url: `${process.env.REACT_APP_HOST_API}/${props.dominio}`,
             body: body
-        }).then(() => {
+        }).then((res) => {
+            if (res.success ) for (const m of res.success.messages) toast.success(m);
             props.callBusca()
         })
   

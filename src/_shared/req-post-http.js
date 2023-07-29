@@ -2,7 +2,7 @@ export default async function postApi(props){
 
     const token = localStorage.getItem("tokenGoogle");
 
-    await fetch(
+    return await fetch(
       props.url, 
       {
         headers: {
@@ -14,6 +14,6 @@ export default async function postApi(props){
         mode: 'cors',
         body: JSON.stringify(props.body)
       }
-    );
+    ).then(response => response.json());
 
 }

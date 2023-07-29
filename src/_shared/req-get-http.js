@@ -1,11 +1,12 @@
 
 import setIsLoading from '../components/spinner/spinner';
+import { toast } from 'react-toastify';
 
 export default async function getApi(props){
 
     const token = localStorage.getItem("tokenGoogle");
 
-    setIsLoading(true);
+    setIsLoading({ativar: true});
 
     return fetch( props.url, {
       method: "GET",
@@ -18,11 +19,12 @@ export default async function getApi(props){
     
     .then((response) => {
       
-      setIsLoading(false);
+      setIsLoading({ativar: false});
 
       if (response.status === 401){
 
         window.location = '/auth-usuario-login'
+        toast.warning('Acesso não autorizado');
         
       }else{
   
@@ -32,8 +34,9 @@ export default async function getApi(props){
 
     })
     
-    .catch(() => {
-      setIsLoading(false);
+    .catch((data) => {
+      toast.error(data);
+      setIsLoading({ativar: false});
    });
 
   }
