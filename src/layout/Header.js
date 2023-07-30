@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 
 import getApi from '../_shared/req-get-http';
+import spinnerContext from '../components/spinner/spinnnerContext';
 
 const Header = () => {
+
+  const { setSpinnerAtivo } = useContext(spinnerContext);
 
   const urlProfile = `${process.env.REACT_APP_HOST_API}/auth/profile`
 
@@ -14,7 +17,7 @@ const Header = () => {
 
   useEffect(() => {
 
-    getApi({ url: urlProfile }).then((resp) => {
+    getApi({ url: urlProfile, setSpinnerAtivo: (param) => setSpinnerAtivo(param) }).then((resp) => {
       
       if (resp){
         setPicture(resp.picture)
@@ -25,7 +28,7 @@ const Header = () => {
       }
     })
 
-  }, [urlProfile])
+  }, [urlProfile, setSpinnerAtivo])
 
   return (
     <header>

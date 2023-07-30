@@ -1,11 +1,6 @@
-import React from "react";
-import "./spinner.css";
+import './spinner.css';
 
-export default function LoadingSpinner(props) {
+export default function LoadingSpinner() {
 
-  return (
-    props.ativar && <div className="spinner-container">
-      <div className="loading-spinner"></div>
-    </div>
-  );
+  return (<div className="spinner-container"><div className="loading-spinner"></div></div>);
 }

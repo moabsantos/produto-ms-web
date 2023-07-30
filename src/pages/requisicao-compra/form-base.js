@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import MyFormSubmit from '../../layout/MyFormSubmit';
 
@@ -7,8 +7,11 @@ import formataData from '../../_shared/formata-data';
 import MyTabsForm from '../../layout/MyTabsForm';
 import FormView  from './form-view';
 import LocalForm from './LocalForm';
+import spinnerContext from '../../components/spinner/spinnnerContext';
   
 const RequisicaoCompra = () => {
+
+  const { setSpinnerAtivo } = useContext(spinnerContext);
 
   const navigate = useNavigate();
   const { idMaster } = useParams();
@@ -45,7 +48,10 @@ const RequisicaoCompra = () => {
           dominio: dominio, 
           bodyBase: {}, 
           fieldsForm:fieldsForm, 
+
+          setSpinnerAtivo: (param) => setSpinnerAtivo(param),
           callBusca: () => params.callBusca(),
+          
 
           bodyFormated: (payload) => {
             payload.dataSolicitacao = formataData({data: payload.dataSolicitacao, format: 'api-date'})
@@ -70,6 +76,7 @@ const RequisicaoCompra = () => {
           bodyBase: { id: params.id}, 
           fieldsForm:fieldsForm, 
 
+          setSpinnerAtivo: (param) => setSpinnerAtivo(param),
           callBusca: () => params.callBusca(),
 
           bodyFormated: (payload) => {

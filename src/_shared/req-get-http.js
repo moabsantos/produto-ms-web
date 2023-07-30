@@ -1,12 +1,10 @@
-
-import setIsLoading from '../components/spinner/spinner';
 import { toast } from 'react-toastify';
 
 export default async function getApi(props){
 
-    const token = localStorage.getItem("tokenGoogle");
+    if (props.setSpinnerAtivo) props.setSpinnerAtivo(true);
 
-    setIsLoading({ativar: true});
+    const token = localStorage.getItem("tokenGoogle");
 
     return fetch( props.url, {
       method: "GET",
@@ -19,24 +17,22 @@ export default async function getApi(props){
     
     .then((response) => {
       
-      setIsLoading({ativar: false});
-
+      if (props.setSpinnerAtivo) props.setSpinnerAtivo(false);
+      
       if (response.status === 401){
 
         window.location = '/auth-usuario-login'
-        toast.warning('Acesso não autorizado');
+        toast.warning('Acesso não autorizado')
         
       }else{
-  
-        return response.json();
-  
+        return response.json()
       }
 
     })
     
     .catch((data) => {
       toast.error(data);
-      setIsLoading({ativar: false});
-   });
+      if (props.setSpinnerAtivo) props.setSpinnerAtivo(false);
+    });
 
   }

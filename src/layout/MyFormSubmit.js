@@ -24,9 +24,10 @@ export default function MyFormSubmit(props){
 
         postApi({
             url: `${process.env.REACT_APP_HOST_API}/${props.dominio}`,
-            body: body
+            body: body,
+            setSpinnerAtivo: props.setSpinnerAtivo
         }).then((res) => {
-            if (res.success ) for (const m of res.success.messages) toast.success(m);
+            if (res && res.success ) for (const m of res.success.messages) toast.success(m);
             props.callBusca()
         })
   

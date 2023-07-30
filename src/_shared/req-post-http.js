@@ -2,6 +2,8 @@ export default async function postApi(props){
 
     const token = localStorage.getItem("tokenGoogle");
 
+    if (props.setSpinnerAtivo) props.setSpinnerAtivo(true);
+
     return await fetch(
       props.url, 
       {
@@ -14,6 +16,11 @@ export default async function postApi(props){
         mode: 'cors',
         body: JSON.stringify(props.body)
       }
-    ).then(response => response.json());
+    ).then(response => {
+      
+      if (props.setSpinnerAtivo) props.setSpinnerAtivo(false);
+
+      return response.json()
+    });
 
 }
