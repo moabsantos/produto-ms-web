@@ -1,6 +1,8 @@
 import { Button } from "react-bootstrap";
+import MyButtonLine from "../components/MyButtonLine";
 
 const MyTableBody = ({ tableData, columns, actions, buttonsAdd }) => {
+
     return (
      <tbody>
       {tableData.map((item) => {
@@ -37,22 +39,31 @@ const MyTableBody = ({ tableData, columns, actions, buttonsAdd }) => {
          })}
 
          {buttonsAdd && buttonsAdd.map((btn, idx) => {
-            return <span key={'addbutons'+idx} className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content={btn.labelPopover}>
-                    <Button
-                      className='bg-light text-dark' 
-                      onClick={() => { btn.onClick(item) }}>
-                        <i className={btn.nomeIcone}></i> {btn.label}
-                    </Button>
-                </span>
+
+            if (btn.onShow) btn = btn.onShow(btn, item)
+
+            return <MyButtonLine 
+              key={'addbutons'+idx} 
+              labelPopover={btn.labelPopover}
+              iconeBotao={btn.nomeIcone}
+              labelBotao={btn.labelBotao}
+              dataObj={item}
+              myOnClick={btn.onClick}
+            />
+
          })}
          
         </td>
 
         </tr>
+
        );
+
       })}
+      
      </tbody>
     );
+
    };
 
 export default MyTableBody;

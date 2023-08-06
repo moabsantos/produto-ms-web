@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 export default async function postApi(props){
 
     const token = localStorage.getItem("tokenGoogle");
@@ -17,6 +19,8 @@ export default async function postApi(props){
         body: JSON.stringify(props.body)
       }
     ).then(response => {
+
+      if (response.status === 403) toast.warning('Acesso não autorizado')
       
       if (props.setSpinnerAtivo) props.setSpinnerAtivo(false);
 

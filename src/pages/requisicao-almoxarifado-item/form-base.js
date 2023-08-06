@@ -5,12 +5,12 @@ import MyFormSubmit from '../../layout/MyFormSubmit';
 import formataNumero from '../../_shared/formata-numero';
 import formataData from '../../_shared/formata-data';
 
-import postApi from '../../_shared/req-post-http';
 import MyTabsForm from '../../layout/MyTabsForm';
 import FormView  from './form-view';
 import LocalForm from './LocalForm';
   
 import getApi from '../../_shared/req-get-http';
+import postApi from '../../_shared/req-post-http';
 
 const RequisicaoAlmoxarifadoItem = () => {
 
@@ -29,21 +29,27 @@ const RequisicaoAlmoxarifadoItem = () => {
   const filterList = 'filter=requisicaoAlmoxarifadoId||$eq||'+ idMaster
 
   const dominioMaster = 'requisicao-almoxarifado'
-  const [dadosMaster, setDadosMaster] = useState("")
+  const [depositoMaster, setDepositoMaster] = useState("")
+  const [destinoMaster, setDestinoMaster] = useState("")
 
   getApi({ url: process.env.REACT_APP_HOST_API + '/'+ dominioMaster +'/' + idMaster })
     .then((resp) => {
-      setDadosMaster(resp.data[0].name +' ('+ resp.data[0].depositoNameOrigem+ ' -> '+ resp.data[0].depositoNameDestino +')')
+      setDepositoMaster(resp.data[0].depositoCodeOrigem +' - '+ resp.data[0].depositoNameOrigem)
+      setDestinoMaster(resp.data[0].depositoCodeDestino +' - '+ resp.data[0].depositoNameDestino)
     })
 
   return (
     <>
       <h4 className='p-3'>
-        <div className='lead'>
         {tituloForm}
-        </div>
-      {dadosMaster}
       </h4>
+
+      <div className='p-3'>
+        <table className="table table-bordered">
+          <thead><tr><th>Requisição</th><th>Depósito Origem</th><th>Depósito Destino</th></tr></thead>
+          <tbody><tr><td>{idMaster}</td><td>{depositoMaster}</td><td>{destinoMaster}</td></tr></tbody>
+        </table>
+      </div>
 
       <MyTabsForm
         dominio={dominio}
@@ -145,7 +151,19 @@ const RequisicaoAlmoxarifadoItem = () => {
         view={(params) => FormView({ id: params.id, dataForm: params.dataForm, bodyBase:bodyBase, fieldsForm:fieldsForm, callBusca: params.callBusca })} 
       
         buttonsAdd={[
-        ]}        
+          {label: "", nomeIcone: "fa-solid fa-square-check", onShow: (b, i) => {
+            b.nomeIcone = i.idUserSelecao === 0 ? "fa-regular fa-square" : "fa-solid fa-square-check"
+            return b
+          }, onClick: (params, callBack) => { 
+
+              postApi({url: `${process.env.REACT_APP_HOST_API}/requisicao-almoxarifado-item/selecao/item`, body: {requisicaoAlmoxarifadoItemId: params.id}})
+                
+                .then((resp) => callBack({
+                  iconeBotao: resp.idUserSelecao === 0 ? "fa-regular fa-square" : "fa-solid fa-square-check"
+                }))
+          
+          }}
+        ]}         
 
       />
     </>

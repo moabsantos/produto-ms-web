@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import MyFormSubmit from '../../layout/MyFormSubmit';
 
 import MyTabsForm from '../../layout/MyTabsForm';
@@ -6,6 +7,8 @@ import FormView  from './form-view';
 import LocalForm from './LocalForm';
   
 const Deposito = () => {
+
+  const navigate = useNavigate();
 
   const idMaster = 0;
 
@@ -69,7 +72,8 @@ const Deposito = () => {
         view={(params) => FormView({ id: params.id, dataForm: params.dataForm, bodyBase:bodyBase, fieldsForm:fieldsForm, callBusca: params.callBusca })} 
       
         buttonsAdd={[
-        ]}        
+          {label: "", nomeIcone: "fa-solid fa-rectangle-list", onClick: (params) => { navigate("/deposito-item/"+ params.id); }},
+        ]}       
 
       />
     </>
