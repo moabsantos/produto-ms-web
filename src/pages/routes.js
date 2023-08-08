@@ -47,6 +47,7 @@ import RequisicaoCompraItem from "./requisicao-compra-item/form-base"
 import UsuarioConfig from "./usuario-config/form-base"
 import GrupoAcessoModulo from "./grupo-acesso-modulo/form-base"
 import DepositoItem from "./deposito-item/form-base"
+import PedidoCompraRequisicao from "./pedido-compra-requisicao/form-base"
 
 const RoutesModule = () => {
 
@@ -82,6 +83,7 @@ const RoutesModule = () => {
                             <Route path='/requisicao-compra-item/:idMaster' element={<RequisicaoCompraItem/>} />
                             <Route path='/pedido-compra' element={<PedidoCompra />} />
                             <Route path='/pedido-compra-item/:idMaster' element={<PedidoCompraItem/>} />
+                            <Route path='/pedido-compra-requisicao/:idMaster' element={<PedidoCompraRequisicao/>} />
                             
                             <Route path='/ordem-producao' element={<OrdemProducao/>} />
                             <Route path='/ordem-producao-item/:idMaster' element={<OrdemProducaoItem/>} />

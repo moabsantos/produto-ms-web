@@ -71,6 +71,7 @@ const RequisicaoCompraItem = () => {
           { label: "Unidade", accessor: "unidadeMedidaSigla", sortable: false },
           { label: "Setor", accessor: "setorName", sortable: false },
           { label: "Status", accessor: "statusItem", sortable: false },
+          { label: "Pedido Compra", accessor: "pedidoCompraCode", sortable: false },
         ]}
 
         add={(params) => MyFormSubmit({ 

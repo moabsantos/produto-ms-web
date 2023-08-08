@@ -156,7 +156,7 @@ const RequisicaoAlmoxarifadoItem = () => {
             return b
           }, onClick: (params, callBack) => { 
 
-              postApi({url: `${process.env.REACT_APP_HOST_API}/requisicao-almoxarifado-item/selecao/item`, body: {requisicaoAlmoxarifadoItemId: params.id}})
+              postApi({url: `${process.env.REACT_APP_HOST_API}/requisicao-almoxarifado-item/selecao/item`, body: {id: params.id}})
                 
                 .then((resp) => callBack({
                   iconeBotao: resp.idUserSelecao === 0 ? "fa-regular fa-square" : "fa-solid fa-square-check"
