@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import MyFormSubmit from '../../layout/MyFormSubmit';
 
 import formataNumero from '../../_shared/formata-numero';
+import formataData from '../../_shared/formata-data';
 
 import postApi from '../../_shared/req-post-http';
 import MyTabsForm from '../../layout/MyTabsForm';
@@ -32,17 +33,25 @@ const RequisicaoCompraItem = () => {
 
   getApi({ url: process.env.REACT_APP_HOST_API + '/'+ dominioMaster +'/' + idMaster })
     .then((resp) => {
-      setDadosMaster(resp.data[0].name +' ('+ resp.data[0].depositoNameOrigem+ ' -> '+ resp.data[0].depositoNameDestino +')')
+      setDadosMaster({
+        code: resp.data[0].code, 
+        data: formataData({data: resp.data[0].dataSolicitacao, format: 'to-br-date'}), 
+        destino: resp.data[0].depositoNameDestino, 
+        status: resp.data[0].statusItem})
     })
 
   return (
     <>
       <h4 className='p-3'>
-        <div className='lead'>
         {tituloForm}
-        </div>
-      {dadosMaster}
       </h4>
+
+      <div className='p-3'>
+        <table className="table table-bordered">
+          <thead><tr><th>Requisição</th><th>Data</th><th>Depósito Destino</th><th>Status</th></tr></thead>
+          <tbody><tr><td>{dadosMaster.code}</td><td>{dadosMaster.data}</td><td>{dadosMaster.destino}</td><td>{dadosMaster.status}</td></tr></tbody>
+        </table>
+      </div>
 
       <MyTabsForm
         dominio={dominio}
