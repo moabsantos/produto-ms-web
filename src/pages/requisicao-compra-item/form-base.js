@@ -50,7 +50,11 @@ const RequisicaoCompraItem = () => {
         idMaster={idMaster}
 
         buttonsTop={[
-
+          {label: "", labelPopover: "Cancelar Requisição", nomeIcone: "fa-solid fa-trash", onClick: () => { 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/cancelar-requisicao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}})
+            .then(() => navigate("/" + dominioMaster))
+            
+          }},
           {label: "", labelPopover: "Aprovar Requisição", nomeIcone: "fa-regular fa-thumbs-up", onClick: () => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/aprovacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}})
             .then(() => navigate("/" + dominioMaster))
@@ -131,6 +135,18 @@ const RequisicaoCompraItem = () => {
         view={(params) => FormView({ id: params.id, dataForm: params.dataForm, bodyBase:bodyBase, fieldsForm:fieldsForm, callBusca: params.callBusca })} 
       
         buttonsAdd={[
+          {label: "", nomeIcone: "fa-solid fa-square-check", onShow: (b, i) => {
+            b.nomeIcone = i.idUserSelecao === 0 ? "fa-regular fa-square" : "fa-solid fa-square-check"
+            return b
+          }, onClick: (params, callBack) => { 
+
+              postApi({url: `${process.env.REACT_APP_HOST_API}/requisicao-compra-item/selecao/item`, body: {id: params.id}})
+                
+                .then((resp) => callBack({
+                  iconeBotao: resp.idUserSelecao === 0 ? "fa-regular fa-square" : "fa-solid fa-square-check"
+                }))
+          
+          }}
         ]}        
 
       />
