@@ -11,6 +11,7 @@ import LocalForm from './LocalForm';
   
 import getApi from '../../_shared/req-get-http';
 import postApi from '../../_shared/req-post-http';
+import DialogModal from '../../components/DialogModal';
 
 const RequisicaoAlmoxarifadoItem = () => {
 
@@ -31,6 +32,9 @@ const RequisicaoAlmoxarifadoItem = () => {
   const dominioMaster = 'requisicao-almoxarifado'
   const [depositoMaster, setDepositoMaster] = useState("")
   const [destinoMaster, setDestinoMaster] = useState("")
+
+  const [dialogAtendimento, setDialogAtendimento] = useState(false)
+  const [recebedor, setRecebedor] = useState("")
 
   getApi({ url: process.env.REACT_APP_HOST_API + '/'+ dominioMaster +'/' + idMaster })
     .then((resp) => {
@@ -76,8 +80,7 @@ const RequisicaoAlmoxarifadoItem = () => {
             .then(() => navigate("/" + dominioMaster))
           }},
           {label: "", labelPopover: "Confirmar entrega da Requisição", nomeIcone: "fa-solid fa-truck-fast", onClick: () => { 
-            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/atendimento/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
-            .then(() => navigate("/" + dominioMaster))
+            setDialogAtendimento(true)
           }},          
 
           {label: "", labelPopover: "Sair desta tela", nomeIcone: "fa-solid fa-door-open", onClick: () => { navigate("/" + dominioMaster); }}
@@ -90,6 +93,7 @@ const RequisicaoAlmoxarifadoItem = () => {
           { label: "Qtd. Entregue", accessor: "quantidadeEntregue", sortable: true, alignCell:"right", formataDado: (n) => {return formataNumero({valor: n, format: 'c0,2'})} },
           { label: "Unidade", accessor: "unidadeMedidaSigla", sortable: false },
           { label: "Entrega", accessor: "dataEntrega", sortable: true, formataDado: (d) => {return formataData({data: d, format: 'to-br-date'})} },
+          { label: "Recebedor", accessor: "recebedor", sortable: false },
           { label: "Setor", accessor: "setorName", sortable: false },
           { label: "Status", accessor: "statusItem", sortable: false },
         ]}
@@ -166,6 +170,17 @@ const RequisicaoAlmoxarifadoItem = () => {
         ]}         
 
       />
+
+      <DialogModal isOpened={dialogAtendimento} 
+        onProceed={() => {
+                      postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/atendimento/full-list`, body: {requisicaoAlmoxarifadoId: idMaster, recebedor: recebedor}}) 
+                      .then(() => navigate("/" + dominioMaster))
+                    }
+        } 
+        onClose={() => setDialogAtendimento(false)}>
+          <label>Informe o nome do Recebedor</label>
+          <input type="Text" recebedor="" defaultValue={recebedor} onChange={e => setRecebedor(e.target.value)}></input>
+      </DialogModal>
     </>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import postApi from '../../_shared/req-post-http';
 import LocalForm from './LocalForm';
+import { toast } from 'react-toastify';
 
 export default function FormAdd(props){
 
@@ -18,7 +19,8 @@ export default function FormAdd(props){
                 description: event.target.elements.description.value,
                 produtoGrupoId: event.target.elements.produtoGrupoId.value
             }
-        }).then(() => {
+        }).then((res) => {
+            if (res && res.success ) for (const m of res.success.messages) toast.success(m);
             props.callBusca()
         })
 
