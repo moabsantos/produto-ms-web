@@ -15,7 +15,10 @@ const Deposito = () => {
   const tituloForm = 'Depósito'
   const dominio = 'deposito'
   const bodyBase = {}
-  const fieldsForm = ['code', 'name', 'description', 'flagPrincipal', 'flagBaixaEstoque', 'empresaId', 'sigla']
+  const fieldsForm = [
+    'code', 'name', 'description', 
+    'flagPrincipal', 'flagBaixaEstoque', 'flagAjusteInventario', 
+    'empresaId', 'setorId', 'sigla']
 
   return (
     <>
@@ -32,6 +35,7 @@ const Deposito = () => {
           { label: "Description", accessor: "description", sortable: true },
           { label: "Principal", accessor: "flagPrincipal", sortable: true },
           { label: "Empresa", accessor: "empresaName", sortable: true },
+          { label: "Setor", accessor: "setorName", sortable: true },
           { label: "Baixa Estoque", accessor: "flagBaixaEstoque", sortable: true }
         ]}
 

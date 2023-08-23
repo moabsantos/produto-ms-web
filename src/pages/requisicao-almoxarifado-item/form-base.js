@@ -30,16 +30,20 @@ const RequisicaoAlmoxarifadoItem = () => {
   const filterList = 'filter=requisicaoAlmoxarifadoId||$eq||'+ idMaster
 
   const dominioMaster = 'requisicao-almoxarifado'
+  const [codeMaster, setCodeMaster] = useState("")
   const [depositoMaster, setDepositoMaster] = useState("")
   const [destinoMaster, setDestinoMaster] = useState("")
+  const [statusMaster, setStatusMaster] = useState("")
 
   const [dialogAtendimento, setDialogAtendimento] = useState(false)
   const [recebedor, setRecebedor] = useState("")
 
   getApi({ url: process.env.REACT_APP_HOST_API + '/'+ dominioMaster +'/' + idMaster })
     .then((resp) => {
+      setCodeMaster(resp.data[0].code)
       setDepositoMaster(resp.data[0].depositoCodeOrigem +' - '+ resp.data[0].depositoNameOrigem)
       setDestinoMaster(resp.data[0].depositoCodeDestino +' - '+ resp.data[0].depositoNameDestino)
+      setStatusMaster(resp.data[0].statusItem)
     })
 
   return (
@@ -50,8 +54,8 @@ const RequisicaoAlmoxarifadoItem = () => {
 
       <div className='p-3'>
         <table className="table table-bordered">
-          <thead><tr><th>Requisição</th><th>Depósito Origem</th><th>Depósito Destino</th></tr></thead>
-          <tbody><tr><td>{idMaster}</td><td>{depositoMaster}</td><td>{destinoMaster}</td></tr></tbody>
+          <thead><tr><th>Requisição</th><th>Depósito Origem</th><th>Depósito Destino</th><th>Status</th></tr></thead>
+          <tbody><tr><td>{codeMaster}</td><td>{depositoMaster}</td><td>{destinoMaster}</td><td>{statusMaster}</td></tr></tbody>
         </table>
       </div>
 
@@ -67,21 +71,26 @@ const RequisicaoAlmoxarifadoItem = () => {
             .then(() => navigate("/" + dominioMaster))
             
           }},
-          {label: "", labelPopover: "Cancelar Aprovação da Requisição", nomeIcone: "fa-regular fa-thumbs-down", onClick: () => { 
+          {label: "", className: "btn red-200", labelPopover: "Cancelar Aprovação da Requisição", nomeIcone: "fa-regular fa-thumbs-down", onClick: () => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/cancelar-aprovacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
-          }},    
-          {label: "", labelPopover: "Separar Requisição", nomeIcone: "fa-solid fa-check-to-slot", onClick: () => { 
+          }},   
+          
+          {isSeparator: true},
+
+          {label: "", labelPopover: "Separar Requisição", nomeIcone: "fa-solid fa-cart-arrow-down", onClick: () => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/separacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
           }},
-          {label: "", labelPopover: "Cancelar Separação da Requisição", nomeIcone: "fa-solid fa-inbox", onClick: () => { 
+          {label: "", className: "btn btn-soft-danger", labelPopover: "Cancelar Separação da Requisição", nomeIcone: "fa-solid fa-arrow-up-from-bracket", onClick: () => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/cancelar-separacao/full-list`, body: {requisicaoAlmoxarifadoId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
           }},
-          {label: "", labelPopover: "Confirmar entrega da Requisição", nomeIcone: "fa-solid fa-truck-fast", onClick: () => { 
+          {label: "", labelPopover: "Confirmar entrega da Requisição", nomeIcone: "fa-solid fa-people-carry-box", onClick: () => { 
             setDialogAtendimento(true)
           }},          
+
+          {isSeparator: true},
 
           {label: "", labelPopover: "Sair desta tela", nomeIcone: "fa-solid fa-door-open", onClick: () => { navigate("/" + dominioMaster); }}
         ]}
@@ -89,8 +98,8 @@ const RequisicaoAlmoxarifadoItem = () => {
         columns={[    
           { label: "Seq", accessor: "sequencia", sortable: false, alignCell:"right" },
           { label: "Item", accessor: "itemName", sortable: false },
-          { label: "Qtd. Solicitada", accessor: "quantidadeSolicitada", sortable: true, alignCell:"right", formataDado: (n) => {return formataNumero({valor: n, format: 'c0,2'})} },
-          { label: "Qtd. Entregue", accessor: "quantidadeEntregue", sortable: true, alignCell:"right", formataDado: (n) => {return formataNumero({valor: n, format: 'c0,2'})} },
+          { label: "Qtd. Solicitada", accessor: "quantidadeSolicitada", sortable: true, alignCell:"right", formataDado: (n) => {return formataNumero({valor: n, format: 'c0,3'})} },
+          { label: "Qtd. Entregue", accessor: "quantidadeEntregue", sortable: true, alignCell:"right", formataDado: (n) => {return formataNumero({valor: n, format: 'c0,3'})} },
           { label: "Unidade", accessor: "unidadeMedidaSigla", sortable: false },
           { label: "Entrega", accessor: "dataEntrega", sortable: true, formataDado: (d) => {return formataData({data: d, format: 'to-br-date'})} },
           { label: "Recebedor", accessor: "recebedor", sortable: false },

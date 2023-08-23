@@ -110,6 +110,7 @@ const Home = () => {
           items:[
             {titulo: "Requisição de Material", url: "/requisicao-almoxarifado"},
             {titulo: "Saldo em Depósito", url: "/deposito-saldo"},
+            {titulo: "Inventário no Depósito", url: "/deposito-inventario"},
             {titulo: "Depósito", url: "/deposito"}
           ]
         }

@@ -29,6 +29,7 @@ const Produto = () => {
           { label: "Unidade Medida", accessor: "unidadeMedidaSigla", sortable: true },
           { label: "Unidade Compra", accessor: "unidadeMedidaCompraSigla", sortable: true },
           { label: "Description", accessor: "description", sortable: true },
+          { label: "Cod Grupo", accessor: "produtoGrupoCode", sortable: true },
           { label: "Grupo de Produto", accessor: "produtoGrupoName", sortable: true }
         ]}
 

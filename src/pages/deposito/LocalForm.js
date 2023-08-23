@@ -33,6 +33,14 @@ const LocalForm = (props) => {
             />
 
             <MySelectLabel
+                dominio="setor"
+                caption="Setor"
+                fieldName="setorId"
+                name="setor"
+                valueDefault={valores.setorId} 
+            />
+
+            <MySelectLabel
                 dominio=""
                 options={[{id:0, name: "Não"}, {id: 1, name: "Sim"}]}
                 caption="Principal"
@@ -44,10 +52,19 @@ const LocalForm = (props) => {
             <MySelectLabel
                 dominio=""
                 options={[{id:0, name: "Não"}, {id: 1, name: "Sim"}]}
-                caption="Baixa de Estoque"
+                caption="Baixa de Estoque (Consumo)"
                 fieldName="flagBaixaEstoque"
                 name="flagBaixaEstoque"
                 valueDefault={valores.flagBaixaEstoque} 
+            />
+
+            <MySelectLabel
+                dominio=""
+                options={[{id:0, name: "Não"}, {id: 1, name: "Sim"}]}
+                caption="Ajusta Inventário"
+                fieldName="flagAjusteInventario"
+                name="flagAjusteInventario"
+                valueDefault={valores.flagAjusteInventario} 
             />
 
             <MyButonsFormSubmit callBusca={props.callBusca} />

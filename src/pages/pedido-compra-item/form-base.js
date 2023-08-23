@@ -52,6 +52,12 @@ const PedidoCompraItem = () => {
 
         buttonsTop={[
 
+          {label: "", labelPopover: "Cancelar Pedido", nomeIcone: "fa-solid fa-trash", onClick: () => { 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/cancelar/full-list`, body: {pedidoCompraId: idMaster}})
+            .then(() => navigate("/" + dominioMaster))
+            
+          }},
+
           {label: "", labelPopover: "Aprovar Pedido", nomeIcone: "fa-regular fa-thumbs-up", onClick: () => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/aprovacao/full-list`, body: {pedidoCompraId: idMaster}})
             .then(() => navigate("/" + dominioMaster))

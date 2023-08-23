@@ -13,7 +13,7 @@ function MyTabsForm(props) {
   const navigate = useNavigate();
 
   const [strFilter, setStrFilter] = useState(props.defaultFilter);
-  const [key, setKey] = useState('busca');
+  const [key, setKey] = useState(props.nomeTabAtiva ? props.nomeTabAtiva : 'busca');
   const [idSelecao, setIdSelecao] = useState(0);
 
   const [dataFmEdicao, setDataFmEdicao] = useState(<></>);
@@ -53,7 +53,9 @@ function MyTabsForm(props) {
     </Tab> : <></>
 
   let butonsTopDefault = []
-  if (props.add) butonsTopDefault.push({label: "", labelPopover: "Incluir um novo", nomeIcone: "fa-regular fa-file", onClick: () => setKey('inclusao')})
+  if (props.add) butonsTopDefault.push({className: "btn btn-primary", label: "", labelPopover: "Incluir um novo", nomeIcone: "fa-regular fa-file", onClick: () => setKey('inclusao')})
+
+  if (props.add && props.buttonsTop) butonsTopDefault.push({isSeparator: true})
 
   if (props.buttonsTop) butonsTopDefault = butonsTopDefault.concat(props.buttonsTop)
 

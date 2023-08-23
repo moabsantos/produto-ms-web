@@ -1,6 +1,8 @@
 export default function formataData(props){
 
     if (props.format === 'to-br-date'){
+        if(!props.data) return ''
+        
         const data = props.data.split('T');
         const parts = data[0].split('-');
         return parts[2]+'/'+parts[1]+'/'+parts[0]

@@ -106,10 +106,12 @@ export default class MyTable extends React.Component {
 
 
                         <span className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content={btn.labelPopover}>
+                            {!btn.isSeparator &&
                             <Button
-                                className='bg-light text-dark' 
+                                className={btn.className ? btn.className : 'bg-light text-dark'} 
                                 onClick={() => { btn.onClick() }}><i className={btn.nomeIcone}></i> {btn.label}
-                            </Button>
+                            </Button>}
+                            {btn.isSeparator && ' ][ '}
                         </span>
 
                         </div>

@@ -18,6 +18,7 @@ const MySelectLabel = (props) => {
                 fieldName={props.fieldName}
                 name={'fmSel' + props.name}
                 valueDefault={props.valueDefault}
+                valorVazio={props.valorVazio}
                 onChange={props.onChange}
               />
             </Col>

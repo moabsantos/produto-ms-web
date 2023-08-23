@@ -28,6 +28,7 @@ const MySelect = (props) => {
 
     }, [props, valueDefault])
 
+    const valorVazio = props.valorVazio
     return (<select 
               className="form-select"
               name={props.fieldName} 
@@ -36,7 +37,7 @@ const MySelect = (props) => {
                 setValueDefault(e.target.value)
               }}
               value={valueDefault} >
-              {options && options.length>0 && options[0].id !== 0 && (<option value="0" key="0" />)}
+              {options && options.length>0 && options[0].id !== 0 && (<option value={valorVazio} key="0" />)}
               {options && options.map(item => (<option value={item.id} key={item.id}>{item.name}</option>))}
           </select>)
   };

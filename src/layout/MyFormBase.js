@@ -2,7 +2,9 @@ import React from 'react';
 import MyFormSubmit from './MyFormSubmit';
 import MyTabsForm from './MyTabsForm';
   
-const MyFormBase = ({ idMaster, tituloForm, dominio, filterList, headForm, buttonsTop, columnsTable, buttonsAdd, addBotaoSelecao, bodyBase, fieldsForm, LocalForm, removeInclusao, removeEdicao, FormView }) => {
+const MyFormBase = ({ idMaster, tituloForm, dominio, dominioEdicao, filterDefault, filterList, headForm, buttonsTop, columnsTable, buttonsAdd, bodyBase, bodyFormated, fieldsForm, LocalForm, removeInclusao, removeEdicao, FormFilter, FormView }) => {
+
+  bodyBase = bodyBase ? bodyBase : {}
 
   return (
     <>
@@ -14,7 +16,7 @@ const MyFormBase = ({ idMaster, tituloForm, dominio, filterList, headForm, butto
         <table className="table table-bordered">
           <thead>
             <tr>
-            {headForm.map((h, index) => (
+            {headForm && headForm.map((h, index) => (
                 <th key={"head"+ dominio + index}>
                     {h.key}
                 </th>
@@ -24,7 +26,7 @@ const MyFormBase = ({ idMaster, tituloForm, dominio, filterList, headForm, butto
 
           <tbody>
             <tr>
-            {headForm.map((h, index) => (
+            {headForm && headForm.map((h, index) => (
                 <td key={"body"+ dominio + index}>
                     {h.value}
                 </td>
@@ -37,8 +39,11 @@ const MyFormBase = ({ idMaster, tituloForm, dominio, filterList, headForm, butto
 
       <MyTabsForm
         dominio={dominio}
-        filterList={filterList}
+        filterList={filterList ? filterList : ''}
         buttonsTop={buttonsTop}
+        defaultFilter={filterDefault ? filterDefault : ''}
+        filter={FormFilter ? (params) => FormFilter({dataFilter: params.dataFilter})  : ''}
+        dominioMaster={''}
 
         columns={columnsTable}
 
@@ -49,7 +54,10 @@ const MyFormBase = ({ idMaster, tituloForm, dominio, filterList, headForm, butto
           }, 
           fieldsForm:fieldsForm,
           callBusca: () => params.callBusca(),
-
+          bodyFormated: (par) => { 
+            if(bodyFormated) return bodyFormated(par)
+            if(!bodyFormated) return par 
+          },
           getForm: (par) => (
             <LocalForm 
                 fieldsForm={ fieldsForm }
@@ -62,14 +70,17 @@ const MyFormBase = ({ idMaster, tituloForm, dominio, filterList, headForm, butto
         })}
         
         edit={removeEdicao ? null : (params) => MyFormSubmit({ 
-          dominio: dominio, 
+          dominio: dominioEdicao ? dominioEdicao : dominio, 
           bodyBase: { 
             id: params.id,
             ...bodyBase 
           }, 
           fieldsForm:fieldsForm, 
           callBusca: () => params.callBusca(),
-
+          bodyFormated: (par) => { 
+            if(bodyFormated) return bodyFormated(par)
+            if(!bodyFormated) return par 
+          },
           getForm: (par) => (
             <LocalForm 
                 fieldsForm={ fieldsForm }
@@ -83,7 +94,7 @@ const MyFormBase = ({ idMaster, tituloForm, dominio, filterList, headForm, butto
 
         view={(params) => FormView({ id: params.id, dataForm: params.dataForm, bodyBase:bodyBase, fieldsForm:fieldsForm, callBusca: params.callBusca })} 
       
-        buttonsAdd={buttonsAdd}        
+        buttonsAdd={buttonsAdd ? buttonsAdd : []}        
 
       />
     </>

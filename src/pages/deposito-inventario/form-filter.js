@@ -17,7 +17,8 @@ const FormFilter = (props) => {
         let strFilter = ''
 
         if (elements.depositoId.value !== '') strFilter = strFilter + 'filter[]=depositoId||$eq||'+elements.depositoId.value+'&'
-        if (elements.itemGrupoId.value !== '') strFilter = strFilter + 'filter[]=itemGrupoId||$eq||'+elements.itemGrupoId.value+'&'
+        if (elements.status.value === 'aberto') strFilter = strFilter + 'filter[]=status||$ne||Finalizado&filter[]=status||$ne||Excluido&'
+        if (elements.status.value === 'finalizado') strFilter = strFilter + 'filter[]=status||$eq||Finalizado&'
 
         props.dataFilter( strFilter )
     
@@ -37,11 +38,12 @@ const FormFilter = (props) => {
             />
 
             <MySelectLabel
-                dominio="produto-grupo"
-                caption="Grupo de Produtos"
-                fieldName="itemGrupoId"
-                name="itemGrupoId"
-                valueDefault={valores.itemGrupoId} 
+                dominio=""
+                options={[{id:"finalizado", name: "Finalizado"}, {id: "aberto", name: "Aberto"}]}
+                caption="Status"
+                fieldName="status"
+                name="status"
+                valueDefault={valores.status} 
             />
 
             <Form.Group as={Row} className="mb-3">
