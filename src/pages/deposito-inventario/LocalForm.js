@@ -52,6 +52,8 @@ const LocalForm = (props) => {
                 onChange={(id) => { setIdItem(id) }}
             />
 
+            <MyEditForm caption="Parte do Nome do Item" name="itemPartialName" fieldName="itemPartialName" valor={valores.itemPartialName} />
+
             <MySelectLabel
                 dominio={"produto?filter[]=produtoGrupoId||eq||"+idItem}
                 caption="Item"
