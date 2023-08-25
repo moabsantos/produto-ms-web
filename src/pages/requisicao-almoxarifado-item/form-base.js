@@ -164,18 +164,17 @@ const RequisicaoAlmoxarifadoItem = () => {
         view={(params) => FormView({ id: params.id, dataForm: params.dataForm, bodyBase:bodyBase, fieldsForm:fieldsForm, callBusca: params.callBusca })} 
       
         buttonsAdd={[
+
           {label: "", nomeIcone: "fa-solid fa-square-check", onShow: (b, i) => {
             b.nomeIcone = i.idUserSelecao === 0 ? "fa-regular fa-square" : "fa-solid fa-square-check"
             return b
           }, onClick: (params, callBack) => { 
-
               postApi({url: `${process.env.REACT_APP_HOST_API}/requisicao-almoxarifado-item/selecao/item`, body: {id: params.id}})
-                
                 .then((resp) => callBack({
                   iconeBotao: resp.idUserSelecao === 0 ? "fa-regular fa-square" : "fa-solid fa-square-check"
                 }))
-          
           }}
+
         ]}         
 
       />
