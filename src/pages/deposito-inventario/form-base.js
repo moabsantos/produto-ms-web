@@ -11,7 +11,7 @@ const DepositoInventario = () => {
   const navigate = useNavigate();
 
   const dominio = 'deposito-inventario'
-  const fieldsForm = ['depositoId', 'depositoInventarioId', 'itemId', 'itemGrupoId', 'dataInicio']
+  const fieldsForm = ['depositoId', 'depositoInventarioId', 'itemId', 'itemGrupoId', 'dataInicio', 'sequencia']
 
   return (
     <>

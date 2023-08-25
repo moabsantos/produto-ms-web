@@ -76,6 +76,7 @@ const DepositoInventarioItem = () => {
         columnsTable={[
           { label: "Cód. Item", accessor: "itemCode", sortable: true },
           { label: "Item", accessor: "itemName", sortable: true },
+          { label: "UN", accessor: "unidadeMedidaSigla", sortable: true },
           { label: "Imagem", accessor: "quantidadeImagem", sortable: true, formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,4'})} },
           { label: "Contagem", accessor: "quantidadeContagem", sortable: true, formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,4'})} },
           { label: "Status", accessor: "status", sortable: true },

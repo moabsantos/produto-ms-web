@@ -8,7 +8,9 @@ import formataData from '../../_shared/formata-data';
 
 const LocalForm = (props) => {
 
-    let valores = {}
+    let valores = {
+        sequencia: 1
+    }
 
     if (props.dataForm){
 
@@ -60,6 +62,8 @@ const LocalForm = (props) => {
             />
 
             <MyEditForm caption="Data Início" name="dataInicio" fieldName="Data Inicio" valor={valores.dataInicio} />
+
+            <MyEditForm caption="Sequencia" name="sequencia" fieldName="Data Inicio" valor={valores.sequencia} />
 
             <MyButonsFormSubmit callBusca={props.callBusca} />
 
