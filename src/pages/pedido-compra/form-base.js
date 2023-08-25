@@ -19,7 +19,7 @@ const PedidoCompra = () => {
   const fieldsForm = ['code', 'name', 'empresaId', 'fornecedorId', 'formaPagamentoId', 
     'dataSolicitacao', 'depositoIdOrigem', 'depositoIdDestino']
 
-  let filterTable = 'filter[]=statusItem||$ne||Recebido&filter[]=statusItem||$ne||Enderecado'
+  let filterTable = 'filter[]=statusItem||$ne||Cancelado&filter[]=statusItem||$ne||Enderecado'
 
   return (
     <>
