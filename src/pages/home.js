@@ -69,6 +69,13 @@ const Home = () => {
           ]
         },
         {
+          titulo: "Gestão de Representantes",
+          apresentacao: "Na Gestão de Representantes organiza-se os grupos e usuários para controle de acesso aos Pedidos.",
+          items:[
+            {titulo: "Representante", url: "/representante"},
+          ]
+        },
+        {
           titulo: "Gestão de Vendas",
           apresentacao: "Na Gestão de Vendas espera-se formalizar negociações com os clientes por meio dos Pedidos de Venda.",
           items:[

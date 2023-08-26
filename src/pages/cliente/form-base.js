@@ -31,7 +31,7 @@ const Cliente = () => {
         view={(params) => FormView({ id: params.id, dominio:dominio, dataForm: params.dataForm, callBusca: params.callBusca })} 
         
         buttonsAdd={[
-          {label: "Estab", onClick: (params) => { navigate("/cliente-estabelecimento/"+ params.id); }}
+          {label: "Estab", nomeIcone: "fa-solid fa-map-location-dot", onClick: (params) => { navigate("/cliente-estabelecimento/"+ params.id); }}
         ]}
 
         />

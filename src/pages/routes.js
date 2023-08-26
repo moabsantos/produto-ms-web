@@ -50,6 +50,8 @@ import DepositoItem from "./deposito-item/form-base"
 import PedidoCompraRequisicao from "./pedido-compra-requisicao/form-base"
 import DepositoInventario from "./deposito-inventario/form-base"
 import DepositoInventarioItem from "./deposito-inventario-item/form-base"
+import Representante from "./representante/form-base"
+import RepresentanteUsuario from "./representante-usuario/form-base"
 
 const RoutesModule = () => {
 
@@ -63,6 +65,9 @@ const RoutesModule = () => {
                             <Route path='/cliente' element={<Cliente />} />
                             <Route path='/cliente-estabelecimento/:idCliente' element={<ClienteEstabelecimento />} />
                             
+                            <Route path='/representante' element={<Representante />} />
+                            <Route path='/representante-usuario/:idMaster' element={<RepresentanteUsuario />} />
+
                             <Route path='/prioridade' element={<Prioridade />} />
                             <Route path='/pedido-status' element={<PedidoStatus />} />
                             <Route path='/pedido-venda' element={<PedidoVenda />} />
