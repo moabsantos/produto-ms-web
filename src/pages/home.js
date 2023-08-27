@@ -73,6 +73,7 @@ const Home = () => {
           apresentacao: "Na Gestão de Representantes organiza-se os grupos e usuários para controle de acesso aos Pedidos.",
           items:[
             {titulo: "Representante", url: "/representante"},
+            {titulo: "Representante x Cliente", url: "/representante-cliente"},
           ]
         },
         {
