@@ -102,19 +102,18 @@ export default class MyTable extends React.Component {
         return (<>
 
             {this.props.buttonsTop.map((btn, idx) => {
-                return  <div key={'buttonsTop'+idx} className="d-inline p-1">
+                return  (<div key={'buttonsTop'+idx} className="d-inline p-1">
 
+                            <span className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content={btn.labelPopover}>
+                                {!btn.isSeparator &&
+                                <Button
+                                    className={btn.className ? btn.className : 'bg-light text-dark'} 
+                                    onClick={() => { btn.onClick() }}><i className={btn.nomeIcone}></i> {btn.label}
+                                </Button>}
+                                {btn.isSeparator && ' ][ '}
+                            </span>
 
-                        <span className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content={btn.labelPopover}>
-                            {!btn.isSeparator &&
-                            <Button
-                                className={btn.className ? btn.className : 'bg-light text-dark'} 
-                                onClick={() => { btn.onClick() }}><i className={btn.nomeIcone}></i> {btn.label}
-                            </Button>}
-                            {btn.isSeparator && ' ][ '}
-                        </span>
-
-                        </div>
+                        </div>)
             })}
 
             {this.exibirLista()}

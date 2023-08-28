@@ -23,7 +23,9 @@ const Representante = () => {
           {label: "", labelPopover: "Sair desta tela", nomeIcone: "fa-solid fa-door-open", onClick: () => { navigate("/home"); }}
         ]}
         buttonsAdd={[
-          {label: "", nomeIcone: "fa-regular fa-user", onClick: (params) => { navigate("/representante-usuario/"+ params.id); }}
+          {label: "", nomeIcone: "fa-regular fa-user", onClick: (params) => { navigate("/representante-usuario/"+ params.id); }},
+
+          {label: "", nomeIcone: "fa-solid fa-shop", onClick: (params) => { navigate("/representante-cliente/"+ params.id); }}
         ]}
 
         columnsTable={[

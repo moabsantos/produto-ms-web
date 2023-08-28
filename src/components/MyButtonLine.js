@@ -13,7 +13,7 @@ const MyButtonLine = ({ labelPopover, iconeBotao, labelBotao, dataObj, myOnClick
         if (params && params.labelBotao) setStLabelBotao(params.labelBotao)
     }
 
-    return (<>
+    return (<div className="d-inline p-1">
         <span className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content={labelPopover}>
             <Button
                 className='bg-light text-dark' 
@@ -21,7 +21,7 @@ const MyButtonLine = ({ labelPopover, iconeBotao, labelBotao, dataObj, myOnClick
                 <i className={stIconeBotao}></i> {stLabelBotao}
             </Button>
         </span>
-    </>);
+    </div>);
 
 }
  

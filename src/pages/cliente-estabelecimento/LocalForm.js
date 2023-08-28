@@ -1,38 +1,17 @@
 import { Form } from "react-bootstrap";
 import MyEditForm from "../../layout/MyEditForm";
 import MySelectLabel from "../../layout/MySelectLabel";
-import formataData from '../../_shared/formata-data';
 import MyButonsFormSubmit from "../../layout/MyButonsFormSubmit";
 
 const LocalForm = (props) => {
 
-    let valores = {
-        code: formataData({format: 'new-code'}),
-        name: '',
-        sigla: '',
-        description: ''
-    }
+    let valores = {}
 
     if (props.dataForm){
 
-        valores = {
-
-            clienteId: props.dataForm.clienteId,
-            code: props.dataForm.code,
-            name: props.dataForm.name,
-            description: props.dataForm.description,
-
-            cnpj: props.dataForm.cnpj,
-            inscricaoEstadual: props.dataForm.inscricaoEstadual,
-
-            email: props.dataForm.email,
-            telefone: props.dataForm.telefone,
-
-            endereco: props.dataForm.endereco,
-            numero: props.dataForm.numero,
-            bairro: props.dataForm.bairro,
-            cidadeId: props.dataForm.cidadeId
-        }
+        props.fieldsForm.forEach(element => {
+            if (props.dataForm[element]) valores[element] = props.dataForm[element]    
+        });
 
     }
 
@@ -52,6 +31,7 @@ const LocalForm = (props) => {
 
             <MyEditForm caption="Endereco" name="fmendereco" fieldName="endereco" valor={valores.endereco} />
             <MyEditForm caption="Numero" name="fmnumero" fieldName="numero" valor={valores.numero} />
+            <MyEditForm caption="Cep" name="fmcep" fieldName="cep" valor={valores.cep} />
             <MyEditForm caption="Bairro" name="fmbairro" fieldName="bairro" valor={valores.bairro} />
             <MyEditForm caption="Referência" name="fmdescription" fieldName="description" valor={valores.description} />
 
