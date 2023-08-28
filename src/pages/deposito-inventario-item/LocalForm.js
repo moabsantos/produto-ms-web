@@ -28,7 +28,7 @@ const LocalForm = (props) => {
             <Form.Label column sm={2}>Unidade</Form.Label>
             <Form.Label column sm={10}>{props.dataForm['unidadeMedidaName']}</Form.Label>
 
-            <MyEditForm caption="Qtd. Contagem" name="quantidadeContagem" fieldName="quantidadeContagem" valor={valores.quantidadeContagem} />
+            <MyEditForm caption="Qtd. Contagem" name="quantidadeContagem" fieldName="quantidadeContagem" valor={''} />
 
             <MyButonsFormSubmit callBusca={props.callBusca} />
 

@@ -9,6 +9,7 @@ import formataData from '../../_shared/formata-data';
 const LocalForm = (props) => {
 
     let valores = {
+        dataInicio: formataData({format:'new-date-user'}),
         sequencia: 1
     }
 
