@@ -12,7 +12,8 @@ const FormFilter = (props) => {
     
         let strFilter = ''
 
-        if (elements.statusItemNot.value !== '0') strFilter = strFilter + 'filter[]=statusItem||$ne||Recebido&filter[]=statusItem||$ne||Enderecado'
+        if (elements.statusItemNot.value !== 'entregue') strFilter = strFilter + 'filter[]=statusItem||$ne||Enderecado'
+        if (elements.statusItemNot.value == 'entregue') strFilter = strFilter + 'filter[]=statusItem||$eq||Enderecado'
 
         props.dataFilter( strFilter )
     
@@ -25,7 +26,7 @@ const FormFilter = (props) => {
             
             <MySelectLabel
                 dominio=""
-                options={[{id: "Entregue", name: "Não Entregue"}]}
+                options={[{id: "entregue", name: "Entregue"}, {id: "naoEntregue", name: "Não Entregue"}]}
                 caption="Remover Pedido"
                 fieldName="statusItemNot"
                 name="statusItemNot"
