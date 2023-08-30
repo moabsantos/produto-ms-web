@@ -13,7 +13,7 @@ const FormFilter = (props) => {
         let strFilter = ''
 
         if (elements.statusItemNot.value !== 'entregue') strFilter = strFilter + 'filter[]=statusItem||$ne||Enderecado'
-        if (elements.statusItemNot.value == 'entregue') strFilter = strFilter + 'filter[]=statusItem||$eq||Enderecado'
+        if (elements.statusItemNot.value === 'entregue') strFilter = strFilter + 'filter[]=statusItem||$eq||Enderecado'
 
         props.dataFilter( strFilter )
     
