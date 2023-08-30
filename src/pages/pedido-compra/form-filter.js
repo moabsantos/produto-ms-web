@@ -27,7 +27,7 @@ const FormFilter = (props) => {
             <MySelectLabel
                 dominio=""
                 options={[{id: "entregue", name: "Entregue"}, {id: "naoEntregue", name: "Não Entregue"}]}
-                caption="Remover Pedido"
+                caption="Status"
                 fieldName="statusItemNot"
                 name="statusItemNot"
                 valueDefault="Entregue"
