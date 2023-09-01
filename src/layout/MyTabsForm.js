@@ -103,6 +103,14 @@ function MyTabsForm(props) {
           {dataFmEdicao}
       </Tab>
 
+  const tabImagens = <Tab eventKey="imagens" title="Imagens">
+      {<>
+
+        lista de imagens do id {idSelecao} do dominio {props.dominio} com id master {props.idMaster}
+      
+      </>}
+      </Tab>
+
   const tabVisualizacao = <Tab eventKey="visualizacao" title="Vistualização">
           {props.view({id: idSelecao})}
       </Tab>
@@ -123,7 +131,9 @@ function MyTabsForm(props) {
 
       {key === 'inclusao' ? tabInclusao : <></>}
 
-      {key === 'edicao' ? tabEdicao : <></>}
+      {key === 'edicao' || key === 'imagens' ? tabEdicao : <></>}
+
+      {key === 'edicao' || key === 'imagens' ? tabImagens : <></>}
 
       {key === 'visualizacao' ? tabVisualizacao : <></>}
 
