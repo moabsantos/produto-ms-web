@@ -10,6 +10,7 @@ const LocalForm = (props) => {
 
     let valores = {
         dataInicio: formataData({format:'new-date-user'}),
+        itemId: null,
         sequencia: 1
     }
 
