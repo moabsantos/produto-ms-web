@@ -22,6 +22,15 @@ export default function FormEdit(props){
             }
         }).then((res) => {
             if (res && res.success ) for (const m of res.success.messages) toast.success(m);
+
+            if (event.target.elements.itemOrigemId.value) postApi({
+                url: `${process.env.REACT_APP_HOST_API}/produto-componente/replicar/componentes`,
+                body: {
+                    itemOrigemId: event.target.elements.itemOrigemId.value,
+                    itemDestinoId: props.id,
+                }
+            })
+
             props.callBusca()
         })
   
