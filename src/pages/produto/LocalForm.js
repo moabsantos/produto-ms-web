@@ -63,6 +63,14 @@ const LocalForm = (props) => {
                 valueDefault={valores.produtoGrupoId} 
             />
 
+            <MySelectLabel
+                dominio="produto"
+                caption="Produto Modelo Ficha Técnica"
+                fieldName="itemOrigemId"
+                name="itemOrigemId"
+                valueDefault={valores.itemOrigemId} 
+            />
+
             <MyButonsFormSubmit callBusca={props.callBusca} />
 
             </Form>

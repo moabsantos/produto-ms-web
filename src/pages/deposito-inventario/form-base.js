@@ -5,6 +5,7 @@ import MyFormBase from '../../layout/MyFormBase';
 import formataData from '../../_shared/formata-data';
 import LocalForm from './LocalForm';
 import FormFilter from './form-filter';
+import postApi from '../../_shared/req-post-http';
   
 const DepositoInventario = () => {
 
@@ -26,6 +27,11 @@ const DepositoInventario = () => {
         ]}
         buttonsAdd={[
           {label: "", nomeIcone: "fa-solid fa-rectangle-list", onClick: (params) => { navigate("/deposito-inventario-item/"+ params.id); }},
+
+          {label: "", nomeIcone: "fa-solid fa-trash-can", onClick: (params) => { 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/deposito-inventario-item/delete/inventario/${params.id}`, body: {}}) 
+            navigate("/deposito-inventario-item/"+ params.id); 
+          }}
         ]}
 
         columnsTable={[

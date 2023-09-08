@@ -28,9 +28,9 @@ const DepositoSaldo = () => {
         columns={[    
           { label: "Emp", accessor: "empresaSigla", sortable: false },
           { label: "Dep", accessor: "depositoName", sortable: false },
-          
-          { label: "C. Item", accessor: "itemCode", sortable: false },
-          { label: "Item", accessor: "itemName", sortable: false },
+          { label: "Grupo", accessor: "itemGrupoName", sortable: true },
+          { label: "C. Item", accessor: "itemCode", sortable: true },
+          { label: "Item", accessor: "itemName", sortable: true },
           { label: "Unid", accessor: "unidadeMedidaSigla", sortable: false },
 
           { label: "Lote", accessor: "loteCodigo", sortable: false },
