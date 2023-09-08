@@ -111,6 +111,11 @@ function MyTabsForm(props) {
       </>}
       </Tab>
 
+    getApi({ url: "https://images.queavanca.com/index.php?dominioName=empresa&dominioId=3" })
+    .then((resp) => {
+      console.log(resp);
+    });
+
   const tabVisualizacao = <Tab eventKey="visualizacao" title="Vistualização">
           {props.view({id: idSelecao})}
       </Tab>
