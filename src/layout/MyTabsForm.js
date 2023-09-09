@@ -6,9 +6,11 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import MyTable from './MyTable';
 import getApi from '../_shared/req-get-http';
-
+import ModalImage from "react-modal-image";
+import UploadService from "../service/file-upload";
 
 function MyTabsForm(props) {
+
 
   const navigate = useNavigate();
 
@@ -20,11 +22,43 @@ function MyTabsForm(props) {
 
   const tableRef = useRef(null);
 
+  const [imageInfos, setImageInfos] = useState([]);
+
   async function getDataForm(id){
 
     setDataFmEdicao(<></>)
 
     const resp = await getApi({ url: process.env.REACT_APP_HOST_API + '/'+ props.dominio + '/' + id })
+
+    //assim ok
+    // await getApi({ url: "https://images.queavanca.com/index.php?dominioName=empresa&dominioId=3" }).then((resp) => {
+    //     console.log("assim ok");
+    //     console.log(resp);
+    //     console.log(resp.data);
+    //     console.log("assim ok");
+    //   });
+
+    //assim ok novo
+    // let respImg = await getApi({ url: "https://images.queavanca.com/index.php?dominioName=empresa&dominioId=3" });
+    // console.log("novo");
+    // console.log(respImg);
+    // console.log(respImg.data);
+    // console.log("novo");
+
+    //ok
+    // getApi({ url: "https://images.queavanca.com/index.php?dominioName=empresa&dominioId=3" })
+    // .then((respImg) => {
+    //   console.log(respImg.data);
+    //   imageInfos = respImg.data;
+    //   console.log(imageInfos);
+    // });
+
+
+    await UploadService.getFiles(id, props.dominio).then((response) => {
+      console.log();
+      console.log(response);
+      setImageInfos(response.data);
+    });
 
     return setDataFmEdicao(props.edit({
           id:id, 
@@ -34,6 +68,7 @@ function MyTabsForm(props) {
           dataForm:resp.data ? resp.data[0]: {}, 
           callBusca: () => { setKey('busca') }
       }))
+
   }
 
   function getFilter(event){
@@ -47,6 +82,16 @@ function MyTabsForm(props) {
     setStrFilter(data)
     tableRef.current.changeFilterTable(data)
   }
+
+  // function getImages(){
+  //   getApi({ url: "https://images.queavanca.com/index.php?dominioName=empresa&dominioId=3" })
+  //   .then((resp) => {
+  //     console.log(resp);
+  //     this.setState({
+  //       imageInfos: response.data.data,
+  //     });
+  //   });
+  // }
 
   const tabFiltro = props.filter ? <Tab eventKey="filtro" title="Filtro">
         {props.filter({ dataFilter: (data) => getFilter(data)  })}
@@ -109,12 +154,39 @@ function MyTabsForm(props) {
         lista de imagens do id {idSelecao} do dominio {props.dominio} com id master {props.idMaster}
       
       </>}
+
+
+        <div>
+
+          <div className="card mt-3">
+            <div className="card-header">Imagens Salvas</div>
+            
+
+              {imageInfos &&
+                imageInfos.map((img, index) => (
+                  
+                  <div style={{height : '300px', width : '300px'}} key={img.id}>
+                  
+                    <ModalImage
+                      small={'https://images.queavanca.com/index.php?filename=' + img.fileName}
+                      large={'https://images.queavanca.com/index.php?filename=' + img.fileName}
+                      alt={'Imagem ' + index}
+                    />
+
+                  </div>
+
+                ))}
+            
+          </div>
+
+        </div>
+
       </Tab>
 
-    getApi({ url: "https://images.queavanca.com/index.php?dominioName=empresa&dominioId=3" })
-    .then((resp) => {
-      console.log(resp);
-    });
+    // getApi({ url: "https://images.queavanca.com/index.php?dominioName=empresa&dominioId=3" })
+    // .then((resp) => {
+    //   console.log(resp);
+    // });
 
   const tabVisualizacao = <Tab eventKey="visualizacao" title="Vistualização">
           {props.view({id: idSelecao})}
