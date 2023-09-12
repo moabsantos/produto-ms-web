@@ -64,7 +64,7 @@ const LocalForm = (props) => {
             />
 
             <MySelectLabel
-                dominio="produto"
+                dominio={"produto?filter[]=produtoGrupoId||$eq||"+valores.produtoGrupoId}
                 caption="Produto Modelo Ficha Técnica"
                 fieldName="itemOrigemId"
                 name="itemOrigemId"
