@@ -28,6 +28,7 @@ function MyTabsForm(props) {
   const [progressInfos, setProgressInfos] = useState([]);
   const [message, setMessage] = useState([]);
   const [imageInfos, setImageInfos] = useState([]);
+  //const [imgDelete, setImgDelete] = useState({});
 
   async function getDataForm(id){
 
@@ -130,7 +131,7 @@ function MyTabsForm(props) {
           1000
       );
 
-      //props.id
+      //props.id vem vazio, tirar esse 3 chumbado
       UploadService.getFiles(3, props.dominio).then((response) => {
         console.log();
         console.log(response);
@@ -168,6 +169,32 @@ function MyTabsForm(props) {
         // });
 
       });
+  }
+
+  function excluirImagem(img){
+    console.log("excluir...");
+
+    UploadService.delete(img);
+
+    //props.id vem vazio, tirar esse 3 chumbado
+    UploadService.getFiles(3, props.dominio).then((response) => {
+      console.log();
+      console.log(response);
+      setImageInfos(response.data);
+    });
+
+  }
+
+  function definirImagemCapa(img){
+    console.log("definirImagemCapa...");
+    UploadService.definirImagemCapa(img);
+
+    //props.id vem vazio, tirar esse 3 chumbado
+    UploadService.getFiles(3, props.dominio).then((response) => {
+      console.log();
+      console.log(response);
+      setImageInfos(response.data);
+    });
   }
 
   const tabFiltro = props.filter ? <Tab eventKey="filtro" title="Filtro">
@@ -223,7 +250,7 @@ function MyTabsForm(props) {
 
   const tabEdicao = <Tab eventKey="edicao" title="Edição">
           {dataFmEdicao}
-      </Tab>
+      </Tab>  
 
   const tabImagens = <Tab eventKey="imagens" title="Imagens">
       {<>
@@ -300,7 +327,8 @@ function MyTabsForm(props) {
             
 
               {imageInfos &&
-                imageInfos.map((img, index) => (
+                //imageInfos.map((img, index) => (
+                  imageInfos.filter(img => img.deleted_at === null).map((img, index) => (
                   
                   <div style={{height : '300px', width : '300px'}} key={img.id}>
                   
@@ -309,6 +337,29 @@ function MyTabsForm(props) {
                       large={'https://images.queavanca.com/index.php?filename=' + img.fileName}
                       alt={'Imagem ' + index}
                     />
+
+    <div className="d-inline p-1">
+        <span className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus">
+              <button 
+              className="bg-light text-dark" 
+              onClick={() => excluirImagem(img)}>
+                <i className='fa fa-trash'></i> 
+              </button>
+        </span>
+    </div>
+
+
+    <div className="d-inline p-1">
+      <span className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus">
+        <button 
+              className="bg-light text-dark" 
+              onClick={() => definirImagemCapa(img)}>
+                <i className='fa fa-check-square'></i> 
+              </button>
+        </span>
+    </div>
+                   
+
 
                   </div>
 
