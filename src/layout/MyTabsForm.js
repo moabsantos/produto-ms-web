@@ -148,7 +148,10 @@ function MyTabsForm(props) {
         //   imageInfos: files.data,
         // });
       })
-      .catch(() => {
+      .catch((e) => {
+
+        console.log(e);
+
         _progressInfos[idx].percentage = 0;
 
         //this.setState((prev) => {
@@ -358,8 +361,16 @@ function MyTabsForm(props) {
               </button>
         </span>
     </div>
-                   
 
+    {img.flagCapa == true &&
+
+        <div className="d-inline p-1">
+          <span className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus">
+          <p>Imagem Capa</p>
+          </span>
+        </div>
+    
+    }
 
                   </div>
 

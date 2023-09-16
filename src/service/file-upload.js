@@ -44,29 +44,19 @@ class FileUploadService {
     }
 
     async delete(img){
-      //delApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/${params.id}`, 
-      //body: {requisicaoAlmoxarifadoId: idMaster}}) 
-
-
+    
       let body = { dominioName: img.dominioName, dominioId: img.dominioId, imagemId: img.id};    
-      console.log("body do service");
-      console.log(JSON.stringify(body));
-
+      
       //delApi({url: "https://images.queavanca.com", body: {body}});
 
-      delApi({url: "https://images.queavanca.com", body: {
-        dominioName: img.dominioName,
-        dominioId: img.dominioId,
-        imagemId: img.id
-      }});
+      //const res = await axios.delete('https://httpbin.org/delete', { data: { answer: 42 } });
+      //return http.delete("", {data: JSON.stringify(body)}, {
 
-      console.log("deletou..");
-
-      // return http.delete("", JSON.stringify(body), {
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   }
-      // });
+      return await http.delete("", {data: body}, {
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
     }
 
     async definirImagemCapa(img) {
@@ -79,7 +69,7 @@ class FileUploadService {
       formData.append("dominioId", img.dominioId);
       formData.append("imagemIdCapa", img.id);
 
-      return http.post("", formData, {
+      return await http.post("", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         }
