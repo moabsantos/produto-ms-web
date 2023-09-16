@@ -3,12 +3,12 @@ import http from "./http-common";
 
 class FileUploadService {
 
-  upload(file, onUploadProgress) {
+  upload(file, dominioName, dominioId, onUploadProgress) {
     let formData = new FormData();
 
     formData.append("name", file);
-    formData.append("dominioName", "empresa");
-    formData.append("dominioId", "3");
+    formData.append("dominioName", dominioName);
+    formData.append("dominioId", dominioId);
 
     return http.post("/", formData, {
       headers: {

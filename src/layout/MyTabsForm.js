@@ -29,8 +29,6 @@ function MyTabsForm(props) {
     const resp = await getApi({ url: process.env.REACT_APP_HOST_API + '/' + props.dominio + '/' + id })
 
     await UploadService.getFiles(id, props.dominio).then((response) => {
-      console.log();
-      console.log(response);
       setImageInfos(response.data);
     });
 
@@ -76,7 +74,7 @@ function MyTabsForm(props) {
   function upload(idx, file) {
     let _progressInfos = [progressInfos];
 
-    UploadService.upload(file, (event) => {
+    UploadService.upload(file, props.dominio, idSelecao ,(event) => {
       _progressInfos[idx].percentage = Math.round((100 * event.loaded) / event.total);
       setProgressInfos(_progressInfos);
     })
@@ -93,11 +91,7 @@ function MyTabsForm(props) {
             .bind(this),
           1000
         );
-
-        //props.id vem vazio, tirar esse 3 chumbado
-        UploadService.getFiles(3, props.dominio).then((response) => {
-          console.log();
-          console.log(response);
+        UploadService.getFiles(idSelecao, props.dominio).then((response) => {
           setImageInfos(response.data);
         });
       })
@@ -105,9 +99,6 @@ function MyTabsForm(props) {
         setImageInfos(files.data);
       })
       .catch((e) => {
-
-        console.log(e);
-
         _progressInfos[idx].percentage = 0;
 
         let nextMessage = ["Could not upload the image: " + file.name];
@@ -121,22 +112,28 @@ function MyTabsForm(props) {
 
   function excluirImagem(img) {
     UploadService.delete(img);
-    //props.id vem vazio, tirar esse 3 chumbado
-    UploadService.getFiles(3, props.dominio).then((response) => {
-      console.log();
-      console.log(response);
-      setImageInfos(response.data);
-    });
+    setTimeout(
+      function () {
+        UploadService.getFiles(idSelecao, props.dominio).then((response) => {
+          setImageInfos(response.data);
+        });
+      }
+        .bind(this),
+      1000
+    );
   }
 
   function definirImagemCapa(img) {
     UploadService.definirImagemCapa(img);
-    //props.id vem vazio, tirar esse 3 chumbado
-    UploadService.getFiles(3, props.dominio).then((response) => {
-      console.log();
-      console.log(response);
-      setImageInfos(response.data);
-    });
+    setTimeout(
+      function () {
+        UploadService.getFiles(idSelecao, props.dominio).then((response) => {
+          setImageInfos(response.data);
+        });
+      }
+        .bind(this),
+      1000
+    );
   }
 
   const tabFiltro = props.filter ? <Tab eventKey="filtro" title="Filtro">
@@ -209,7 +206,6 @@ function MyTabsForm(props) {
           <label className="btn btn-default p-0">
             <input type="file" multiple accept="image/*"
               onChange={(event) => {
-                console.log(event.target.files);
                 setSelectedFiles(event.target.files);
               }}
             />
