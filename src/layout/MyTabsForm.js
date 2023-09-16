@@ -82,7 +82,7 @@ function MyTabsForm(props) {
         setTimeout(
 
           function () {
-            let nextMessage = ["Uploaded the image successfully: " + file.name];
+            let nextMessage = ["Sucesso no upload da imagem: " + file.name];
             setMessage(nextMessage);
             setPreviewImages([]);
             setProgressInfos([]);
@@ -193,16 +193,9 @@ function MyTabsForm(props) {
   </Tab>
 
   const tabImagens = <Tab eventKey="imagens" title="Imagens">
-    {<>
-
-      lista de imagens do id {idSelecao} do dominio {props.dominio} com id master {props.idMaster}
-
-    </>}
-
-    <div>
 
       <div className="row">
-        <div className="col-8">
+        <div className="col-12">
           <label className="btn btn-default p-0">
             <input type="file" multiple accept="image/*"
               onChange={(event) => {
@@ -210,10 +203,8 @@ function MyTabsForm(props) {
               }}
             />
           </label>
-        </div>
-
-        <div className="col-4">
           <button
+            style={{float: 'right'}}
             className="btn btn-success btn-sm"
             disabled={!selectedFiles}
             onClick={() => uploadImages()}
@@ -260,54 +251,59 @@ function MyTabsForm(props) {
         </div>
       )}
 
-      <div className="card mt-3">
-        <div className="card-header">Imagens Salvas</div>
-
+      <div className="col-12">
+      
         {imageInfos &&
           imageInfos.filter(img => img.deleted_at === null).map((img, index) => (
 
-            <div style={{ height: '300px', width: '300px' }} key={img.id}>
+            <div style={{ 
+              position: 'relative',
+              margin: '5px',
+              float: 'left',
+              width: '400px'
+             }} key={img.id}>
 
               <ModalImage
+                style = {{
+                  width: '100%',
+                  height: '100%'
+                }}
                 small={'https://images.queavanca.com/index.php?filename=' + img.fileName}
                 large={'https://images.queavanca.com/index.php?filename=' + img.fileName}
                 alt={'Imagem ' + index}
               />
 
-              <div className="d-inline p-1">
-                <span className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus">
-                  <button
+                <div style = {{
+                  bottom: '0'
+                }}>
+              
+                  <button style = {{border: 'none'}}
                     className="bg-light text-dark"
                     onClick={() => excluirImagem(img)}>
                     <i className='fa fa-trash'></i>
                   </button>
-                </span>
-              </div>
 
-              <div className="d-inline p-1">
-                <span className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus">
-                  <button
+                  <button style = {{border: 'none', padding: '10px'}}
                     className="bg-light text-dark"
                     onClick={() => definirImagemCapa(img)}>
                     <i className='fa fa-check-square'></i>
                   </button>
-                </span>
-              </div>
 
-              {img.flagCapa == true &&
+                  {img.flagCapa == true &&
 
-                <div className="d-inline p-1">
-                  <span className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus">
-                    <p>Imagem Capa</p>
-                  </span>
-                </div>
+                  <div className="d-inline p-1">
+                    <span className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus">
+                      <p>Imagem Capa</p>
+                    </span>
+                  </div>
 
-              }
+                  }
+
+                  </div>
 
             </div>
           ))}
       </div>
-    </div>
   </Tab>
 
   const tabVisualizacao = <Tab eventKey="visualizacao" title="Vistualização">
