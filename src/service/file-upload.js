@@ -1,5 +1,5 @@
 import getApi from '../_shared/req-get-http';
-import http from "../service/http-common-test";
+import http from "./http-common";
 
 class FileUploadService {
 
