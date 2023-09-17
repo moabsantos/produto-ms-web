@@ -22,6 +22,7 @@ const ProdutoComponente = () => {
 
   getApi({ url: process.env.REACT_APP_HOST_API + '/'+ dominioMaster +'/' + idMaster })
     .then((resp) => {
+      if (!resp.data || !resp.data[0]) return
       setNomeMaster(resp.data[0].name)
       setIdUnidadeMedidaMaster(resp.data[0].idUnidadeMedida)
     })
@@ -56,6 +57,10 @@ const ProdutoComponente = () => {
         buttonsTop={[
           {label: "Voltar", onClick: () => { navigate("/" + dominioMaster); }}
         ]}
+
+        buttonsAdd={[
+          {label: "", nomeIcone: "fa-solid fa-rectangle-list", onClick: (params) => { navigate("/produto-componente-parte/"+ params.id); }}
+        ]}        
 
         //add= {(params) => (<FormAdd dominio={dominio} idMaster={idMaster} callBusca={() => params.callBusca()} />) }
         add= {(params) => FormAdd({ id: params.id, dadosMaster: {id: idMaster, idUnidadeMedida: idUnidadeMedidaMaster}, dominio:dominio,  dataForm: params.dataForm, callBusca: () => params.callBusca() })}

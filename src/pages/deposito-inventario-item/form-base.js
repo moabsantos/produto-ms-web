@@ -25,8 +25,8 @@ const DepositoInventarioItem = () => {
         empresa: resp.data[0].empresaName,
         depositoId: resp.data[0].depositoId,
         deposito: resp.data[0].depositoName,
-        grupoItem: resp.data[0].itemGrupoName,
-        item: resp.data[0].itemName,
+        grupoItem: resp.data[0].itemGrupoId +' - '+ resp.data[0].itemGrupoName,
+        item: resp.data[0].itemId +' - '+ resp.data[0].itemName,
         status: resp.data[0].status,
         dataInicio: formataData({data: resp.data[0].dataInicio, format: 'to-br-date'}),
         dataTermino: formataData({data: resp.data[0].dataTermino, format: 'to-br-date'})

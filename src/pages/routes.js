@@ -53,6 +53,7 @@ import DepositoInventarioItem from "./deposito-inventario-item/form-base"
 import Representante from "./representante/form-base"
 import RepresentanteUsuario from "./representante-usuario/form-base"
 import RepresentanteCliente from "./representante-cliente/form-base"
+import ProdutoComponenteParte from "./produto-componente-parte/form-base"
 
 const RoutesModule = () => {
 
@@ -88,6 +89,7 @@ const RoutesModule = () => {
                             <Route path='/produto' element={<Produto />} />
                             <Route path='/produto-preco/:idMaster' element={<ProdutoPreco />} />
                             <Route path='/produto-componente/:idMaster' element={<ProdutoComponente />} />
+                            <Route path='/produto-componente-parte/:idMaster' element={<ProdutoComponenteParte />} />
 
                             <Route path='/requisicao-almoxarifado' element={<RequisicaoAlmoxarifado />} />
                             <Route path='/requisicao-almoxarifado-item/:idMaster' element={<RequisicaoAlmoxarifadoItem/>} />
