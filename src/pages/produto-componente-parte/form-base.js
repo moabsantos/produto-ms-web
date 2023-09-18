@@ -20,6 +20,7 @@ const ProdutoComponenteParte = () => {
     getApi({ url: process.env.REACT_APP_HOST_API + '/produto-componente/' + idMaster })
     .then((resp) => {
       setProdutoComponente({
+        produtoId: resp.data[0].produtoId,
         produto: resp.data[0].produtoId +' - '+ resp.data[0].produtoName,
         estagio: resp.data[0].estagioId +' - '+ resp.data[0].estagioName,
         item: resp.data[0].componenteId +' - '+ resp.data[0].componenteName,
@@ -38,7 +39,7 @@ const ProdutoComponenteParte = () => {
 
         buttonsTop={[
 
-          {label: "", labelPopover: "Sair desta tela", nomeIcone: "fa-solid fa-door-open", onClick: () => { navigate("/produto-componente/"+ idMaster); }}
+          {label: "", labelPopover: "Sair desta tela", nomeIcone: "fa-solid fa-door-open", onClick: () => { navigate("/produto-componente/"+ produtoComponente.produtoId); }}
         ]}
         
         tituloForm={"Partes do Componente da Ficha"}
