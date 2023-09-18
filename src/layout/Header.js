@@ -35,18 +35,26 @@ const Header = () => {
       <div className="px-3 py-2 bg-dark text-white">
         <div className="container">
           <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" className="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-              <div className="bi d-block mb-1" style={{textAlign: "center"}}><img src={picture} alt=""></img></div>
-            </a>
 
-            <div className="card" style={{width: "18rem"}}>
+            <div>
+
+            <div className="card" style={{width: "30rem"}}>
               <div className="card-body">
+
+                <div style={{float: 'left'}}>
+                <a href="/" className="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                  <div className="bi d-block mb-1" style={{textAlign: "center"}}><img src={picture} alt=""></img></div>
+                </a>
+                </div>
+                <div>
                 <h5 className="card-title text-uppercase">{nameEmpresa}</h5>
                 <h6 className="card-subtitle mb-2 text-body-secondary">{nameGrupo}</h6>
                 <p className="card-text">{nameUser} {emailUser}</p>
+                </div>
+              
               </div>
             </div>
-
+            </div>
 
             <ul className="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
               <li>
