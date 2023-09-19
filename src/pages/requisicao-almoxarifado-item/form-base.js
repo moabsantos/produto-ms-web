@@ -24,7 +24,7 @@ const RequisicaoAlmoxarifadoItem = () => {
   const bodyBase = {}
 
   const fieldsForm = [
-    'itemId', 'unidadeMedidaId', 
+    'itemId', 'itemAgrupador', 'unidadeMedidaId', 
     'setorId', 'sequencia', 'quantidadeSolicitada', 'description']
 
   const filterList = 'filter=requisicaoAlmoxarifadoId||$eq||'+ idMaster

@@ -22,6 +22,7 @@ const LocalForm = (props) => {
             itemId: props.dataForm.itemId,
             unidadeMedidaId: props.dataForm.unidadeMedidaId,
             description: props.dataForm.description,
+            itemAgrupador: props.dataForm.itemAgrupador,
             quantidadeSolicitada: formataNumero({valor: props.dataForm.quantidadeSolicitada, format: 'c0,2'})
             
         }
@@ -50,6 +51,15 @@ const LocalForm = (props) => {
                 name="item"
                 valueDefault={valores.itemId} 
             />   
+
+            <MySelectLabel
+                dominio=""
+                options={[{id:0, name: "Item Normal"}, {id: 1, name: "Item KIT"}]}
+                caption="Tipo"
+                fieldName="itemAgrupador"
+                name="itemAgrupador"
+                valueDefault={valores.itemAgrupador} 
+            />
 
             <MyEditForm caption="Qtd. Solicitada" name="quantidadeSolicitada" fieldName="quantidadeSolicitada" valor={valores.quantidadeSolicitada} />
 
