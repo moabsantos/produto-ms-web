@@ -57,6 +57,8 @@ const ProdutoComponenteParte = () => {
         columnsTable={[
           { label: "Sequencia", accessor: "sequencia", sortable: true },
           { label: "Quantidade", accessor: "quantidade", sortable: true, formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,4'})} },
+          { label: "Consumo (X)", accessor: "consumoX", sortable: true, formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,4'})} },
+          { label: "Consumo (Y)", accessor: "consumoY", sortable: true, formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,4'})} },
           { label: "Consumo", accessor: "consumo", sortable: true, formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,4'})} },
           { label: "Nome da Parte", accessor: "nomeParte", sortable: true },
           { label: "Descrição", accessor: "description", sortable: true }
@@ -68,10 +70,11 @@ const ProdutoComponenteParte = () => {
           produtoComponenteId: idMaster
         }}
 
-        fieldsForm={['sequencia', 'quantidade', 'consumo', 'nomeParte', 'description']}
+        fieldsForm={['sequencia', 'quantidade', 'consumoX', 'consumoY', 'nomeParte', 'description']}
         bodyFormated={(payload) => {
           payload.quantidade = formataNumero({valor: payload.quantidade, format: 'c0.'})
-          payload.consumo = formataNumero({valor: payload.consumo, format: 'c0.'})
+          payload.consumoX = formataNumero({valor: payload.consumoX, format: 'c0.'})
+          payload.consumoY = formataNumero({valor: payload.consumoY, format: 'c0.'})
           return payload
         }}
 
