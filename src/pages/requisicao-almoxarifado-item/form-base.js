@@ -105,6 +105,7 @@ const RequisicaoAlmoxarifadoItem = () => {
           { label: "Recebedor", accessor: "recebedor", sortable: false },
           { label: "Setor", accessor: "setorName", sortable: false },
           { label: "Status", accessor: "statusItem", sortable: false },
+          { label: "Origem", accessor: "requisicaoAlmoxarifadoItemIdOrigem", sortable: false, formataDado: (d) => {return !d || d === 0 ? 'Manual' : 'KIT'} },
         ]}
 
         add={(params) => MyFormSubmit({ 
