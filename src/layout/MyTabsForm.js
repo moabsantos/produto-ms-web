@@ -75,7 +75,7 @@ function MyTabsForm(props) {
     let _progressInfos = [progressInfos];
 
     UploadService.upload(file, props.dominio, idSelecao ,(event) => {
-      _progressInfos[idx].percentage = Math.round((100 * event.loaded) / event.total);
+      _progressInfos[idx].percentage = {percentage: Math.round((100 * event.loaded) / event.total)};
       setProgressInfos(_progressInfos);
     })
       .then(() => {
