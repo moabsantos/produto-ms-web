@@ -15,7 +15,7 @@ jobs:
         - name: Setup Env Node
           uses: actions/setup-node@v3
           with:
-              node-version: 19
+              node-version: 18
 
         - name: Instalando lib package.json
           run: npm ci
