@@ -55,8 +55,8 @@ const UploadAndDisplayImage = (props) => {
             setPreviewImages([]);
             setProgressInfos([]);
             return;
-          }
-            .bind(this),
+          },
+            //.bind(this),
           1000
         );
         UploadService.getFiles(idSelecao, dominio).then((response) => {
