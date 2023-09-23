@@ -23,7 +23,6 @@ const LocalForm = (props) => {
             unidadeMedidaId: props.dataForm.unidadeMedidaId,
             description: props.dataForm.description,
             quantidadeSolicitada: formataNumero({valor: props.dataForm.quantidadeSolicitada, format: 'c0,2'})
-            
         }
 
     }
