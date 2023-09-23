@@ -190,7 +190,7 @@ const UploadAndDisplayImage = (props) => {
                   <i className='fa fa-check-square'></i>
                 </button>
 
-                {img.flagCapa == true &&
+                {img.flagCapa === true &&
 
                   <div className="d-inline p-1">
                     <span className="d-inline-block" tabIndex="0" data-bs-toggle="popover" data-bs-trigger="hover focus">
