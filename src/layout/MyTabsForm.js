@@ -65,6 +65,7 @@ function MyTabsForm(props) {
       columns={props.columns}
 
       getItems={(data) => props.getItems(data)}
+      afterGetLista={props.afterGetLista}
       dominio={props.dominio}
       idMaster={props.idMaster}
       filterList={props.filterList}

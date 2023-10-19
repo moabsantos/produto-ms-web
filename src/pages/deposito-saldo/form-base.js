@@ -4,6 +4,7 @@ import FormFilter from './form-filter';
 import formataNumero from '../../_shared/formata-numero';
 import MyTabsForm from '../../layout/MyTabsForm';
 import FormView  from './form-view';
+import getApi from '../../_shared/req-get-http';
   
 const DepositoSaldo = () => {
 
@@ -24,6 +25,24 @@ const DepositoSaldo = () => {
         nomeTabAtiva={'filtro'}
         defaultFilter={filterTable}
         filter= {(params) => FormFilter({dataFilter: params.dataFilter}) }
+        afterGetLista={(respApi, atributo, callBack) => {
+
+          let dataLista = []
+          if (respApi && respApi.data && respApi.data.length && respApi.data.length > 0) dataLista = respApi.data
+
+          for (let index = 0; index < dataLista.length; index++) {
+            const element = dataLista[index];
+
+            dataLista[index]['estoqueMinimo'] = 0
+            getApi({url:`${process.env.REACT_APP_HOST_API}/deposito-item/?filter=depositoId||$eq||${element.depositoId}&filter=itemId||$eq||${element.itemId}`}).then(esqMinimo => {
+              if (esqMinimo && esqMinimo.data && esqMinimo.data.length>0){
+                dataLista[index]['estoqueMinimo'] = esqMinimo.data[0].quantidadeMinima
+                callBack(atributo, dataLista)
+              } 
+            })
+            
+          }
+        }}
 
         columns={[    
           { label: "Emp", accessor: "empresaSigla", sortable: false },
@@ -34,6 +53,7 @@ const DepositoSaldo = () => {
           { label: "Unid", accessor: "unidadeMedidaSigla", sortable: false },
 
           { label: "Lote", accessor: "loteCodigo", sortable: false },
+          { label: "Est Min", accessor: "estoqueMinimo", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,3'})} },
 
           { label: "Recebido", accessor: "quantidadeRecebida", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,3'})} },
           { label: "Disponível", accessor: "quantidadeDisponivel", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,3'})} },

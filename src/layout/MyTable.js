@@ -43,6 +43,13 @@ export default class MyTable extends React.Component {
         this.buscarLista(filtro)
     }
 
+    setStateExterno(chave, data){
+
+        this.setState({
+            data: data
+        })
+    }
+
     buscarLista(filtro) {
         
         const filterRoot = this.props.filterList ? '?' + this.props.filterList : ''
@@ -51,8 +58,11 @@ export default class MyTable extends React.Component {
         const url = `${urlRoot}${charConcat}${filtro}`
 
         getApi({ url: url }).then(resp => {
+
             if (resp){
+                
                 this.setState({data: resp.data})
+                if (this.props.afterGetLista) this.props.afterGetLista(resp, 'data', (chve, dado) => this.setStateExterno(chve, dado))
             }
         })
     }
@@ -73,8 +83,6 @@ export default class MyTable extends React.Component {
 
         let letBtnActions = []
         if (this.props.btnEdicao) letBtnActions.push({label: '', labelPopover: "Editar este item", nomeIcone: 'fa-regular fa-pen-to-square', onClick:(item) => { this.props.btnEdicao({id: item.id})}})
-
-
 
         return (
             <>

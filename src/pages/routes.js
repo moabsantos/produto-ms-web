@@ -54,6 +54,8 @@ import Representante from "./representante/form-base"
 import RepresentanteUsuario from "./representante-usuario/form-base"
 import RepresentanteCliente from "./representante-cliente/form-base"
 import ProdutoComponenteParte from "./produto-componente-parte/form-base"
+import PedidoCompraContrato from "./pedido-compra-contrato/form-base"
+import TipoDocumento from "./tipo-documento/form-base"
 
 const RoutesModule = () => {
 
@@ -71,6 +73,7 @@ const RoutesModule = () => {
                             <Route path='/representante-usuario/:idMaster' element={<RepresentanteUsuario />} />
                             <Route path='/representante-cliente/:idMaster' element={<RepresentanteCliente />} />
 
+                            <Route path='/tipo-documento' element={<TipoDocumento />} />
                             <Route path='/prioridade' element={<Prioridade />} />
                             <Route path='/pedido-status' element={<PedidoStatus />} />
                             <Route path='/pedido-venda' element={<PedidoVenda />} />
@@ -98,6 +101,7 @@ const RoutesModule = () => {
                             <Route path='/pedido-compra' element={<PedidoCompra />} />
                             <Route path='/pedido-compra-item/:idMaster' element={<PedidoCompraItem/>} />
                             <Route path='/pedido-compra-requisicao/:idMaster' element={<PedidoCompraRequisicao/>} />
+                            <Route path='/pedido-compra-contrato/' element={<PedidoCompraContrato/>} />
                             
                             <Route path='/ordem-producao' element={<OrdemProducao/>} />
                             <Route path='/ordem-producao-item/:idMaster' element={<OrdemProducaoItem/>} />

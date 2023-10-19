@@ -124,6 +124,20 @@ const Home = () => {
       ]
     },
     {
+      titulo: "Financeiro",
+      visivel: getPermissao(modulosAtivos.financeiro, perfilSistemaAvanca),
+      grupos: [
+        {
+          titulo: "Contas a Pagar",
+          apresentacao: "Na Gestão do Contas a Pagar as obrigações serão acompanhadas .",
+          items:[
+            {titulo: "Contratos do Pedido de Compra", url: "/pedido-compra-contrato"},
+            {titulo: "Tipo do Documento", url: "/tipo-documento"},
+          ]
+        },
+      ]
+    },
+    {
       titulo: "Empresa",
       visivel: getPermissao(modulosAtivos.empresa, perfilSistemaAvanca),
       grupos: [
