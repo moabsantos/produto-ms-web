@@ -9,7 +9,7 @@ const MyTableBody = ({ tableData, columns, actions, buttonsAdd }) => {
        return (
         <tr key={item.id}>
 
-         {columns.map(({ accessor, alignCell, formataDado }) => {
+         {columns.map(({ accessor, alignCell, formataDado, funcStyle }) => {
           let tData = item[accessor] ? item[accessor] : "——";
 
           if (item[accessor] && formataDado){
@@ -22,6 +22,8 @@ const MyTableBody = ({ tableData, columns, actions, buttonsAdd }) => {
           if (alignCell){
             styleCell = {textAlign: "right"}
           }
+
+          if (funcStyle) styleCell = funcStyle(styleCell, item)
 
           return <td key={accessor} style={styleCell} >{tData}</td>;
          })}

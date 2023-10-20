@@ -53,7 +53,18 @@ const DepositoSaldo = () => {
           { label: "Unid", accessor: "unidadeMedidaSigla", sortable: false },
 
           { label: "Lote", accessor: "loteCodigo", sortable: false },
-          { label: "Est Min", accessor: "estoqueMinimo", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,3'})} },
+          { label: "Est Min", accessor: "estoqueMinimo", sortable: true, alignCell:"right"
+              , formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,3'})}
+              , funcStyle: (currStyle, data) => {
+                if (!data.estoqueMinimo) return currStyle
+                if (!data.quantidadeDisponivel) return currStyle
+                if (Number(data.estoqueMinimo) <= Number(data.quantidadeRecebida) + Number(data.quantidadeDisponivel) - Number(data.quantidadeSeparada)) return currStyle
+                return {
+                  ...currStyle,
+                  backgroundColor: '#FFC0CB'
+                }
+              }
+          },
 
           { label: "Recebido", accessor: "quantidadeRecebida", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,3'})} },
           { label: "Disponível", accessor: "quantidadeDisponivel", sortable: true, alignCell:"right", formataDado: (valorFormatar) => {return formataNumero({valor: valorFormatar, format: 'c0,3'})} },
