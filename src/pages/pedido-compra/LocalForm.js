@@ -60,7 +60,7 @@ const LocalForm = (props) => {
             />
 
             <MySelectLabel
-                dominio="deposito"
+                dominio="deposito?filter=flagPrincipal||$eq||0&filter=flagBaixaEstoque||$eq||0&filter=flagAjusteInventario||$eq||0"
                 caption="Dep. Saída"
                 fieldName="depositoIdOrigem"
                 name="depositoIdOrigem"
@@ -68,7 +68,7 @@ const LocalForm = (props) => {
             />
 
             <MySelectLabel
-                dominio="deposito"
+                dominio="deposito?filter=flagPrincipal||$eq||1"
                 caption="Dep. Entrada"
                 fieldName="depositoIdDestino"
                 name="depositoIdDestino"
