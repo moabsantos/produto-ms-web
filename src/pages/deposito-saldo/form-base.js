@@ -4,10 +4,12 @@ import FormFilter from './form-filter';
 import formataNumero from '../../_shared/formata-numero';
 import MyTabsForm from '../../layout/MyTabsForm';
 import FormView  from './form-view';
+
 import getApi from '../../_shared/req-get-http';
+import delApi from '../../_shared/req-del-http';
   
 const DepositoSaldo = () => {
-
+  
   const tituloForm = 'Saldo do Depósito'
   const dominio = 'deposito-saldo'
   const bodyBase = {}
@@ -76,7 +78,11 @@ const DepositoSaldo = () => {
 
         view={(params) => FormView({ id: params.id, dataForm: params.dataForm, bodyBase:bodyBase, fieldsForm:fieldsForm, callBusca: params.callBusca })} 
       
-        buttonsAdd={[]}        
+        buttonsAdd={[
+          {label: "", nomeIcone: "fa-solid fa-trash-can", onClick: (params) => { 
+            delApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/${params.id}`, body: {}})
+          }}
+        ]}        
 
       />
     </>

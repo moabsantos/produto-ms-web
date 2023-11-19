@@ -18,6 +18,7 @@ const FormFilter = (props) => {
 
         if (elements.depositoId.value !== '') strFilter = strFilter + 'filter[]=depositoId||$eq||'+elements.depositoId.value+'&'
         if (elements.itemGrupoId.value !== '') strFilter = strFilter + 'filter[]=itemGrupoId||$eq||'+elements.itemGrupoId.value+'&'
+        if (elements.itemId.value !== '') strFilter = strFilter + 'filter[]=itemId||$eq||'+elements.itemId.value+'&'
 
         props.dataFilter( strFilter )
     
@@ -42,6 +43,14 @@ const FormFilter = (props) => {
                 fieldName="itemGrupoId"
                 name="itemGrupoId"
                 valueDefault={valores.itemGrupoId} 
+            />
+
+            <MySelectLabel
+                dominio="produto"
+                caption="Produtos"
+                fieldName="itemId"
+                name="itemId"
+                valueDefault={valores.itemId} 
             />
 
             <Form.Group as={Row} className="mb-3">
