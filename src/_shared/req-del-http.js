@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 
 export default async function delApi(props){
 
@@ -19,11 +20,17 @@ export default async function delApi(props){
         window.location = '/auth-usuario-login'
         
       }else{
-  
-        return response.json();
+        
+        const resp = response.json()
+        
+        return resp;
   
       }
 
+    })
+
+    .then((data) => {
+      toast.warning('Solicitação de deleção para item: '+ data?.res?.id + '. Favor consultar novamente.')
     })
 
   }
