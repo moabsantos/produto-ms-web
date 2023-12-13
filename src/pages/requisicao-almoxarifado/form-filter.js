@@ -15,7 +15,10 @@ const FormFilter = (props) => {
         if (elements.statusItemNot.value !== ''){
             if (elements.statusItemNot.value !== 'naoEntregue') strFilter = strFilter + 'filter[]=statusItem||$eq||'+elements.statusItemNot.value
             if (elements.statusItemNot.value === 'naoEntregue') strFilter = strFilter + 'filter[]=statusItem||$ne||Pendente&filter[]=statusItem||$ne||Entregue'
-        } 
+        }
+
+        if (strFilter !== '') strFilter = strFilter + '&'
+        if (elements.clienteId.value !== '' && elements.clienteId.value !== '0') strFilter = strFilter + 'filter[]=clienteId||$eq||'+elements.clienteId.value
 
         props.dataFilter( strFilter )
     
@@ -33,6 +36,14 @@ const FormFilter = (props) => {
                 fieldName="statusItemNot"
                 name="statusItemNot"
                 valueDefault="Entregue"
+            />
+
+            <MySelectLabel
+                dominio="cliente"
+                caption="Cliente"
+                fieldName="clienteId"
+                name="cliente"
+                valueDefault="0"
             />
 
             <Form.Group as={Row} className="mb-3">

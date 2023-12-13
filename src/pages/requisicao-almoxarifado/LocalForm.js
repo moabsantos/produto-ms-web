@@ -19,6 +19,7 @@ const LocalForm = (props) => {
             code: props.dataForm.code,
             name: props.dataForm.name,
             empresaId: props.dataForm.empresaId,
+            clienteId: props.dataForm.clienteId,
             depositoIdOrigem: props.dataForm.depositoIdOrigem,
             depositoIdDestino: props.dataForm.depositoIdDestino,
             dataSolicitacao: formataData({data: props.dataForm.dataSolicitacao, format: 'to-br-date'})
@@ -39,6 +40,14 @@ const LocalForm = (props) => {
                 fieldName="empresaId"
                 name="empresa"
                 valueDefault={valores.empresaId} 
+            />
+
+            <MySelectLabel
+                dominio="cliente"
+                caption="Cliente"
+                fieldName="clienteId"
+                name="cliente"
+                valueDefault={valores.clienteId} 
             />
 
             <MySelectLabel

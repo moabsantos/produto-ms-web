@@ -16,7 +16,8 @@ const RequisicaoAlmoxarifado = () => {
   const tituloForm = 'Requisicão Almoxarifado'
   const dominio = 'requisicao-almoxarifado'
   const bodyBase = {}
-  const fieldsForm = ['code', 'name', 'empresaId', 'dataSolicitacao', 'depositoIdOrigem', 'depositoIdDestino']
+  const fieldsForm = ['code', 'name', 'empresaId', 'clienteId', 'dataSolicitacao'
+    , 'depositoIdOrigem', 'depositoIdDestino']
 
   let filterTable = 'filter[]=statusItem||$ne||Entregue'
 
@@ -34,6 +35,7 @@ const RequisicaoAlmoxarifado = () => {
         columns={[    
           { label: "Código", accessor: "code", sortable: false },
           { label: "Nome", accessor: "name", sortable: true },
+          { label: "Cliente", accessor: "clienteName", sortable: true },
           { label: "Origem", accessor: "depositoNameOrigem", sortable: true },
           { label: "Destino", accessor: "depositoNameDestino", sortable: true },
           { label: "Data Solicitação", accessor: "dataSolicitacao", sortable: true, formataDado: (d) => {return formataData({data: d, format: 'to-br-date'})} },
