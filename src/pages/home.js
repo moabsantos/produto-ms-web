@@ -133,6 +133,7 @@ const Home = () => {
           items:[
             {titulo: "Contratos do Pedido de Compra", url: "/pedido-compra-contrato"},
             {titulo: "Tipo do Documento", url: "/tipo-documento"},
+            {titulo: "Forma de Pagamento", url: "/forma-pagamento"},
           ]
         },
       ]

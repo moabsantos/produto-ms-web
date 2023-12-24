@@ -1,3 +1,4 @@
+import React, { useState } from "react"
 import { Form } from "react-bootstrap"
 
 import MyEditForm from "../../layout/MyEditForm";
@@ -20,12 +21,15 @@ const LocalForm = (props) => {
             name: props.dataForm.name,
             empresaId: props.dataForm.empresaId,
             clienteId: props.dataForm.clienteId,
+            clienteEstabelecimentoId: props.dataForm.clienteEstabelecimentoId,
             depositoIdOrigem: props.dataForm.depositoIdOrigem,
             depositoIdDestino: props.dataForm.depositoIdDestino,
             dataSolicitacao: formataData({data: props.dataForm.dataSolicitacao, format: 'to-br-date'})
         }
 
     }
+
+    const [idCliente, setIdClient] = useState(valores.clienteId)
 
     return (
         <div className="container">
@@ -48,7 +52,16 @@ const LocalForm = (props) => {
                 fieldName="clienteId"
                 name="cliente"
                 valueDefault={valores.clienteId} 
+                onChange={(id) => { setIdClient(id) }}
             />
+
+            <MySelectLabel
+                dominio={"cliente-estabelecimento/?filter=clienteId||$eq||"+idCliente}
+                caption="Local de Entrega"
+                fieldName="clienteEstabelecimentoId"
+                name="localEntrega"
+                valueDefault={valores.clienteEstabelecimentoId} 
+            />   
 
             <MySelectLabel
                 dominio="deposito?filter=flagPrincipal||$eq||1"

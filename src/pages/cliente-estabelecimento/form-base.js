@@ -45,7 +45,7 @@ const ClienteEstabelecimento = () => {
         tituloForm={"Estabelecimentos"}
         dominio={dominio}
 
-        filterList={''}
+        filterList={'filter=clienteId||$eq||'+ idMaster}
 
         headForm={[
           {key: "Código", value: cliente.code},
@@ -56,6 +56,10 @@ const ClienteEstabelecimento = () => {
         columnsTable={[
           { label: "Código", accessor: "code", sortable: true },
           { label: "CNPJ", accessor: "cnpj", sortable: true },
+          { label: "Nome", accessor: "name", sortable: true },
+          { label: "Cidade", accessor: "cidadeName", sortable: true },
+          { label: "UF", accessor: "cidadeUfSigla", sortable: true },
+          { label: "Cep", accessor: "cep", sortable: true },
           { label: "Dt Inclusão", accessor: "created_at", sortable: true, formataDado: (d) => {return formataData({data: d, format: 'to-br-date'})} },
           { label: "Dt Ativação", accessor: "updated_at", sortable: true, formataDado: (d) => {return formataData({data: d, format: 'to-br-date'})} },
           { label: "Dt Inativação", accessor: "deleted_at", sortable: true, formataDado: (d) => {return formataData({data: d, format: 'to-br-date'})} },
