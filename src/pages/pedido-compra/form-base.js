@@ -8,6 +8,8 @@ import MyTabsForm from '../../layout/MyTabsForm';
 import FormView  from './form-view';
 import LocalForm from './LocalForm';
   
+import postApi from '../../_shared/req-post-http';
+
 const PedidoCompra = () => {
 
   const navigate = useNavigate();
@@ -95,7 +97,14 @@ const PedidoCompra = () => {
         view={(params) => FormView({ id: params.id, dataForm: params.dataForm, bodyBase:bodyBase, fieldsForm:fieldsForm, callBusca: params.callBusca })} 
       
         buttonsAdd={[
-          {label: "", nomeIcone: "fa-solid fa-rectangle-list", onClick: (params) => { navigate("/pedido-compra-item/"+ params.id); }},
+          {label: "", nomeIcone: "fa-solid fa-rectangle-list", onClick: (params) => { 
+            
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}-item/capa/refresh-status`, body: {id: params.id}}) 
+            .then(() => {})
+
+            navigate("/pedido-compra-item/"+ params.id);
+
+          }},
           {label: "", nomeIcone: "fa-solid fa-file-import", onClick: (params) => { navigate("/pedido-compra-requisicao/"+ params.id); }}
         ]}        
 
