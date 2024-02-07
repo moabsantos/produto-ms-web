@@ -79,6 +79,10 @@ const PedidoCompraItem = () => {
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/atendimento/full-list`, body: {pedidoCompraId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
           }},
+          {label: "", labelPopover: "Cancelar recebimento", nomeIcone: "fa-solid fa-arrow-rotate-left", onClick: () => { 
+            postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/cancelar-recebimento/full-list`, body: {pedidoCompraId: idMaster}}) 
+            .then(() => navigate("/" + dominioMaster))
+          }},
           {label: "", labelPopover: "Enderecar Pedido", nomeIcone: "fa-brands fa-buromobelexperte", onClick: () => { 
             postApi({url: `${process.env.REACT_APP_HOST_API}/${dominio}/enderecado/full-list`, body: {pedidoCompraId: idMaster}}) 
             .then(() => navigate("/" + dominioMaster))
